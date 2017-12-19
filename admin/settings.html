@@ -45,20 +45,40 @@
                     <li><a href="changepass.html">Change Password</a></li>
                     <li><a href="home.html">Logout</a></li>
                 </ul>
+                <hr>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
+                <hr>
+                <ul>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="create.html">Create New</a></li>
+                </ul>
+                <hr>
+
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Categories</span><br>
                 <hr>
                 <ul>
-                    <a href="">Products</a>
+                    Products
                     <hr>
                     <li><a href="allProducts.html">All Products</a></li>
                     <li><a href="settings.html">Product Settings</a></li>
                     <li><a href="Discount.html">Discount's</a></li>
-                    <li><a href="">Today's Offer</a></li><br>
-                    <a href="">Report</a>
+                    <li><a href="todays_offer.html">Today's Offer</a></li><br>
+                </ul>
+                <hr>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Report</span><br>
+                <hr>
+                <ul>
+                    User
                     <hr>
-                    <li><a href="">Most Visited Product</a></li>
-                    <li><a href="">Best Selling Product</a></li>
-                    <li><a href="">Total Income</a></li><br>
+                    <li><a href="statistics_report.html">Statistics Report</a></li>
+                    <li><a href="activity_report.html">Activity Report</a></li>
+                </ul>
+                <ul>
+                    Product
+                    <hr>
+                    <li><a href="mostVisitedProduct.html">Most Visited Product</a></li>
+                    <li><a href="bestSellingProduct.html">Best Selling Product</a></li>
+                    <li><a href="income.html">Total Income</a></li><br>
                 </ul>
             </td>
             <td valign="top" height="400" align="center">
@@ -81,9 +101,37 @@
                 </table>
 
                 <table align="left" width="100%">
+                   <br/>
+                            <fieldset align="left">Message box</fieldset>
                     <tr height="30">
                         <td>
-
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>
+                                Category :
+                                <select name="category">
+					    <option></option>
+						<option value="men">Men</option>
+						<option value="women">Women</option>
+						<option value="kids">Kids</option>
+						<option value="electronic">Electronic</option>
+					</select>
+                            </h3>
+                        </td>
+                        <td>
+                            <h3>
+                                Sub-Category :
+                                <select name="sub-category">
+					    <option></option>
+						<option value="shirt">Shirt</option>
+						<option value="pant">Pant</option>
+						<option value="Shoes">Shoes</option>
+						<option value="tshirt">T-shirt</option>
+					</select>
+                            </h3>
                         </td>
                     </tr>
                     <tr>
@@ -103,16 +151,18 @@
                     <tr>
                         <td>
                             <h3>
-                                Category :
-                                <select name="category">
-					    <option></option>
-						<option value="men">Men</option>
-						<option value="women">Women</option>
-						<option value="kids">Kids</option>
-						<option value="electronic">Electronic</option>
-					</select>
+                                Code :
+                                <input type="text" name="code" placeholder="Enter Code No. of the Product Here....">
                             </h3>
                         </td>
+                        <td>
+                            <h3>
+                                No. Of Products :
+                                <input type="text" name="no.product" placeholder="Enter No. of Product Here....">
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
                             <h3>
                                 Color :
@@ -130,42 +180,18 @@
 					</select>
                             </h3>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <h3>
-                                Sub-Category :
-                                <select name="sub-category">
-					    <option></option>
-						<option value="shirt">Shirt</option>
-						<option value="pant">Pant</option>
-						<option value="Shoes">Shoes</option>
-						<option value="tshirt">T-shirt</option>
-					</select>
-                            </h3>
-                        </td>
-                        <td>
-                            <h3>
-                                No. Of Products :
-                                <input type="text" name="no.product" placeholder="Enter No. of Product Here....">
-                            </h3>
+
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h3>
-                                Code :
-                                <input type="text" name="code" placeholder="Enter Code No. of the Product Here....">
-                            </h3>
+                            <img src="pictures/picemp.jpg" height="100%" width="80%"><br>
+                            <input type="file"><br><br><input type="submit" value="Save">
                         </td>
                         <td>
-                            <textarea name="details" rows="4" cols="33" placeholder="Details"></textarea>
+                            <textarea name="details" rows="19" cols="60" placeholder="Details About The Product"></textarea>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="pictures/pic.png" height="15%" width="25%"><br>
-                            <input type="file"><br><br><input type="submit" value="Save"></td>
                     </tr>
                     <tr height="20">
 
@@ -186,7 +212,7 @@
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#">Go Back</a></th>
+                            <a href="loggedin.html">Go To Home</a></th>
                     </tr>
                     <tr height="20">
 
