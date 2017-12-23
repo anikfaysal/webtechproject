@@ -25,7 +25,7 @@
 			<li><a href="home.html">Home</a>	</li>
 			<li><a href="../account/profile.html">View profile</a>	</li>	
 			<li><a href="order.html">My Orders </a></li>
-			<li><a href="../account/editprofile.html">settings</a></li>
+			<li><a href="../account/editprofile.html">Settings</a></li>
 			<li><a href="../account/changepass.html">Change Password</a></li>
 			<li><a href="../account/changepp.html">Change Profile Picture</a></li>
 			<li><a href="../account/login.html">Logout </a></li>
@@ -62,6 +62,9 @@
 			<li><a href="">Smart Watches</a></li><br>
 			<label><b>Report</b></label><hr>
 			<li><a href="myPurchase.html">My Purchase Stastics</a></li>
+			<li><a href="mylastPurchaseList.html">My Last Purchase List </a></li>
+			<li><a href="mymostVisitedProduct.html">My Most Visited Product List </a></li>
+			<li><a href="mymostPurchasedProduct.html">My Most Purchased Product List </a></li>
 			<li><a href="myfavouriteList.html">My Favourite List </a></li>
 			</ul>
 		</td>
@@ -98,27 +101,119 @@
 									<input type="radio" name="color"value="Green"/>Green
 									<input type="radio" name="color"value="Blue"/>Blue
 									<input type="radio" name="color"value="White"/>White
+									<input type="radio" name="color"value="Black"/>Black
 								</fieldset>
 							
 								<fieldset>
 									<legend>Select Size</legend>
-									<input type="radio" name="Size"value="42"/>42
-									<input type="radio" name="Size"value="36"/>36
-									<input type="radio" name="Size"value="24"/>24
+									<input type="radio" name="Size"value="42"/>S
+									<input type="radio" name="Size"value="36"/>M
+									<input type="radio" name="Size"value="24"/>L
+									<input type="radio" name="Size"value="24"/>XL
+									<input type="radio" name="Size"value="24"/>XXL
 									
+								</fieldset>
+								<fieldset>
+                                <legend>Select Quantity</legend>
+                                Available Quantity : 20
+								    <select name="quantity">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+					                </select><button onclick="addc();">+</button>
 								</fieldset>
 								<br>
 								<br>
 							
 								<a href="purches.html"><input type="submit" value="Purches Now" ><a/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="submit" value="Add to Cart" onclick="function1()" />
+								<button onclick="wish();">+</button>
 						
-							
+						
 							</td>
 							
 						</tr>
+						<tr>
+						    <td>
+						        
+						    </td>
+						    <td>
+				<table>
+                        <tr height="10">
+                      </tr>
+                       <tr>
+                          <td>
+                              Rate The Product
+                          </td>
+                           
+                       </tr>
+                        <tr>
+                            <td>
+                                <input type="radio"/>Very Good
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio"/>Good
+                            </td>
+                            <td>
+                                <input type="radio"/>Bad
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio"/>Worse
+                            </td>
+                        </tr>
+                        <tr height="5">
+                            
+                        </tr>
+			            <tr>
+			                <td>
+			                    (0) Comments
+			                </td>
+			                <td>
+			                    Leave A comment Here
+			                </td>
+			            </tr>
+			            <tr>
+			                <td colspan="2">
+			                    <textarea  name="textarea1" rows="10" cols="80"></textarea>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    Enter Your Name  :
+			                </td>
+			                <td>
+			                    <input type="text"/>
+			                    <abbr title="Must required field"><b>i</b></abbr>
+			                </td>
+			            </tr>
+			             <tr>
+			                <td>
+			                    Enter Your Email  :
+			                </td>
+			                <td>
+			                    <input type="text"/>
+			                    <abbr title="Must required field hint: sample@example.com"><b>i</b></abbr>
+			                </td>
+			            </tr>
+			             <tr>
+			                <td>
+			                    <button onclick="addpost();">Post Comment</button>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <div id="postcomment"></div>
+			                </td>
+			            </tr>
+			            
+			        </table>
+						    </td>
+						</tr>
 					</table>
-			
 			</td>
 			
 	
@@ -145,6 +240,26 @@
 
 window.alert ("added to cart");
 }
+         function wish()
+{
+    window.alert ("Added to Wish List");
+}
+    function addpost()
+    {
+        window.alert ("Posting A Comment");
+        var post = document.getElementById("textarea1").text;
+        var d = document.getElementById("postcomment");
+        d.innerHTML += post;     
+    }
+    function addc()
+    {
+        window.alert ("Incresing Quantity");
+        var m = document.getElementById("quantityid");
+        var n = m.options[m.selectedIndex].text;
+        n = n+1;
+        m.options[n.selected];
+        
+    }
 	
 	</script>
 

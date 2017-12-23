@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Orders</title>
+    <title>My Last Purchase List</title>
 </head>
 
 <table  align="center" width="1200">
@@ -62,7 +62,7 @@
             <li><a href="">Headphones</a></li>
             <li><a href="">Smart Watches</a></li><br>
             <label><b>Report</b></label><hr>
-            <li><a href="myPurchase.html">My Purchase Stastics</a></li>
+           <li><a href="myPurchase.html">My Purchase Stastics</a></li>
 			<li><a href="mylastPurchaseList.html">My Last Purchase List </a></li>
 			<li><a href="mymostVisitedProduct.html">My Most Visited Product List </a></li>
 			<li><a href="mymostPurchasedProduct.html">My Most Purchased Product List </a></li>
@@ -77,47 +77,74 @@
         <tr></tr>
            
             <tr>
-                <th align="center"><label><h3>Orders</h3></label></th>
+                <th align="center"><label><h3>My Last Purchase</h3></label></th>
 
             </tr>
         </table>
 
         <table align="left" >
-            <tr height="100">
-            <td ></td>
-            <td>
-            <a href="order.html"><input type="submit" value="All Orders" ><br>
-            </td>
-            <td>
-            <a href="receivedorders.html"><input type="submit" value="Received Oreders" ><br>
-            </td>
-            <td width="150"></td>
-            <td>
-            <a href="pending.html"><input type="submit" value="Orders waiting Confirmation" ><br>
-            </td>
-            </tr>
             <tr >
             <td ></td>
                 <td width="35%">
                    <br><br> <img src="pictures/mshirt4.PNG" height="100" width="100">
                 </td>
+                <td width="15%">
+                    Men's Shirt<br> Color : Blue<br> Size : L<br>Quantity : 1 <br> Price : 550tk
+                </td>
+                <td>
+                     Purchase Date : 10-11-17<br>
+                </td>
+                 <td>
+                     <input type="submit" value="Add to Cart" onclick="function1()" />
+                </td>
+            </tr>
+            <tr height="50">
+            <td ></td>
+                <td width="15%">
+                    <img src="pictures/wshirt1.PNG" height="100" width="100">
+                </td>
+                <td width="15%">
+                    Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk
+                </td>
+                <td>
+                     Purchase Date : 10-11-17<br>
+                </td>
+                 <td>
+                     <input type="submit" value="Add to Cart" onclick="function1()" />
+                </td>
+
+            </tr>
+            <tr >
+            <td ></td>
                 <td width="35%">
-                    <br> Order Id : 252145220<br><br> Tracking Number : 895853<br><br>
-                     
+                   <br><br> <img src="pictures/mshirt3.PNG" height="100" width="100">
+                </td>
+                <td width="15%">
+                    Men's Shirt<br> Color : Blue<br> Size : L<br>Quantity : 1 <br> Price : 550tk
+                </td>
+                <td>
+                     Purchase Date : 10-11-17<br>
+                </td>
+                 <td>
+                     <input type="submit" value="Add to Cart" onclick="function1()" />
+                </td>
+            </tr>
+            <tr height="50">
+            <td ></td>
+                <td width="15%">
+                    <img src="pictures/wprog1.PNG" height="100" width="100">
+                </td>
+                <td width="15%">
+                    Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk
+                </td>
+                <td>
+                     Purchase Date : 10-11-17<br>
+                </td>
+                 <td>
+                     <input type="submit" value="Add to Cart" onclick="function1()" />
                 </td>
                 
-
             </tr>
-            <tr></tr>
-            <td></td>
-            <tr align="right">
-             <td></td>
-            
-            <td><br><br><br><br>Status : Left the Warehouse</td>
-
-                
-            </tr>
-           
         </table>
 
     </td>
@@ -139,6 +166,12 @@
 
 
 </table>
+<script>
+	function function1()
+{
+    window.alert ("Added to cart");
+}
+</script>
 
 
 </html>
