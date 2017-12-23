@@ -38,6 +38,7 @@
                     </tr>
                 </table>
                 <ul>
+                    <li><a href="Dashboard.html">Dashboard</a></li>
                     <li><a href="loggedin.html">Home</a></li>
                     <li><a href="profile.html">View Profile</a></li>
                     <li><a href="editprofile.html">Edit Profile</a></li>
@@ -80,6 +81,9 @@
                     <hr>
                     <li><a href="mostVisitedProduct.html">Most Visited Product</a></li>
                     <li><a href="bestSellingProduct.html">Best Selling Product</a></li>
+                    <li><a href="leastSellingProduct.html">Least Selling Product</a></li>
+                    <li><a href="runningoutofstock.html">Running Out of Stock Product</a></li>
+                    <li><a href="badproducts.html">Bad Rated Product</a></li>
                     <li><a href="income.html">Total Income</a></li><br>
                 </ul>
             </td>
@@ -107,7 +111,7 @@
                             <fieldset align="left">Message box</fieldset>
                     <tr height="30">
                         <td>
-                            
+                            Date : <input type="text" id="date"/>
                         </td>
                     </tr>
                     <tr>
@@ -139,14 +143,14 @@
                     <tr>
                         <td width="50%">
                             <h3>
-                                Name :
+                                Product Name :
                                 <input type="text" name="name" placeholder="Enter Name Here....">
                             </h3>
                         </td>
                         <td width="50%">
                             <h3>
-                                Price :
-                                <input type="text" name="price" placeholder="Enter Price Here....">
+                                Buying Price :
+                                <input type="text" name="buyingprice" placeholder="Enter Buying Price Here....">
                             </h3>
                         </td>
                     </tr>
@@ -159,8 +163,8 @@
                         </td>
                         <td>
                             <h3>
-                                No. Of Products :
-                                <input type="text" name="no.product" placeholder="Enter No. of Product Here....">
+                                Selling Price :
+                                <input type="text" name="sellingprice" placeholder="Enter Seliing Price Here....">
                             </h3>
                         </td>
                     </tr>
@@ -183,13 +187,16 @@
                             </h3>
                         </td>
                         <td>
-
+                            <h3>
+                                Product Quntity :
+                                <input type="text" name="no.product" placeholder="Enter Product Quantity Here....">
+                            </h3>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <img src="pictures/picemp.jpg" height="100%" width="80%"><br>
-                            <input type="file"><br><br><input type="submit" value="Save">
+                            <input type="file"><br><br><input type="submit" value="Upload">
                         </td>
                         <td>
                             <textarea name="details" rows="19" cols="60" placeholder="Details About The Product"></textarea>
@@ -200,13 +207,13 @@
                     </tr>
                     <tr>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="submit" name="add" value="Add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="submit" name="update" value="Update">
+                            <input type="submit" name="add" value="Add" onclick="add();"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="submit" name="update" value="Update" onclick="update();"/>
 
                         </td>
                         <td>
-                            <input type="submit" name="delete" value="Delete">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="submit" name="clear" value="Clear">
+                            <input type="submit" name="delete" value="Delete" onclick="add();"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="submit" name="clear" value="Clear" onclick="clear();"/>
                         </td>
                     </tr>
                     <tr height="20">
@@ -214,7 +221,7 @@
                     </tr>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="loggedin.html">Go To Home</a></th>
+                            <a href="loggedin.html">Home</a> <a href="Dashboard.html">Dashboard</a></th> 
                     </tr>
                     <tr height="20">
 
@@ -230,5 +237,44 @@
         </tr>
     </table>
 </body>
+<script>
+function add() {
+    window.alert ("Product Added Successfully");
+    var a = document.getElementsByTagName("fieldset")[0];
+    a.innerHTML = "Product Added Successfully";
+    dateToday();
+    
+}
+    function update() {
+    window.alert ("Product Updated Successfully");
+    var a = document.getElementsByTagName("fieldset")[0];
+    a.innerHTML = "Product Updated Successfully";
+    
+}
+    function delete() {
+    window.alert ("Product Deleted Successfully");
+    var a = document.getElementsByTagName("fieldset")[0];
+    a.innerHTML = "Product Deleted Successfully";
+    
+    
+}
+    function clear() {
+    window.alert ("All Field Clear");
+    var a = document.getElementsByTagName("fieldset")[0];
+    a.innerHTML = "All Field Clear";
+    
+    
+}
+    function dateToday()
+    {
+        var a = document.getElementsById("date");
+        var d = new Date();
+        var day = d.getDate();
+        var month = d.getMonth();
+        var year = d.getYear();
+        a.innerHTML = day+"-"+month+"-"+year;
+        
+    }
+</script>
 
 </html>

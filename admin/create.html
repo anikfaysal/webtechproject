@@ -36,6 +36,7 @@
 					</tr>
 				</table>
 				<ul>
+				    <li><a href="Dashboard.html">Dashboard</a></li>
 					<li><a href="loggedin.html">Home</a></li>
 					<li><a href="profile.html">View Profile</a></li>
 					<li><a href="editprofile.html">Edit Profile</a></li>
@@ -78,6 +79,9 @@
             <hr>
             <li><a href="mostVisitedProduct.html">Most Visited Product</a></li>
             <li><a href="bestSellingProduct.html">Best Selling Product</a></li>
+            <li><a href="leastSellingProduct.html">Least Selling Product</a></li>
+            <li><a href="runningoutofstock.html">Running Out of Stock Product</a></li>
+            <li><a href="badproducts.html">Bad Rated Product</a></li>
             <li><a href="income.html">Total Income</a></li><br>
         </ul>
 			</td>
@@ -177,7 +181,7 @@
             </tr>
         </table>
         <hr />
-        <input type="submit" value="Save">
+        <input type="submit" value="Create" onclick="myEditFunction();"/>
         <a href="search.html">Back to Search</a>
     </form>
 </fieldset>
@@ -192,4 +196,12 @@
 		</tr>
 	</table>
 </body>
+<script>
+function myEditFunction() {
+    var a = document.getElementsByTagName("fieldset")[0];
+    a.innerHTML = "New User Created Successfully";
+    window.alert ("New User Created Successfully");
+    
+}
+</script>
 </html>

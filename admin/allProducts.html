@@ -36,6 +36,7 @@
 					</tr>
 				</table>
 				<ul>
+				    <li><a href="Dashboard.html">Dashboard</a></li>
 					<li><a href="loggedin.html">Home</a></li>
 					<li><a href="profile.html">View Profile</a></li>
 					<li><a href="editprofile.html">Edit Profile</a></li>
@@ -78,6 +79,9 @@
             <hr>
             <li><a href="mostVisitedProduct.html">Most Visited Product</a></li>
             <li><a href="bestSellingProduct.html">Best Selling Product</a></li>
+            <li><a href="leastSellingProduct.html">Least Selling Product</a></li>
+            <li><a href="runningoutofstock.html">Running Out of Stock Product</a></li>
+            <li><a href="badproducts.html">Bad Rated Product</a></li>
             <li><a href="income.html">Total Income</a></li><br>
         </ul>
         </td>
@@ -89,13 +93,18 @@
         </table>
 
         <table align="left" width="100%">
-            <tr>
 				<br/>
-				<tr><input type="text" name="search" placeholder="Enter keyword Here...."><input type="submit" value="Search Here"></input></tr><br/>
-                <td width="20%" align="center">
+				<tr><h3>Filter By : <select>
+                            <option>Any</option>
+                            <option>Name</option>
+                            <option>Code</option>
+                            </select>
+                            <input type="text" name="search" placeholder="Enter keyword Here...."><input type="submit" value="Search Here"></h3></tr><br/>
+               <tr>
+                <td width="17%" align="center">
                     <h3>Image</h3>
                 </td>
-                <td width="20%" align="center">
+                <td width="17%" align="center">
                    <h3>Category
 					<select name="bg">
 					    <option></option>
@@ -117,7 +126,7 @@
 					</select>
                   </h3>
                 </td>
-                <td width="20%" align="center">
+                <td width="16%" align="center">
                     <h3>Code
 					<select name="bg">
 					    <option></option>
@@ -128,8 +137,11 @@
 					</select>
                   </h3>
                 </td>
-                <td width="20%" align="center">
-                    <h3>Price</h3>
+                <td width="15%" align="center">
+                    <h3>Buying Price</h3>
+                </td>
+                 <td width="15%" align="center">
+                    <h3>Selling Price</h3>
                 </td>
             </tr>
             <tr>
@@ -146,6 +158,9 @@
                     <h3>MS-177</h3>
                 </td>
                 <td align="center">
+                    <h3>350tk</h3>
+                </td><br>
+                <td align="center">
                     <h3>550tk</h3>
                 </td><br>
             </tr>
@@ -161,6 +176,9 @@
                 </td>
                 <td align="center">
                     <h3>WP-111</h3>
+                </td>
+                <td align="center">
+                    <h3>600tk</h3>
                 </td>
                 <td align="center">
                     <h3>800tk</h3>
@@ -180,6 +198,9 @@
                     <h3>KS-8</h3>
                 </td>
                 <td align="center">
+                    <h3>250tk</h3>
+                </td>
+                <td align="center">
                     <h3>300tk</h3>
                 </td>
             </tr>
@@ -197,6 +218,9 @@
                     <h3>PS-44</h3>
                 </td>
                 <td align="center">
+                    <h3>9000tk</h3>
+                </td>
+                <td align="center">
                     <h3>10000tk</h3>
                 </td>
             </tr>
@@ -206,15 +230,11 @@
 			<td></td>
 			<td align="center">
 			<br/><br/><br/>
-			<input type="submit" value="Update"  onclick="function1()"></input>
+			<input type="submit" value="Update"  onclick="function1()"/>
 			</td>
 			</tr>
-			
-
         </table>
-
-
-			</td>
+        </td>
 		</tr>
 		<tr align="center">
 			<td colspan="3">
