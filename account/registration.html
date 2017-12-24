@@ -49,7 +49,7 @@
 										</td>
 										<td>
 											:&nbsp;<input type="text">
-											&nbsp;&nbsp;<img src="vector_c_i_alphabet_logo.png" alt="" width="30" align="center" >
+											&nbsp;&nbsp;<abbr title="hint: sample@example.com"><img src="vector_c_i_alphabet_logo.png" alt="" width="30" align="center" ></abbr>
 										</td>
 									</tr>
 								</table>
@@ -83,6 +83,20 @@
 										</td>
 										<td>
 											:&nbsp;<input type="Password">
+										</td>
+									</tr>
+								</table>
+								<hr>
+								<table>
+									<tr>
+										<td width="150">
+											<span>Address</span>
+										</td>
+										<td>
+											:&nbsp;<input type="text">
+											<div id="addplace">
+											    
+											</div>
 										</td>
 									</tr>
 								</table>
@@ -129,6 +143,7 @@
 								<form action="../user_pages/home.html">
 								<input type="submit">
                                 </form>
+                                <hr>
 								<input type="submit" value="Reset">
 							</fieldset>
 						</td>
@@ -143,4 +158,12 @@
 		</tr>
 	</table>
 </body>
+<script>
+function add() {
+    window.alert ("Product Added to Home");
+    var add = document.getElementById("addplace");
+    add.innerHTML = "<input type="text"><button onclick="add();">+</button>";
+    
+}
+</script>
 </html>
