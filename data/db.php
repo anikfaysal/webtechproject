@@ -1,12 +1,10 @@
 <?php
-
-	$host="127.0.0.1";
-	$user="root";
-	$pass="";
-	$db="ecommerce";
+    $host="127.0.0.1";
+    $user="root";
+    $pass="";
+    $dbname="ecommerce";
     $port=3306;
-	
-	//$conn=mysqli_connect($host,$user,$pass,$db);
+   
     function executeSQL($sql){
         global $host, $user, $pass, $dbname, $port;
         
@@ -16,6 +14,4 @@
         
         return $result;
     }
-
- 
 ?>
