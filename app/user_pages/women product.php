@@ -1,3 +1,10 @@
+<?php include "../../data/product_access.php"; ?>
+<?php
+    $productId =$_GET['id'];
+	
+    $productcode = getProductById($productId);
+?>
+
 <html>
 
 <head><title>Women Product Details</title></head>
@@ -73,24 +80,24 @@
 						<tr>
 							
 							<td valign="top" width="30%"  >
-								<img src="pictures\wprog1.png" align="left" align="top" height="100%" >
-								<img src="pictures\wprog2.png" align="left" align="top" height="100%" >
+								<img src="pictures\<?= $productcode['pdpic'] ?>" align="left" align="top" height="100%" >
+							
 								<br><br><br><br><br><br><br>
-								<h4>Dress-type:Long-shirt</h4>
-								<h4> Cost :2200 Tk </h4>
+								<h4>Dress-type:<?= $productcode['name'] ?></h4>
+								<h4> Cost :<?= $productcode['sprice'] ?> </h4>
 							</td>
 							
 							<td valign="top" width="60%">
 							
 								<h3>Product Details </h3>
 							
-								<h5>Available Quantity: 2000 </h5>
-								<h5> Cost :2200 Tk  </h5>
+								<h5>Available Quantity:  <?= $productcode['quantity'] ?>  </h5>
+								<h5> Cost :<?= $productcode['sprice'] ?>  </h5>
 								<h5>Season: summer </h5>
-								<h5>Material: 100%cotton </h5>
-								<h5>Model Number:LM0-32-375 </h5>
-								<h5>Color:Gray </h5>
-								<h5>Age Group: Adult </h5>
+								<h5>Material: <?= $productcode['material'] ?>  </h5>
+								<h5>Model Number:<?= $productcode['code'] ?></h5>
+								<h5>Color:<?= $productcode['color'] ?> </h5>
+								
 							
 								<fieldset>
 									<legend>Select color</legend>

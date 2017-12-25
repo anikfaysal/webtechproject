@@ -1,4 +1,12 @@
-
+<?php include "../../data/product_access.php"; ?>
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $searchKey = $_POST['search'];
+        $products = getPersonsByName($searchKey);
+    } else {
+        $products = womenproducts();
+    }
+?>
 <html>
 
 <head><title>Women Person Details</title></head>
@@ -92,38 +100,13 @@
 					 </table>
 					 
 					<table align="left" width="100%" >
+					<?php foreach ($products as $product) { ?>
 						<tr>
-							<a href="women product.php"><img src="pictures\wprog1.png" align="left"  width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
+							<a href="women product.php?id=<?= $product['code'] ?>"><img src="pictures\<?=  $product['pdpic'] ;?>" align="left"  width="20%" height="100" ><br><h4><?=  $product['name']; ?><br><?=   $product['sprice'] ;?></h4></a>	<br><br><br><br><br><br>
 	
 						</tr>
-						<tr> 
-							<a href="women product.php"><img src="pictures\wprog9.png" align="left"  width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="women product.php"><img src="pictures\wprog7.png" align="left" width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="women product.php"><img src="pictures\wprog8.png" align="left" width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>    <br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="women product.php"><img src="pictures\wprog1.png" align="left" width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="women product.php"><img src="pictures\wprog1.png" align="left"  width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="women product.php"><img src="pictures\wprog1.png" align="left"  width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="women product.php"><img src="pictures\wprog1.png" align="left"  width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
+						 <?php } ?>	
+
 																																			
 						
 				

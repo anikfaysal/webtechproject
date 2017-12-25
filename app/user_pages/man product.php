@@ -1,3 +1,9 @@
+<?php include "../../data/product_access.php"; ?>
+<?php
+    $productId =$_GET['id'];
+	
+    $productcode = getProductById($productId);
+?>
 <html>
 
 <head><title>Man Product detils</title></head>
@@ -76,24 +82,24 @@
 						<tr>
 							
 							<td valign="top" width="30%"  >
-								<img src="pictures\pros1.png" align="left" align="top" height="60%" >
+								<img src="pictures\<?= $productcode['pdpic'] ?>" align="left" align="top" height="60%" >
 								
 								<br><br><br><br><br>
-								<h4>Shirt Type:Men-Shirt</h4>
-								<h4> Cost :1500 Tk </h4>
+								<h4>Shirt Type:<?= $productcode['name'] ?></h4>
+								<h4> Cost :<?= $productcode['sprice'] ?></h4>
 							</td>
 							
 							<td valign="top" width="60%">
 							
 								<h3>Product Details </h3>
 							
-								<h5>Available Quantity: 100 </h5>
-								<h5>Cost :1500 Tk </h5>
+								<h5>Available Quantity: <?= $productcode['quantity'] ?>  </h5>
+								<h5>Cost :<?= $productcode['sprice'] ?>  </h5>
 								<h5>Season: Winter </h5>
-								<h5>Material: 100% Cotton </h5>
-								<h5>Model Number: WY-170 </h5>
-								<h5>Color: Grey </h5>
-								<h5>Age Group: Adult </h5>
+								<h5>Material: <?= $productcode['material'] ?>  </h5>
+								<h5>Model Number:<?= $productcode['code'] ?></h5>
+								<h5>Color: <?= $productcode['color'] ?> </h5>
+								
 							
 								<fieldset>
 									<legend>Select color</legend>

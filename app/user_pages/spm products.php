@@ -1,4 +1,12 @@
-
+<?php include "../../data/product_access.php"; ?>
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $searchKey = $_POST['search'];
+        $products = getPersonsByName($searchKey);
+    } else {
+        $products = menproducts();
+    }
+?>
 <html>
 
 <head><title>Male Person Details</title></head>
@@ -90,30 +98,20 @@
 					 </table>
 					 
 					<table align="left" width="100%" >
+					<?php foreach ($products as $product) { ?>
 						<tr>
-							<a href="man product.php"><img src="pictures\mshirt1.png" align="left" align="top" width="20%" height="100" ><br><h4>Dress <br>1500tk</h4></a>	<br><br><br><br><br><br>
+							<a href="man product.php?id=<?= $product['code'] ?>"><img src="pictures\<?=  $product['pdpic'] ;?>" align="left" align="top" width="20%" height="100" ><br><h4><?=  $product['name']; ?> <br><?=   $product['sprice'] ;?></h4></a>	<br><br><br><br><br><br>
 	
 						</tr>
-						<tr> 
-							<a href="man product.php"><img src="pictures\mshirt2.png" align="left" align="top" width="20%" height="100" ><br><h4>Dress <br>900tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="man product.php"><img src="pictures\mshirt3.png" align="left" align="top" width="20%" height="100" ><br><h4>Dress <br>700tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="man product.php"><img src="pictures\mshirt4.png" align="left" align="top" width="20%" height="100" ><br><h4>Dress <br>550tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-						<tr>
-							<a href="man product.php"><img src="pictures\pros1.png" align="left" align="top" width="20%" height="100" ><br><h4>Dress <br>530tk</h4></a>	<br><br><br><br><br><br>
-	
-						</tr>
-																																			
+
+						 <?php } ?>																												
 						
 				
 					</table>
+					
+
+					
+					
 			
 			</td>
 			
