@@ -1,19 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 3.1.3.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 25, 2017 at 05:06 AM
--- Server version: 5.1.33
--- PHP Version: 5.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Dec 25, 2017 at 09:14 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `ecommerce`
@@ -25,7 +26,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `allproducts`
 --
 
-CREATE TABLE IF NOT EXISTS `allproducts` (
+CREATE TABLE `allproducts` (
   `code` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `catagory` varchar(255) NOT NULL,
@@ -38,21 +39,21 @@ CREATE TABLE IF NOT EXISTS `allproducts` (
   `sprice` double NOT NULL,
   `quantity` int(11) NOT NULL,
   `offer` double NOT NULL,
-  PRIMARY KEY (`code`)
+  `pdpic` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `allproducts`
 --
 
-INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `bprice`, `sprice`, `quantity`, `offer`) VALUES
-('0001', 'T-Shirt', 'Men', 'Shirt', 'Red', '100%cotton', 'XXL', '100% Cotton.full sleeve t-shirt', 500, 1000, 10, 80),
-('0002', 'women dress', 'women dress', 'Shirt', 'Green', '50%Cotton', 'XXL', 'women dress 50% cotton.limited edition', 500, 1000, 20, 20),
-('0003', 'Pants', 'Women', 'Pant', 'Black', '100%cotton', 'XL', '100%cotton,Womens Pant.limited editon', 600, 800, 20, 0),
-('0004', 'Pants', 'Men', 'Pants', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0),
-('0006', 'Kids shoe', 'Kids', 'Shoe', 'White', '100%leather', '22', '100%leather,Kids Shoe', 250, 300, 50, 0),
-('0012', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0),
-('0019', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0);
+INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `bprice`, `sprice`, `quantity`, `offer`, `pdpic`) VALUES
+('0001', 'T-Shirt', 'Men', 'Shirt', 'Red', '100%cotton', 'XXL', '100% Cotton.full sleeve t-shirt', 500, 1000, 10, 80, 'mshirt1.png'),
+('0002', 'women dress', 'Women', 'Shirt', 'Green', '50%Cotton', 'XXL', 'women dress 50% cotton.limited edition', 500, 1000, 22, 20, 'wprog1.png'),
+('0003', 'Pants', 'Women', 'Pant', 'Black', '100%cotton', 'XL', '100%cotton,Womens Pant.limited editon', 600, 800, 20, 0, 'wprog5.png'),
+('0004', 'Pants', 'Men', 'Pants', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0, 'pros2.png'),
+('0006', 'Kids shoe', 'Kids', 'Shoe', 'White', '100%leather', '22', '100%leather,Kids Shoe', 250, 300, 50, 0, 'kids3.png'),
+('0012', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0, 'wprog2.png'),
+('0019', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,7 @@ INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `
 -- Table structure for table `todaysoffers`
 --
 
-CREATE TABLE IF NOT EXISTS `todaysoffers` (
+CREATE TABLE `todaysoffers` (
   `code` varchar(500) NOT NULL,
   `name` varchar(500) NOT NULL,
   `catagory` varchar(500) NOT NULL,
@@ -71,8 +72,7 @@ CREATE TABLE IF NOT EXISTS `todaysoffers` (
   `description` varchar(500) NOT NULL,
   `cost` double NOT NULL,
   `quantity` int(11) NOT NULL,
-  `offer` double NOT NULL,
-  PRIMARY KEY (`code`)
+  `offer` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -92,7 +92,7 @@ INSERT INTO `todaysoffers` (`code`, `name`, `catagory`, `subcatagory`, `color`, 
 -- Table structure for table `userorders`
 --
 
-CREATE TABLE IF NOT EXISTS `userorders` (
+CREATE TABLE `userorders` (
   `username` varchar(500) NOT NULL,
   `code` varchar(500) NOT NULL,
   `color` varchar(500) NOT NULL,
@@ -123,7 +123,7 @@ INSERT INTO `userorders` (`username`, `code`, `color`, `size`, `quantity`, `pric
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `usertype` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -132,8 +132,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gender` varchar(50) NOT NULL,
   `dob` varchar(15) NOT NULL,
   `pp` varchar(500) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  PRIMARY KEY (`username`)
+  `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -155,7 +154,7 @@ INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gende
 -- Table structure for table `user_info`
 --
 
-CREATE TABLE IF NOT EXISTS `user_info` (
+CREATE TABLE `user_info` (
   `username` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -165,6 +164,27 @@ CREATE TABLE IF NOT EXISTS `user_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_info`
+-- Indexes for dumped tables
 --
 
+--
+-- Indexes for table `allproducts`
+--
+ALTER TABLE `allproducts`
+  ADD PRIMARY KEY (`code`);
+
+--
+-- Indexes for table `todaysoffers`
+--
+ALTER TABLE `todaysoffers`
+  ADD PRIMARY KEY (`code`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
