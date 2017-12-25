@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2017 at 09:14 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Dec 25, 2017 at 09:34 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -48,10 +48,32 @@ CREATE TABLE `allproducts` (
 
 INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `bprice`, `sprice`, `quantity`, `offer`, `pdpic`) VALUES
 ('0001', 'T-Shirt', 'Men', 'Shirt', 'Red', '100%cotton', 'XXL', '100% Cotton.full sleeve t-shirt', 500, 1000, 10, 80, 'mshirt1.png'),
-('0002', 'women dress', 'Women', 'Shirt', 'Green', '50%Cotton', 'XXL', 'women dress 50% cotton.limited edition', 500, 1000, 22, 20, 'wprog1.png'),
+('00010', 'Casual Belt', 'Men', 'Belt', 'Black', 'Leather', '25', 'Leather belt', 2000, 6000, 25, 0, 'belt2.jpg'),
+('00011', 'Tops', 'Women', 'Dress', 'Blue', '100% Cotton', 'M', 'Women tops 10% cotton limited edition', 500, 1500, 25, 0, 'pic.jpg'),
+('00012', 'Pants', 'Women', 'Pant', 'Black', 'Jeans', 'S', 'New jeans Pant', 1500, 2500, 20, 0, 'wpant.jpg'),
+('00013', 'High hill', 'Women', 'Shoe', '00013', 'synthetic', '30', 'New High hill.very Fashionable', 1000, 3000, 15, 0, 'wshoe.jpg'),
+('00014', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women''s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
+('00015', 'Small Purse ', 'Women', 'Bags', 'Blue', 'Canvas', '13cm', 'Women Small Purse', 50, 150, 25, 0, 'bag.jpg'),
+('00016', 'Shoulder Bag', 'Women', 'Bags', 'Purple', 'Silicon', '25cm', 'Women Shoulder Bag', 250, 500, 50, 0, 'accessories.png'),
+('00017', 'Kids Dress', 'Kids', 'Dress', 'Red', 'Cotton', '28', '100% cotton', 350, 500, 30, 0, 'kids7.PNG'),
+('00018', 'Kids Shoe', 'Kids', 'Shoe', 'White', 'Lather', '28', '100% Lather', 550, 900, 30, 0, 'kids3.PNG'),
+('00019', 'Kids Diapers', 'Kids', 'Diapers', 'White', 'Paper', '25', '100% Soft material', 150, 200, 100, 0, 'kids2.PNG'),
+('0002', 'women dress', 'Women', 'Dress', 'Green', '50%Cotton', 'XXL', 'women dress 50% cotton.limited edition', 500, 1000, 22, 20, 'wprog1.png'),
+('00020', 'Kids Toy', 'Kids', 'Toys', 'Red', 'Plastic', '10', 'Plastic made', 50, 200, 100, 0, 'kids4.PNG'),
+('00021', 'Wallet', 'Accessories', 'Wallet', 'Brown', 'Lather', '10', 'Pure Lather', 100, 200, 100, 0, 'walate.PNG'),
+('00022', 'BackCover', 'Accessories', 'BackCover', 'Brown', 'plastic', '10', 'For iphone X', 500, 1500, 100, 0, 'backcover.PNG'),
+('00023', 'Bags', 'Accessories', 'Bag', 'Brown', 'plastic', '10', 'hard and light', 1500, 2500, 200, 0, 'bags.PNG'),
+('00024', 'HandBand', 'Accessories', 'HandBand', 'Black', 'Steel', '10', 'hard and light', 150, 250, 200, 0, 'handband.PNG'),
+('00026', 'HeadPhone', 'Electronic', 'HeadPhone', 'Black', 'Plastic', '5', 'For Samsung-w83.top rated mobile phone ', 90, 200, 1000, 0, 'headphone.PNG'),
+('00027', 'TableFan', 'Electronic', 'TableFan', 'Black', 'Steel', '', 'Very fast', 2000, 3000, 1000, 0, 'tablefan.PNG'),
+('00029', 'Smart Watch', 'Electronic', 'Smart Watch', 'Black', '', '', 'Smart Watch', 190, 390, 100, 0, 'watch.jpg'),
 ('0003', 'Pants', 'Women', 'Pant', 'Black', '100%cotton', 'XL', '100%cotton,Womens Pant.limited editon', 600, 800, 20, 0, 'wprog5.png'),
-('0004', 'Pants', 'Men', 'Pants', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0, 'pros2.png'),
+('0004', 'Pants', 'Men', 'Pant', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0, 'pros2.png'),
+('0005', 'Trendy T-Shirt ', 'Men', 'Shirt', 'Red', 'Silk', 'M', 'Silk full sleeve t-shirt', 300, 600, 50, 0, 'mshirt2.PNG'),
 ('0006', 'Kids shoe', 'Kids', 'Shoe', 'White', '100%leather', '22', '100%leather,Kids Shoe', 250, 300, 50, 0, 'kids3.png'),
+('0007', 'Formal Shoe', 'Men', 'Shoe', '0007', 'Lofar', '40', 'New Lofar shoe.very Fashionable', 1500, 2500, 15, 0, 'pros3.PNG'),
+('0008', 'Casual Shoe', 'Men', 'Shoe', 'black', 'Leather', '42', 'Pure Leather Shoe', 800, 2500, 20, 0, 'leather.jpg'),
+('0009', 'Formal Belt', 'Men', 'Belt', 'Blue', 'Leather', '20', 'Leather belt', 200, 600, 25, 0, 'belt1.jpg'),
 ('0012', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0, 'wprog2.png'),
 ('0019', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png');
 
