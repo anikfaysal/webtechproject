@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Login</title>
 </head>
+<form method="post">
 <body width="1200">
 	<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
@@ -37,7 +38,7 @@
 											<span>User Name</span>
 										</td>
 										<td>
-											:&nbsp;<input type="text">
+											:&nbsp;<input type="text" name="username">
 										</td>
 									</tr>
 								</table>
@@ -47,16 +48,16 @@
 											<span>Password</span>
 										</td>
 										<td>
-											:&nbsp;<input type="Password">
+											:&nbsp;<input type="Password" name ="password">
 										</td>
 									</tr>
 								</table>
 								<hr>
 								<input type="checkbox">&nbsp; Remember Me
 								<br><br>
-								<form action="../user_pages/home.php">
-								<input type="submit">
-                                </form>
+								
+								<input type="submit" value="submit">
+                                
 								&nbsp;&nbsp;<a href="forgotpassword.php">Forgot Password? </a>
 							</fieldset>
 						</td>
@@ -71,4 +72,34 @@
 		</tr>
 	</table>
 </body>
+</form>
 </html>
+<?php
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		
+		$name=$_REQUEST['username'];
+	
+		include_once("../../data/user_access.php");
+		
+		$result=searchUser($name);
+				
+			
+			if(($_REQUEST['username']==$result['username'] )&&($_REQUEST['password'])==$result['password']){
+				session_start();
+				$_SESSION['user']=$result;
+
+				if($_SESSION['user']['usertype']=="admin"){
+					header("location:../admin/loggedin.php");
+				}
+				else if($_SESSION['user']['usertype']=="user"){
+					header("location:../user_pages/home.php");
+				}
+				
+			}
+			else{
+				echo "Invalid User Name or Password";
+			}
+		
+	}
+
+?>

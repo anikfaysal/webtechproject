@@ -27,6 +27,7 @@
 		<tr>
 			<td height="400" valign="center" align="center" colspan="2">
 				<table border="0">
+				<form method="post">
 					<tr> 
 						<td width="350">
 							<fieldset>
@@ -37,17 +38,18 @@
 											<span>Enter Email</span>
 										</td>
 										<td>
-											:&nbsp;<input type="text">
+											:&nbsp;<input type="text" name="email">
 										</td>
 									</tr>
 								</table>
 								<hr>
-								<form action="login.php" >
-								<input type="submit">
-                                </form>
+								
+								<input type="submit" value="submit">
+                               
 							</fieldset>
 						</td>
 					</tr>
+					</form>
 				</table>
 			</td>
 		</tr>
@@ -59,3 +61,37 @@
 	</table>
 </body>
 </html>
+<?php
+
+		if($_SERVER["REQUEST_METHOD"]=='POST'){
+
+			$email=$_REQUEST['email'];
+			
+			include_once("../../data/user_access.php");
+			$result=searchEmail($email);
+			var_dump($result);
+
+			if($email==$result['email'] ){
+					session_start();
+					$_SESSION['user']=$result;
+
+
+					if($_SESSION['user']['usertype']=="user"){
+					header("location:../user_pages/home.php");
+					}
+			}else{
+				echo "<script>
+                    window.alert('Wrong Email');
+                    document.location='login.php'; 
+                 </script>";
+				//header("location:login.php");
+				}
+
+		}
+
+
+
+
+
+
+?>
