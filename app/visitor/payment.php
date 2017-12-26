@@ -36,32 +36,32 @@
         
         <label><b>Catagories</b></label><br><hr>
 			<ul>
-			<a href="select persons male.php">Men's Product</a><hr>
-			<li><a href="spm products.php">Men's Shirts</a></li>
-			<li><a href="">Men's Pants</a></li>
-			<li><a href="">Men's Shoes</a></li>
-			<li><a href="">Belt</a></li><br>
-			<a href="select persons female.php">Women's Product</a><hr>
-			<li><a href="spf products.php">Dresses</a></li>
-			<li><a href="">Pants</a></li>
-			<li><a href="">Shoes</a></li>
-			<li><a href="">Bags</a></li><br>
-			<a href="select persons kids.php">Kid's Product</a><hr>
-			<li><a href="spk products.php">Dress</a></li>
-			<li><a href="">Diapars</a></li>
-			<li><a href="">Shoes</a></li>
-			<li><a href="">Toys</a></li><br>
-			<a href="accessories.php">Accessories</a><hr>
-			<li><a href="">Wallet</a></li>
-			<li><a href="">Bags</a></li>
-			<li><a href="">Backcovers</a></li>
-			<li><a href="">Handsbands</a></li><br>
-			<a href="electronics.php">Electronics</a><hr>
-			<li><a href="">Mobile</a></li>
-			<li><a href="">Table Fans</a></li>
-			<li><a href="">Headphones</a></li>
-			<li><a href="">Smart Watches</a></li>
-			</ul>
+            <a href="select persons male.php">Men's Product</a><hr>
+            <li><a href="spm products.php?pname=Shirt">Men's Shirts</a></li>
+            <li><a href="spm products.php?pname=Pant">Men's Pants</a></li>
+            <li><a href="spm products.php?pname=Shoe">Men's Shoes</a></li>
+            <li><a href="spm products.php?pname=Belt">Belt</a></li><br>
+            <a href="select persons female.php">Women's Product</a><hr>
+            <li><a href="spf products.php?pname=Dress">Dresses</a></li>
+            <li><a href="spf products.php?pname=Pant">Pants</a></li>
+            <li><a href="spf products.php?pname=Shoe">Shoes</a></li>
+            <li><a href="spf products.php?pname=Bags">Bags</a></li><br>
+            <a href="select persons kids.php">Kid's Product</a><hr>
+            <li><a href="spk products.php?pname=Dress">Dress</a></li>
+            <li><a href="spk products.php?pname=Diapers">Diapars</a></li>
+            <li><a href="spk products.php?pname=Shoe">Shoes</a></li>
+            <li><a href="spk products.php?pname=Toys">Toys</a></li><br>
+            <a href="accessories.php">Accessories</a><hr>
+            <li><a href="ack products.php?pname=Wallet">Wallet</a></li>
+            <li><a href="ack products.php?pname=Bag">Bags</a></li>
+            <li><a href="ack products.php?pname=BackCover">Backcovers</a></li>
+            <li><a href="ack products.php?pname=HandBand">Handsbands</a></li><br>
+            <a href="electronics.php">Electronics</a><hr>
+            <li><a href="eck products.php?pname=Mobile">Mobile</a></li>
+            <li><a href="eck products.php?pname=TableFan">Table Fans</a></li>
+            <li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
+            <li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
+            </ul>
     </td>
 
 

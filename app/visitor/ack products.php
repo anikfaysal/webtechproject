@@ -2,13 +2,12 @@
 <?php
 
     $pnamee =$_GET['pname'];
-    $productnames = getProductByNameFemale($pnamee);
+    $productnames = getProductByNameAccesories($pnamee);
 	session();
 ?>
-
 <html>
 
-<head><title>Female Person Details</title></head>
+<head><title>male person ditels</title></head>
 
 	<table align="center" width="1200" >
 	<tr><th colspan="3" align="right" width="60%">
@@ -62,10 +61,10 @@
 					<table align="center" width="100%" >
 						<tr>
 							
-							<a href="select persons female.php"><img src="pictures\wprog1.png" align="left" align="top" width="20%" height="100" ></a>
-							<a href="select persons female.php"><img src="pictures\wprog5.png" align="left" align="top" width="20%" height="100" ></a>
-							<a href="select persons female.php"><img src="pictures\wprog3.png" align="left" align="top" width="20%" height="100" ></a>
-							<a href="select persons female.php"><img src="pictures\wprog4.png" align="left" align="top" width="20%"height="100" ></a>
+							<a href="select persons male.php"><img src="pictures\pros1.png" align="left" align="top" width="20%" height="100" ></a>
+							<a href="select persons male.php"><img src="pictures\pros2.png" align="left" align="top" width="20%" height="100" ></a>
+							<a href="select persons male.php"><img src="pictures\pros3.png" align="left" align="top" width="20%" height="100" ></a>
+							<a href="select persons male.php"> <img src="pictures\pros4.png" align="left" align="top" width="20%" height="100" ></a>
 						</tr>
 					 </table>			
 			
@@ -75,7 +74,7 @@
 					  <?php foreach ($productnames as $productn) { ?>
 						<tr>
 							<td>
-							<a href="man product.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="20%" height="100" ><br><h4><?=$productn['name']; ?> <br><?=$productn['sprice'] ;?></h4></a>	<br><br><br><br><br><br>
+							<a href="showdetail.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="20%" height="100" ><br><h4><?=$productn['name']; ?> <br><?=$productn['sprice'] ;?></h4></a>	<br><br><br><br><br><br>
 							</td>
 						</tr>
 
@@ -83,7 +82,7 @@
 						
 				
 					</table>
-					
+			
 			</td>
 			
 	
