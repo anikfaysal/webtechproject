@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2017 at 04:21 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Dec 27, 2017 at 09:35 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -52,7 +52,7 @@ INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `
 ('00011', 'Tops', 'Women', 'Dress', 'Blue', '100% Cotton', 'M', 'Women tops 10% cotton limited edition', 500, 1500, 25, 0, 'pic.jpg'),
 ('00012', 'Pants', 'Women', 'Pant', 'Black', 'Jeans', 'S', 'New jeans Pant', 1500, 2500, 20, 0, 'wpant.jpg'),
 ('00013', 'High hill', 'Women', 'Shoe', '00013', 'synthetic', '30', 'New High hill.very Fashionable', 1000, 3000, 15, 0, 'wshoe.jpg'),
-('00014', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women\'s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
+('00014', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women''s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
 ('00015', 'Small Purse ', 'Women', 'Bags', 'Blue', 'Canvas', '13cm', 'Women Small Purse', 50, 150, 25, 100, 'bag.jpg'),
 ('00016', 'Shoulder Bag', 'Women', 'Bags', 'Purple', 'Silicon', '25cm', 'Women Shoulder Bag', 250, 500, 50, 0, 'accessories.png'),
 ('00017', 'Kids Dress', 'Kids', 'Dress', 'Red', 'Cotton', '28', '100% cotton', 350, 500, 30, 0, 'kids7.PNG'),
@@ -75,7 +75,7 @@ INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `
 ('0008', 'Casual Shoe', 'Men', 'Shoe', 'black', 'Leather', '42', 'Pure Leather Shoe', 800, 2500, 20, 0, 'leather.jpg'),
 ('0009', 'Formal Belt', 'Men', 'Belt', 'Blue', 'Leather', '20', 'Leather belt', 200, 600, 25, 0, 'belt1.jpg'),
 ('0012', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0, 'wprog2.png'),
-('0019', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png');
+('00190', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png');
 
 -- --------------------------------------------------------
 
@@ -84,25 +84,27 @@ INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `
 --
 
 CREATE TABLE `orders` (
+  `username` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
   `pname` varchar(255) NOT NULL,
-  `colour` varchar(255) NOT NULL,
+  `cost` double NOT NULL,
   `size` varchar(255) NOT NULL,
+  `colour` varchar(255) NOT NULL,
   `quantity` double NOT NULL,
-  `price` double NOT NULL,
-  `orderstatus` varchar(255) NOT NULL,
+  `customersts` varchar(255) NOT NULL,
+  `adminsts` varchar(255) NOT NULL,
   `sendshipping` varchar(255) NOT NULL,
-  `shippingstatus` varchar(255) NOT NULL,
+  `shippingsts` varchar(255) NOT NULL,
   `tracknumber` varchar(255) NOT NULL,
-  `customerstatus` varchar(255) NOT NULL
+  `ppic` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`code`, `pname`, `colour`, `size`, `quantity`, `price`, `orderstatus`, `sendshipping`, `shippingstatus`, `tracknumber`, `customerstatus`) VALUES
-('0001', 'Men\'s Shirt', 'Red', 'M', 1, 1500, 'Confirm', 'Sent', 'Received', '25852285', 'Not Received');
+INSERT INTO `orders` (`username`, `code`, `pname`, `cost`, `size`, `colour`, `quantity`, `customersts`, `adminsts`, `sendshipping`, `shippingsts`, `tracknumber`, `ppic`) VALUES
+('adi', '0001', 'T-Shirt', 1000, '0', 'Red', 1, 'Not Received', 'Confirm', 'Sent', 'Received', '8058905', 'mshirt1.png');
 
 -- --------------------------------------------------------
 
@@ -121,19 +123,19 @@ CREATE TABLE `todaysoffers` (
   `description` varchar(500) NOT NULL,
   `cost` double NOT NULL,
   `quantity` int(11) NOT NULL,
-  `offer` double NOT NULL
+  `offer` double NOT NULL,
+  `pdpic` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `todaysoffers`
 --
 
-INSERT INTO `todaysoffers` (`code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `cost`, `quantity`, `offer`) VALUES
-('0001', 'T-Shirt', 'Men', 'Shirt', 'Blue', '100%Cotton', 'M', '100% Cotton.full sleeve t-shirt', 10000, 10, 80),
-('0002', 'women dress', 'Women', 'Shirt', 'Green', '50%Cotton', 'L', 'women dress 50% cotton.limited edition', 6000, 6, 20),
-('0015', 'leather shoe', 'Men', 'Shoes', 'Black', '100%leather ', '42', '100%leather,Blcak mens shoe', 5000, 5, 0),
-('0019', 'samsung', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83', 20000, 2, 50),
-('0021', 'Sholder Bag', 'Women', 'Bags', 'Brown', '100%leather', 'M', '100%leather, Brown color sholder bag. ', 7000, 7, 30);
+INSERT INTO `todaysoffers` (`code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `cost`, `quantity`, `offer`, `pdpic`) VALUES
+('0001', 'T-Shirt', 'Men', 'Shirt', 'Blue', '100%Cotton', 'M', '100% Cotton.full sleeve t-shirt', 1000, 10, 800, 'mshirt3.PNG'),
+('0002', 'women dress', 'Women', 'Shirt', 'Green', '50%Cotton', 'L', 'women dress 50% cotton.limited edition', 600, 6, 200, 'pic.jpg'),
+('0015', 'leather shoe', 'Men', 'Shoes', 'Black', '100%leather ', '42', '100%leather,Blcak mens shoe', 5000, 45, 4500, 'leather.jpg'),
+('0019', 'BackCover', 'Electronic', 'BackCover', 'Black', '', '', 'Samsung-w83', 200, 2, 150, 'backcover.PNG');
 
 -- --------------------------------------------------------
 
@@ -212,18 +214,6 @@ INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gende
 -- Indexes for table `allproducts`
 --
 ALTER TABLE `allproducts`
-  ADD PRIMARY KEY (`code`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`code`);
-
---
--- Indexes for table `todaysoffers`
---
-ALTER TABLE `todaysoffers`
   ADD PRIMARY KEY (`code`);
 
 --
