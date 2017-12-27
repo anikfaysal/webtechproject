@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2017 at 09:34 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: Dec 27, 2017 at 04:21 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -52,8 +52,8 @@ INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `
 ('00011', 'Tops', 'Women', 'Dress', 'Blue', '100% Cotton', 'M', 'Women tops 10% cotton limited edition', 500, 1500, 25, 0, 'pic.jpg'),
 ('00012', 'Pants', 'Women', 'Pant', 'Black', 'Jeans', 'S', 'New jeans Pant', 1500, 2500, 20, 0, 'wpant.jpg'),
 ('00013', 'High hill', 'Women', 'Shoe', '00013', 'synthetic', '30', 'New High hill.very Fashionable', 1000, 3000, 15, 0, 'wshoe.jpg'),
-('00014', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women''s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
-('00015', 'Small Purse ', 'Women', 'Bags', 'Blue', 'Canvas', '13cm', 'Women Small Purse', 50, 150, 25, 0, 'bag.jpg'),
+('00014', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women\'s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
+('00015', 'Small Purse ', 'Women', 'Bags', 'Blue', 'Canvas', '13cm', 'Women Small Purse', 50, 150, 25, 100, 'bag.jpg'),
 ('00016', 'Shoulder Bag', 'Women', 'Bags', 'Purple', 'Silicon', '25cm', 'Women Shoulder Bag', 250, 500, 50, 0, 'accessories.png'),
 ('00017', 'Kids Dress', 'Kids', 'Dress', 'Red', 'Cotton', '28', '100% cotton', 350, 500, 30, 0, 'kids7.PNG'),
 ('00018', 'Kids Shoe', 'Kids', 'Shoe', 'White', 'Lather', '28', '100% Lather', 550, 900, 30, 0, 'kids3.PNG'),
@@ -71,11 +71,38 @@ INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `
 ('0004', 'Pants', 'Men', 'Pant', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0, 'pros2.png'),
 ('0005', 'Trendy T-Shirt ', 'Men', 'Shirt', 'Red', 'Silk', 'M', 'Silk full sleeve t-shirt', 300, 600, 50, 0, 'mshirt2.PNG'),
 ('0006', 'Kids shoe', 'Kids', 'Shoe', 'White', '100%leather', '22', '100%leather,Kids Shoe', 250, 300, 50, 0, 'kids3.png'),
-('0007', 'Formal Shoe', 'Men', 'Shoe', '0007', 'Lofar', '40', 'New Lofar shoe.very Fashionable', 1500, 2500, 15, 0, 'pros3.PNG'),
+('0007', 'Formal Shoe', 'Men', 'Shoe', 'Red', 'Lofar', '40', 'New Lofar shoe.very Fashionable', 1500, 2500, 15, 200, 'shoe.jpg'),
 ('0008', 'Casual Shoe', 'Men', 'Shoe', 'black', 'Leather', '42', 'Pure Leather Shoe', 800, 2500, 20, 0, 'leather.jpg'),
 ('0009', 'Formal Belt', 'Men', 'Belt', 'Blue', 'Leather', '20', 'Leather belt', 200, 600, 25, 0, 'belt1.jpg'),
 ('0012', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0, 'wprog2.png'),
 ('0019', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `code` varchar(255) NOT NULL,
+  `pname` varchar(255) NOT NULL,
+  `colour` varchar(255) NOT NULL,
+  `size` varchar(255) NOT NULL,
+  `quantity` double NOT NULL,
+  `price` double NOT NULL,
+  `orderstatus` varchar(255) NOT NULL,
+  `sendshipping` varchar(255) NOT NULL,
+  `shippingstatus` varchar(255) NOT NULL,
+  `tracknumber` varchar(255) NOT NULL,
+  `customerstatus` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`code`, `pname`, `colour`, `size`, `quantity`, `price`, `orderstatus`, `sendshipping`, `shippingstatus`, `tracknumber`, `customerstatus`) VALUES
+('0001', 'Men\'s Shirt', 'Red', 'M', 1, 1500, 'Confirm', 'Sent', 'Received', '25852285', 'Not Received');
 
 -- --------------------------------------------------------
 
@@ -154,36 +181,28 @@ CREATE TABLE `users` (
   `gender` varchar(50) NOT NULL,
   `dob` varchar(15) NOT NULL,
   `pp` varchar(500) NOT NULL,
-  `address` varchar(255) NOT NULL
+  `address` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `regdate` varchar(255) NOT NULL,
+  `lastlogin` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gender`, `dob`, `pp`, `address`) VALUES
-('adi', 'user', '12312312', 'Arafat Adi', 'adi@gmail.com', 'male', '4/4/1991', 'minhaz.jpg', '42/A,uttara,sector-2'),
-('anik', 'user', '12312312', 'faysal anik', 'faysal@gmail.com', 'male', '6/2/1998', 'anik.jpg', '12/C,khigao.road no-2'),
-('imo', 'admin', '12312312', 'imran imo', 'imran@gmail.com', 'male', '2/2/1991', 'imo.jpg', '41/A,Zigatola,Dhanmondi'),
-('minhaz', 'user', '12312312', 'Minhaz uddin', 'uddinminhaz09@gmail.com', 'male', '6/8/1996', 'minhaz.jpg', '41/A,Zigatola,Dhanmondi'),
-('neshi', 'admin', '12312312', 'neshi islam', 'neshi@gmail.com', 'female', '1/1/1990', 'nishat.jpg', '22/B,Kakoli,Dhaka 1209.Road-02'),
-('piash', 'user', '12312312', 'Ibrahim piash', 'piash@gmail.com', 'male', '19/7/1992', 'minhaz.jpg', 'A/2,Dhanmondi,Road-4,Dhaka-1204'),
-('rafat', 'user', '12312312', 'Yasin Arafat', 'yasin@gmail.com', 'male', '3/3/2001', 'anik.jpg', '3/C,Kolbagan,Road-1,Dhaka-1207');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_info`
---
-
-CREATE TABLE `user_info` (
-  `username` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `gender` varchar(50) NOT NULL,
-  `dob` varchar(50) NOT NULL,
-  `pp` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gender`, `dob`, `pp`, `address`, `status`, `regdate`, `lastlogin`) VALUES
+('adi', 'user', '12312312', 'Arafat ', 'adi@gmail.com', 'female', '4/4/1991', 'anik.jpg', 'uttara', 'active', '2017', '5/5/17'),
+('anik', 'admin', '12312312', 'faysal anik', 'faysal@gmail.com', 'male', '6/2/1998', 'anik.jpg', '12/C,khigao.road no-2', 'active', '2016', '4/2/16'),
+('halim', 'user', '12312312', 'halim adi', 'halim@gmail.com', 'female', '2/9/1994', '', 'zigatola,41/1 road#2', 'pending', '', ''),
+('hanif', 'user', '12312312', 'Hanif faysal', 'hanif@gmail.com', 'male', '6/8/1994', 'anik.jpg', 'panthopath,kolabagan,Dhaka-1209', 'active', '', ''),
+('imo', 'admin', '12312312', 'imran ', 'imran@gmail.com', 'male', '2/2/1991', 'imo.jpg', '41/A,Zigatola,Dhanmondi', 'active', '2015', '5/9/17'),
+('minhaz', 'user', '12312312', 'Minhaz uddin', 'uddinminhaz09@gmail.com', 'male', '6/8/1996', 'minhaz.jpg', '41/A,Zigatola,Dhanmondi', 'active', '2016', '3/2/16'),
+('neshi', 'admin', '12312312', 'neshi islam', 'neshi@gmail.com', 'female', '1/1/1990', 'nishat.jpg', '22/B,Kakoli,Dhaka 1209.Road-02', 'blocked', '2017', '3/5/17'),
+('panda', 'user', '12312312', 'adi faysal', 'adi111@gmail.com', 'other', '6/8/1994', '', 'zigatola,dhanmondi', 'pending', '', ''),
+('piash', 'user', '12312312', 'Ibrahim piash', 'piash@gmail.com', 'male', '19/7/1992', 'minhaz.jpg', 'A/2,Dhanmondi,Road-4,Dhaka-1204', 'pending', '2016', '15/8/17'),
+('rafat', 'user', '12312312', 'Yasin Arafat', 'yasin@gmail.com', 'male', '3/3/2001', 'anik.jpg', '3/C,Kolbagan,Road-1,Dhaka-1207', 'blocked', '2017', '2/7/17'),
+('tamim', 'user', '12312312', 'Tamim', 'tamim@gmail.com', 'male', '6/7/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'pending', '', '');
 
 --
 -- Indexes for dumped tables
@@ -193,6 +212,12 @@ CREATE TABLE `user_info` (
 -- Indexes for table `allproducts`
 --
 ALTER TABLE `allproducts`
+  ADD PRIMARY KEY (`code`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`code`);
 
 --
