@@ -21,13 +21,13 @@
 <body width="1200">
 	<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr><th colspan="3" align="right" width="60%">
-				<img src="ali.png" align="left" align="top" width="20%" >
+				<a href="../user_pages/home.php"><img src="ali.png" align="left" align="top" width="20%"></a>
 				<br>
 				<br>
 		
 				<input type="text" name="search" placeholder="Enter keyword Here....">
 				<input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Loggedin as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 				<a href="../user_pages/order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="../user_pages/cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -35,8 +35,8 @@
 			</tr>
 		<tr>
 			<td width="13%" valign="top">
-			<br/>
-			<span ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account</b></span><hr>	
+
+		<label><b> Account</b></label><br><hr>
 			<ul>
 			<li><a href="../user_pages/home.php">Home</a>	</li>
 			<li><a href="../account/profile.php">View profile</a>	</li>	
@@ -47,11 +47,11 @@
 			<li><a href="../account/login.php">Logout </a></li>
 			</ul>
 		
-		<br/>
-		 <span ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Categories</b></span><hr>
+
+		<label><b>Catagories</b></label><br><hr>
 			<ul>
-			<a href="select persons male.php">Men's Product</a><hr>
-			<li><a href="../user_pages/user_spm products.php?pname=Shirt">Men's Shirts</a></li>
+			<a href="../user_pages/select persons male.php">Men's Product</a><hr>
+			<li><a href="../user_pages/spm products.php?pname=Shirt">Men's Shirts</a></li>
 			<li><a href="../user_pages/spm products.php?pname=Pant">Men's Pants</a></li>
 			<li><a href="../user_pages/spm products.php?pname=Shoe">Men's Shoes</a></li>
 			<li><a href="../user_pages/spm products.php?pname=Belt">Belt</a></li><br>
@@ -127,9 +127,9 @@
                 <td>:</td>
                 <td>   
 					
-					<input type="radio" name="gender" value="Male" <?php if($_SESSION['user']['gender'] =="male") :?> checked<?php endif; ?> >Male
-					<input type="radio" name="gender" value="Female" <?php if($_SESSION['user']['gender'] =="female") :?> checked<?php endif; ?>>Female
-					<input type="radio" name="gender" value="Other"<?php if($_SESSION['user']['gender'] =="other") :?> checked<?php endif; ?>  >Other
+					<input type="radio" name="gender" value="male" <?php if($_SESSION['user']['gender'] =="male") :?> checked<?php endif; ?> >Male
+					<input type="radio" name="gender" value="female" <?php if($_SESSION['user']['gender'] =="female") :?> checked<?php endif; ?>>Female
+					<input type="radio" name="gender" value="other"<?php if($_SESSION['user']['gender'] =="other") :?> checked<?php endif; ?>  >Other
 					
 					
                 </td>
@@ -166,6 +166,7 @@
 	
 	if($_SERVER["REQUEST_METHOD"]=='POST'){
 		$flag=0;
+		
 		if(str_word_count($_REQUEST['name']<2)){
 			echo "Name must contain 2 words";
 			$flag=1;
@@ -184,12 +185,14 @@
 			$username=$_SESSION['user']['username'];
 			$name=$_REQUEST['name'];
 			$email=$_REQUEST['email'];
+			$gender=$_REQUEST['gender'];
 			$dob=$_REQUEST['dob'];
 			$add=$_REQUEST['address'];
 			
 			 include "../../data/user_access.php";
-			 $result=updateUser($username,$name,$email,$dob,$add);
+			 $result=updateUser($username,$name,$email,$gender,$dob,$add);
 			 $_SESSION['user']=$result;
+			 var_dump($_SESSION['user']);
 			 echo "<script>
                     window.alert('Edit Successfully');
                     document.location='../account/editprofile.php'; 

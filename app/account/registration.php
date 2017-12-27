@@ -1,3 +1,5 @@
+<?php include "../../data/user_access.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +29,7 @@
 		<tr>
 			<td height="350"  align="center" >
 				<table border="0">
+				<form method="post">
 					<tr> 
 						<td width="450">
 							<fieldset>
@@ -37,7 +40,7 @@
 											<span>Name</span>
 										</td>
 										<td>
-											:&nbsp;<input type="text">
+											:&nbsp;<input type="text" name="name">
 										</td>
 									</tr>
 								</table>
@@ -48,7 +51,7 @@
 											<span>Email</span>
 										</td>
 										<td>
-											:&nbsp;<input type="text">
+											:&nbsp;<input type="text" name="email">
 											&nbsp;&nbsp;<abbr title="hint: sample@example.com"><img src="vector_c_i_alphabet_logo.png" alt="" width="30" align="center" ></abbr>
 										</td>
 									</tr>
@@ -60,7 +63,7 @@
 											<span>User Name</span>
 										</td>
 										<td>
-											:&nbsp;<input type="text">
+											:&nbsp;<input type="text" name="uname">
 										</td>
 									</tr>
 								</table>
@@ -71,7 +74,7 @@
 											<span>Password</span>
 										</td>
 										<td>
-											:&nbsp;<input type="Password">
+											:&nbsp;<input type="Password" name="pass">
 										</td>
 									</tr>
 								</table>
@@ -82,7 +85,7 @@
 											<span>Confirm Password</span>
 										</td>
 										<td>
-											:&nbsp;<input type="Password">
+											:&nbsp;<input type="Password" name="cpassword">
 										</td>
 									</tr>
 								</table>
@@ -93,7 +96,7 @@
 											<span>Address</span>
 										</td>
 										<td>
-											:&nbsp;<input type="text">
+											:&nbsp;<input type="text" name="address">
 											<div id="addplace">
 											    
 											</div>
@@ -106,9 +109,9 @@
 										<td width="450">
 											<fieldset>
 												<legend>Gender</legend>
-												<input type="radio" name="gen" value="Male">Male
-												<input type="radio" name="gen" value="Female">Female
-												<input type="radio" name="gen" value="Other">Other
+												<input type="radio" name="gender" value="male">Male
+												<input type="radio" name="gender" value="female">Female
+												<input type="radio" name="gender" value="other">Other
 											</fieldset>
 										</td>
 									</tr>
@@ -140,14 +143,15 @@
 									</tr>
 								</table>
 								<hr>
-								<form action="../user_pages/home.php">
-								<input type="submit">
-                                </form>
+								
+								<input type="submit" value="submit">
+                               
                                 <hr>
 								<input type="submit" value="Reset">
 							</fieldset>
 						</td>
 					</tr>
+					</form>
 				</table>
 			</td>
 		</tr>
@@ -159,11 +163,98 @@
 	</table>
 </body>
 <script>
-function add() {
-    window.alert ("Product Added to Home");
-    var add = document.getElementById("addplace");
-    add.innerHTML = "<input type="text"><button onclick="add();">+</button>";
-    
-}
-</script>
+
 </html>
+<?php
+
+
+
+	if($_SERVER["REQUEST_METHOD"]=='POST'){
+		
+		include_once("../Data/user_access.php");
+		
+		$flag=0;
+		
+		$username=$_REQUEST['uname'];
+		
+		if(str_word_count($_REQUEST['name']<2)){
+			echo "Name must contain 2 words";
+			$flag=0;
+		}
+		
+		if(!preg_match('/[^a-zA-z_]/',$uname)){
+			
+			$result=searchUser($uname);
+			
+			if($result==null){
+			}else{
+				echo " <ol> <li>Username already in use </li></br>";
+				$flag=0;
+			}
+			
+		}else{
+			echo " <li>Invalid Characters in UserName</li> </br>";
+			$flag=0;
+		}
+		
+		if(filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)){
+		   
+        }else
+		{
+			 echo "<li>Invalid email format</li> </br>";
+			 $flag=0;
+		}
+		
+		if(strlen($_REQUEST['pass'])>=8){
+			
+			if($_REQUEST['pass']==$_REQUEST['cpass'] ){
+			}else{
+				echo "<li>Password Didn't Match</li> </br>";
+				$flag=0;
+			}
+		}else{
+			echo "<li>Password Needs to be 8 Character long </li></br>";
+			$flag=0;
+		}
+		
+		if (empty($_REQUEST['gender']))
+		{
+			echo 'gender not selected(select Male/Female/Other)';
+			$flag=0;
+			
+		}else{}
+
+		if($flag!=1){
+			$username=$_REQUEST['uname'];
+			$name=$_REQUEST['name'];
+			$password=$_REQUEST['pass'];
+			$email=$_REQUEST['email'];
+			$gender=$_REQUEST['gender'];
+			$address=$_REQUEST['address'];
+			$day=$_REQUEST['day'];
+			$month=$_REQUEST['month'];
+			$year=$_REQUEST['year'];
+			$dob="$day/$month/$year";
+			
+			$usertype="user";
+			$status="pending";
+			
+			
+			
+			if(addUser($username,$usertype,$password,$name,$gender,$email,$dob,$address,$status)==true){
+            echo "<script>
+                    alert('Registration Completed , Please wait for admin confirmation for login. Thank you ');
+                   
+                 </script>";
+				 die();
+					
+					
+			}else{
+				echo "Server issue's try again later";
+			}
+		}else{
+			  echo " <ul> <li>Fix all the Problems And Try Again !! </li></ul>  "; 
+		}	 
+	}
+ 
+?>

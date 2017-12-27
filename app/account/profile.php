@@ -22,13 +22,13 @@
 <body width="1200">
 	<table width="1200" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr><th colspan="3" align="right" width="60%">
-				<img src="ali.png" align="left" align="top" width="20%" >
+				<a href="../user_pages/home.php"><img src="ali.png" align="left" align="top" width="20%"></a>
 				<br>
 				<br>
 		
 				<input type="text" name="search" placeholder="Enter keyword Here....">
 				<input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Loggedin as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 				<a href="../user_pages/order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="../user_pages/cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -36,8 +36,8 @@
 			</tr>
 		<tr>
 			<td width="13%" valign="top">
-				<br/>
-			<span ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account</b></span><hr>	
+			
+			<label><b> Account</b></label><br><hr>	
 			<ul>
 			<li><a href="../user_pages/home.php">Home</a>	</li>
 			<li><a href="../account/profile.php">View profile</a>	</li>	
@@ -49,10 +49,10 @@
 			</ul>
 		
 		<br/>
-		 <span ><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Categories</b></span><hr>
+		<label><b>Catagories</b></label><br><hr>
 			<ul>
-			<a href="select persons male.php">Men's Product</a><hr>
-			<li><a href="../user_pages/user_spm products.php?pname=Shirt">Men's Shirts</a></li>
+			<a href="../user_pages/select persons male.php">Men's Product</a><hr>
+			<li><a href="../user_pages/spm products.php?pname=Shirt">Men's Shirts</a></li>
 			<li><a href="../user_pages/spm products.php?pname=Pant">Men's Pants</a></li>
 			<li><a href="../user_pages/spm products.php?pname=Shoe">Men's Shoes</a></li>
 			<li><a href="../user_pages/spm products.php?pname=Belt">Belt</a></li><br>
@@ -96,7 +96,7 @@
                 <td>:</td>
                 <td><?= $_SESSION['user']['name']; ?></td>
                 <td rowspan="7" align="center">
-					<img width="150" src="../../Image/<?= $_SESSION['user']['pp'];  ?>"/> 
+					<img width="150" src="../res/user/<?= $_SESSION['user']['pp'];  ?>"/> 
                     <br/>
                     <a href="changepp.php">Change</a>
                 </td>
