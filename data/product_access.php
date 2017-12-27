@@ -231,7 +231,7 @@ function menproducts()
 		
 		if(isset($_SESSION['user'])==true)
 		{
-			if($_SESSION['user']['usertype']!="user")
+			if($_SESSION['user']['usertype']!="user" &&$_SESSION['user']['usertype']!="admin")
 			{
 				header("location:../account/login.php");
 			}

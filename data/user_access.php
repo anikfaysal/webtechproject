@@ -1,52 +1,58 @@
 <?php
-	if(require_once("../Data/db.php")){
+	if(require_once("db.php")){
 	
-		// function searchUser($uname){
-			// global $conn;
-			// $query="SELECT * FROM users WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);
+		function searchUser($username){
 			
-			// return mysqli_fetch_assoc($result);
-		// }
+				$sql="SELECT * FROM users WHERE username='$username'";
+				$result = executeSQL($sql);
+			
+			 return mysqli_fetch_assoc($result);
+		 }
+		 function searchEmail($email){
+			
+				$sql="SELECT * FROM users WHERE email='$email'";
+				$result = executeSQL($sql);
+			
+			 return mysqli_fetch_assoc($result);
+		 }
+		 
+		 
+		function addUser($username,$usertype,$password,$name,$gender,$email,$dob,$address,$status){
 		
-		// function addUser($username,$usertype,$password,$name,$email,$gender,$dob,$pp,$address){
-			
-			// global $conn;
+			$sql="INSERT INTO users(username, usertype, password, name,email,gender,dob, address, status) VALUES ('$username','$usertype','$password','$name','$email','$gender','$dob','$address','$status')";
+			$result = executeSQL($sql);
+			return $result;
+		}	 
+		
 
-			// $query="INSERT INTO users(username, usertype,password , name, email, gender, dob,pp,address) VALUES ('$username','$usertype','$password','$name','$email','$gender',$dob,'$pp','$address')";
-		 	// $result=mysqli_query($conn,$query);
+		 function updateUser($username,$name,$email,$gender,$dob,$add){
+	
+			 $sql="UPDATE users SET name='$name', email='$email',gender='$gender',dob='$dob',address='$add' WHERE username='$username'";
+			 $result = executeSQL($sql);
 			
+			 
+			return searchUser($username) ;
+		 }
+		 
+		function updateUser_pass($uname,$pass){
 			
-			// return $result;
-		// }
-		// function updateUser($uname,$name,$email,$gender,$dob){
-			// global $conn;
-			// $query="UPDATE users SET name='$name', email='$email', gender='$gender', dob='$dob' WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);
+			$sql="UPDATE users SET password='$pass' WHERE username='$uname'";
+			$result = executeSQL($sql);
+			return 1;
+		
+		}
+		function updateUser_pic($uname,$itempic){
 			
-			// return searchUser($uname);
+			$sql="UPDATE users SET pp='$itempic' WHERE username='$uname'";
+			$result = executeSQL($sql);
+			return searchUser($uname) ;
 		
-		// }
-		
-		// function deleteUser($uname){
-			// global $conn;
-			// $query="delete FROM users WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);
-			
-			// return $result;
-		// }
-		
-		// function updatepassword($uname,$pass){
-			// global $conn;
-			// $query="UPDATE users SET pass='$pass' WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);	
-			// return 1;
-		
-		// }
+		}
+
 		function allcustomer()
 		{
 			global $conn;
-			$query="SELECT * FROM users WHERE type='customer' OR type='c'";
+			$query="SELECT * FROM users WHERE type='user' ";
 			$result=mysqli_query($conn,$query);
 			$num_rows = mysqli_num_rows($result);
 
