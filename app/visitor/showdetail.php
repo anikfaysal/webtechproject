@@ -14,7 +14,7 @@
 	<table align="center" width="1200" >
 	
 			<tr><th colspan="3" align="right" width="60%">
-				<img src="pictures\ali.png" align="left" align="top" width="20%" >
+				<a href="home.php"><img src="pictures\ali.png" align="left" align="top" width="20%" >
 				<br>
 				<br>
 		

@@ -16,7 +16,7 @@
 	
 			<tr>
          <th colspan="3" align="center" width="60%">
-            <img src="pictures\ali.png" align="left" align="top" width="20%">
+            <a href="home.php"><img src="pictures\ali.png" align="left" align="top" width="20%">
             <br>
             <br>
 
@@ -145,7 +145,7 @@
 						<td></td>
 						<br>
 						<br>
-							<td><h2><font color="red" >Flat Deals</font></h2></td>
+							<td><h2><font color="red" >Flash Deals</font></h2></td>
 							<tr>
 							<td><br></td>
 							</tr>
