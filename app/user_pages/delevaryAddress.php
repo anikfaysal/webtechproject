@@ -1,3 +1,18 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user'])==false){
+		header("location:../account/login.php");
+	}
+		if(isset($_SESSION['user'])==true)
+	{
+		if($_SESSION['user']['usertype']!="user")
+		{
+				header("location:../account/login.php");
+		}
+	}
+?>
+
+
 <html>
 
 <head>
@@ -13,7 +28,7 @@
         
                 <input type="text" name="search" placeholder="Enter keyword Here....">
                 <input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Loggedin as <a href="../account/profile.php">Anik</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
                 <a href="order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -90,7 +105,7 @@
         <table align="left" width="100%">
             <tr>
            <td>
-              Address : <input type="text"/> or
+              Address : <input type="text" value="<?= $_SESSION['user']['address']; ?>"/> or
            </td>
             </tr>
           <tr>

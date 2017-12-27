@@ -1,13 +1,13 @@
 <?php include "../../data/product_access.php"; ?>
 <?php
-  
-        $catgorymen = catgorymen();
-    
+
+    $pnamee =$_GET['pname'];
+    $productnames = getProductByNameAccesories($pnamee);
 	session();
 ?>
 <html>
 
-<head><title>person ditels</title></head>
+<head><title>male person ditels</title></head>
 
 	<table align="center" width="1200" >
 	<tr><th colspan="3" align="right" width="60%">
@@ -25,7 +25,7 @@
 			</tr>
 		
 		<td  valign="top"  width="10%">
-			<label><b> Account</b></label><br><hr>	
+		<label><b> Account</b></label><br><hr>			
 			<ul>
 			<li><a href="home.php">Home</a>	</li>
 			<li><a href="../account/profile.php">View profile</a>	</li>	
@@ -66,36 +66,30 @@
 		</td>
 			
 			<td valign="top" width="40%" >
+			
 					<table align="center" width="100%" >
 						<tr>
 							
-							<a href="select persons male.php"><img src="pictures\pros1.png" align="left" align="top" width="15%" height="100" ></a>
-							<a href="select persons female.php"><img src="pictures\wprog1.png" align="left" align="top" width="15%" height="100" ></a>
-							<a href="select persons kids.php"><img src="pictures\kids1.png" align="left" align="top" width="15%" height="100" ></a>
-							<a href="accessories.php"> <img src="pictures\handband.png" align="left" align="top" width="15%" height="100" ></a>
-							<a href="electronics.php"> <img src="pictures\mobile.png" align="left" align="top" width="15%" height="100" ></a>					
+							<a href="select persons male.php"><img src="pictures\pros1.png" align="left" align="top" width="20%" height="100" ></a>
+							<a href="select persons male.php"><img src="pictures\pros2.png" align="left" align="top" width="20%" height="100" ></a>
+							<a href="select persons male.php"><img src="pictures\pros3.png" align="left" align="top" width="20%" height="100" ></a>
+							<a href="select persons male.php"> <img src="pictures\pros4.png" align="left" align="top" width="20%" height="100" ></a>
 						</tr>
-					 </table>						
-					
-					<table align="center" width="100%" >
-						<tr  >
-                            <th  align="center"><label><h3>MEN PRODUCTS</h3></label></th>
+					 </table>			
 			
-						</tr>
-					 </table>
-					 
+					
+					
 					<table align="left" width="100%" >
-					<?php foreach ($catgorymen as $product) { ?>
-					<tr>
-						<td>
-							<a href="spm products.php?pname=<?=$product['subcatagory'] ?>">
-							<img src="<?php if($product['subcatagory'] =="Shirt") :?>pictures\mshirt1.PNG<?php endif; ?><?php if($product['subcatagory'] =="Pant") :?>pictures\pros2.PNG<?php endif; ?><?php if($product['subcatagory'] =="Shoe") :?>pictures\leather.jpg<?php endif; ?><?php if($product['subcatagory'] =="Belt") :?>pictures\belt1.jpg<?php endif; ?>" align="left" align="top" width="20%" height="50%" >
-							<br><h4><?=$product['subcatagory'] ;?><br></h4></a>
-									
-						</td>
-					</tr>		
+					  <?php foreach ($productnames as $productn) { ?>
+						<tr>
+							<td>
+							<a href="showdetail.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="20%" height="100" ><br><h4><?=$productn['name']; ?> <br><?=$productn['sprice'] ;?></h4></a>	<br><br><br><br><br><br>
+							</td>
+						</tr>
+
+						 <?php } ?>																												
 						
-					<?php } ?>	
+				
 					</table>
 			
 			</td>

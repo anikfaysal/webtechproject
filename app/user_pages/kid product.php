@@ -1,6 +1,12 @@
-
+<?php include "../../data/product_access.php"; ?>
+<?php
+    $productId =$_GET['id'];
+	
+    $productcode = getProductById($productId);
+	session();
+?>
 <html>
-
+<form>
 <head><title>Kid's Product Details</title></head>
 
 	<table align="center" width="1200" >
@@ -12,7 +18,7 @@
 		
 				<input type="text" name="search" placeholder="Enter keyword Here....">
 				<input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Loggedin as <a href="../account/profile.php">Anik</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 				<a href="order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -36,37 +42,32 @@
 		
 		<label><b>Catagories</b></label><br><hr>
 			<ul>
+			<ul>
 			<a href="select persons male.php">Men's Product</a><hr>
-			<li><a href="spm products.php">Men's Shirts</a></li>
-			<li><a href="">Men's Pants</a></li>
-			<li><a href="">Men's Shoes</a></li>
-			<li><a href="">Belt</a></li><br>
+			<li><a href="spm products.php?pname=Shirt">Men's Shirts</a></li>
+			<li><a href="spm products.php?pname=Pant">Men's Pants</a></li>
+			<li><a href="spm products.php?pname=Shoe">Men's Shoes</a></li>
+			<li><a href="spm products.php?pname=Belt">Belt</a></li><br>
 			<a href="select persons female.php">Women's Product</a><hr>
-			<li><a href="spf products.php">Dresses</a></li>
-			<li><a href="">Pants</a></li>
-			<li><a href="">Shoes</a></li>
-			<li><a href="">Bags</a></li><br>
+			<li><a href="spf products.php?pname=Dress">Dresses</a></li>
+			<li><a href="spf products.php?pname=Pant">Pants</a></li>
+			<li><a href="spf products.php?pname=Shoe">Shoes</a></li>
+			<li><a href="spf products.php?pname=Bags">Bags</a></li><br>
 			<a href="select persons kids.php">Kid's Product</a><hr>
-			<li><a href="spk products.php">Dress</a></li>
-			<li><a href="">Diapars</a></li>
-			<li><a href="">Shoes</a></li>
-			<li><a href="">Toys</a></li><br>
+			<li><a href="spk products.php?pname=Dress">Dress</a></li>
+			<li><a href="spk products.php?pname=Diapers">Diapars</a></li>
+			<li><a href="spk products.php?pname=Shoe">Shoes</a></li>
+			<li><a href="spk products.php?pname=Toys">Toys</a></li><br>
 			<a href="accessories.php">Accessories</a><hr>
-			<li><a href="">Wallet</a></li>
-			<li><a href="">Bags</a></li>
-			<li><a href="">Backcovers</a></li>
-			<li><a href="">Handsbands</a></li><br>
+			<li><a href="ack products.php?pname=Wallet">Wallet</a></li>
+			<li><a href="ack products.php?pname=Bag">Bags</a></li>
+			<li><a href="ack products.php?pname=BackCover">Backcovers</a></li>
+			<li><a href="ack products.php?pname=HandBand">Handsbands</a></li><br>
 			<a href="electronics.php">Electronics</a><hr>
-			<li><a href="">Mobile</a></li>
-			<li><a href="">Table Fans</a></li>
-			<li><a href="">Headphones</a></li>
-			<li><a href="">Smart Watches</a></li><br>
-			<label><b>Report</b></label><hr>
-			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
-			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
-			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
-			<li><a href="mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
-			<li><a href="myfavouriteList.php">My Favourite List </a></li>
+			<li><a href="eck products.php?pname=Mobile">Mobile</a></li>
+			<li><a href="eck products.php?pname=TableFan">Table Fans</a></li>
+			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
+			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
 			</ul>
 		</td>
 			
@@ -77,23 +78,22 @@
 						<tr>
 							
 							<td valign="top" width="30%"  >
-								<img src="pictures\kids1.png" align="left" align="top" height="100%" >
+								<img src="pictures\<?= $productcode['pdpic'] ?>" align="left" align="top" height="100%" >
+							
 								<br><br><br><br><br><br><br>
-								<h4>Type:kid's-Dress</h4>
-								<h4> Cost :700 Tk </h4>
+								<h4>Type:<?= $productcode['name'] ?></h4>
+								<h4> Cost :<?= $productcode['sprice'] ?> </h4>
 							</td>
 							
 							<td valign="top" width="60%">
 							
 								<h3>Product Details </h3>
 							
-								<h5>Available Quantity: 2000 </h5>
-								<h5> Cost :700 Tk </h5>
-								<h5>Season: summer </h5>
-								<h5>Material: 100%cotton </h5>
-								<h5>Model Number:KL_LEX-375 </h5>
-								<h5>Color:Pink/Blue </h5>
-								<h5>Age Group: Children </h5>
+								<h5>Available Quantity: <?= $productcode['quantity'] ?>  </h5>
+								<h5> Cost :<?= $productcode['sprice'] ?>  </h5>
+								<h5>Material: <?= $productcode['material'] ?>  </h5>
+								<h5>Model Number:<?= $productcode['code'] ?></h5>
+								<h5>Color:<?= $productcode['color'] ?> </h5>
 							
 								<fieldset>
 									<legend>Select color</legend>
@@ -218,7 +218,7 @@
 					</table>
 			</td>
 			
-	
+	<form>
 			
 			<tr height="100">
 				<th colspan="2">
@@ -232,6 +232,7 @@
 		
 	
 	</table>
+	
 <script>
 	function function1()
 {
