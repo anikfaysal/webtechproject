@@ -1,3 +1,7 @@
+<?php include "../../data/session_service.php"; ?>
+<?php
+	session();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +15,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Alibaba" width="200" ></a>
+							<a href="loggedin.php"><img src="../res/common/ali.png" alt="Alibaba" width="200" ></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +46,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>

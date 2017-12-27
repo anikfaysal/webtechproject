@@ -1,3 +1,36 @@
+<?php include "../../data/product_access_admin.php"; ?>
+<?php include "../../data/session_service.php"; ?>
+<?php
+	session();
+?>
+<?php
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+        $product['catagory']=$_POST['catagory'];
+        $product['subcatagory']=$_POST['subcatagory'];
+        $product['code']=$_POST['code'];
+        $product['name']=$_POST['name'];
+        $product['color']=$_POST['color'];
+        $product['material']=$_POST['material'];
+        $product['size']=$_POST['size'];
+        $product['description']=$_POST['description'];
+        $product['bprice']=$_POST['bprice'];
+        $product['sprice']=$_POST['sprice'];
+        $product['quantity']=$_POST['quantity'];
+        $product['pdpic']=$_POST['pdpic'];
+        
+        if(AddProduct($product)==true){
+            echo "<script>
+                    alert('Record Added');
+                    document.location='allProducts.php';
+                 </script>";
+            die();
+        }
+    }
+        
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,12 +46,12 @@
                 <table border="0">
                     <tr align="center">
                         <td width="230" height="100">
-                            <a href="loggedin.php"><img src="ali.png" alt="Alibaba" width="200"></a>
+                            <a href="loggedin.php"><img src="../res/common/ali.PNG" alt="Alibaba" width="200"></a>
                         </td>
                         <td width="630"></td>
                         <td>
-                            <span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-                            <a href="home.php">Logout</a>
+                            <span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+                            <a href="../account/login.php">Logout</a>
 
                         </td>
                     </tr>
@@ -44,7 +77,7 @@
                     <li><a href="editprofile.php">Edit Profile</a></li>
                     <li><a href="changepp.php">Change Profile Picture</a></li>
                     <li><a href="changepass.php">Change Password</a></li>
-                    <li><a href="home.php">Logout</a></li>
+                    <li><a href="../account/login.php">Logout</a></li>
                 </ul>
                 <hr>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -91,24 +124,22 @@
                 <table border="1" align="center" width="100%" cellpadding="0" cellspacing="0">
                     <tr>
                         <th align="center"><label>
-                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            Filter By  <select>
-                            <option>Any</option>
-                            <option>Name</option>
-                            <option>Code</option>
-                            </select>
-                           <input type="text" name="search" placeholder="Enter keyword Here...."><input type="submit" value="Search Here">
                             </h3>
                             </label>
                         </th>
 
                     </tr>
                 </table>
-
+                <br>
+                <fieldset align="left">Message box</fieldset>
+                <br>
+                <form method="POST">
+                 <fieldset  align="left">
+                 <legend ><b>Product | ADD</b></legend>
                 <table align="left" width="100%">
                    <br/>
-                            <fieldset align="left">Message box</fieldset>
                     <tr height="30">
                         <td>
                             Date : <input type="text" id="date"/>
@@ -118,7 +149,7 @@
                         <td>
                             <h3>
                                 Category :
-                                <select name="category">
+                                <select name="catagory">
 					    <option></option>
 						<option value="men">Men</option>
 						<option value="women">Women</option>
@@ -130,11 +161,11 @@
                         <td>
                             <h3>
                                 Sub-Category :
-                                <select name="sub-category">
+                                <select name="subcatagory">
 					    <option></option>
 						<option value="shirt">Shirt</option>
 						<option value="pant">Pant</option>
-						<option value="Shoes">Shoes</option>
+						<option value="Shoes">Shoe</option>
 						<option value="tshirt">T-shirt</option>
 					</select>
                             </h3>
@@ -150,7 +181,7 @@
                         <td width="50%">
                             <h3>
                                 Buying Price :
-                                <input type="text" name="buyingprice" placeholder="Enter Buying Price Here....">
+                                <input type="text" name="bprice" placeholder="Enter Buying Price Here....">
                             </h3>
                         </td>
                     </tr>
@@ -164,7 +195,7 @@
                         <td>
                             <h3>
                                 Selling Price :
-                                <input type="text" name="sellingprice" placeholder="Enter Seliing Price Here....">
+                                <input type="text" name="sprice" placeholder="Enter Seliing Price Here....">
                             </h3>
                         </td>
                     </tr>
@@ -189,45 +220,61 @@
                         <td>
                             <h3>
                                 Product Quntity :
-                                <input type="text" name="no.product" placeholder="Enter Product Quantity Here....">
+                                <input type="text" name="quantity" placeholder="Enter Product Quantity Here....">
                             </h3>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="pictures/picemp.jpg" height="100%" width="80%"><br>
-                            <input type="file"><br><br><input type="submit" value="Upload">
+                            <img src="../res/products/picemp.jpg" height="100%" width="80%"><br>
+                            <input type="file" name="pdpic"><br><br>
                         </td>
                         <td>
-                            <textarea name="details" rows="19" cols="60" placeholder="Details About The Product"></textarea>
+                            <textarea name="description" rows="19" cols="60" placeholder="Details About The Product"></textarea>
                         </td>
                     </tr>
                     <tr height="20">
 
                     </tr>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="submit" name="add" value="Add" onclick="add();"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="submit" name="update" value="Update" onclick="update();"/>
-
-                        </td>
-                        <td>
-                            <input type="submit" name="delete" value="Delete" onclick="add();"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="submit" name="clear" value="Clear" onclick="clear();"/>
-                        </td>
-                    </tr>
-                    <tr height="20">
-
+                        <td colspan="2"><hr></td>
                     </tr>
                     <tr>
-                        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="loggedin.php">Home</a> <a href="Dashboard.php">Dashboard</a></th> 
+                       <td>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       
+                       <input type="submit" value="Add Product"/>
+                       </td>
+                       <td>
+                           <input type="reset" value="Clear Fields"/>
+                       </td>
                     </tr>
-                    <tr height="20">
-
+                     <tr>
+                        <td colspan="2"><hr></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                            <a href="allProducts.php">All Products</a>
+                            
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="loggedin.php">Home</a>  
+                        </td>
+                        <td>
+                            <a href="Dashboard.php">Dashboard</a>
+                        </td>
                     </tr>
                 </table>
-
+                </fieldset>
+                </form>
             </td>
         </tr>
         <tr align="center">
@@ -245,16 +292,6 @@ function add() {
     dateToday();
     
 }
-    function update() {
-    window.alert ("Product Updated Successfully");
-    var a = document.getElementsByTagName("fieldset")[0];
-    a.innerHTML = "Product Updated Successfully";
-    
-}
-    function delete() {
-    window.alert ("Product Deleted Successfully");
-    var a = document.getElementsByTagName("fieldset")[0];
-    a.innerHTML = "Product Deleted Successfully";
     
     
 }

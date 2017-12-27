@@ -1,3 +1,17 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user'])==false){
+		header("location:../account/login.php");
+	}
+		if(isset($_SESSION['user'])==true)
+	{
+		if($_SESSION['user']['usertype']!="admin")
+		{
+				header("location:../account/login.php");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +25,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Ali Baba" width="200"></a>
+							<a href="loggedin.php"><img src="../res/common/ali.png" alt="Ali Baba" width="200"></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +56,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -92,7 +106,7 @@
 <fieldset>
     <legend><b>CHANGE PASSWORD</b></legend>
     <br/>
-    <form>
+    <form method="post">
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td width="150"></td>
@@ -103,26 +117,26 @@
             <tr>
                 <td><font size="3">Current Password</font></td>
 				<td>:</td>
-                <td><input type="password" /></td>
+                <td><input type="password" name="cpassword" /></td>
                 <td></td>
             </tr>
             <tr><td colspan="4"><hr/></td></tr>
             <tr>
                 <td><font size="3" color="green">New Password</font></td>
 				<td>:</td>
-                <td><input type="password" /></td>
+                <td><input type="password" name="npassword" /></td>
                 <td></td>
             </tr>
             <tr><td colspan="4"><hr/></td></tr>
             <tr>
                 <td><font size="3" color="red">Retype New Password</font></td>
 				<td>:</td>
-                <td><input type="password" /></td>
+                <td><input type="password" name="rpassword" /></td>
                 <td></td>
             </tr>
         </table>
         <hr />
-        <input type="submit" value="Update" onclick="myEditFunction2();"/>
+        <input type="submit" value="Update" />
         <a href="loggedin.php">Home</a>
     </form>
 </fieldset>
@@ -135,12 +149,38 @@
 		</tr>
 	</table>
 </body>
-<script>
-function myEditFunction2() {
-    var a = document.getElementsByTagName("fieldset")[0];
-    a.innerHTML = "Password Changed Successfully";
-    window.alert ("Password Changed Successfully");
-    
-}
-</script>
+
 </html>
+<?php
+	
+	if($_SERVER["REQUEST_METHOD"]=='POST'){
+		
+			$username=$_SESSION['user']['username'];
+			$cpassword=$_REQUEST['cpassword'];
+			$npassword=$_REQUEST['npassword'];
+			$rpassword=$_REQUEST['rpassword'];
+			
+			 include "../../data/user_access.php";
+			if(($cpassword==$_SESSION['user']['password'])&&($npassword==$rpassword))
+			{ 
+			 $result=updateUser_pass($username,$rpassword);
+			 $_SESSION['user']['password']=$rpassword;
+			 
+			 echo "<script>
+                    alert('Password Updated');
+                    
+                 </script>";
+	
+			}
+			else
+			{
+				 echo "<script>
+                    alert('Password Not Updated. Cheak current password/retype password');
+                    
+                 </script>";
+				 
+				
+			}
+
+		}		
+?>

@@ -6,7 +6,7 @@
 	
 			<tr>
          <th colspan="3" align="center" width="60%">
-            <img src="pictures\ali.png" align="left" align="top" width="20%">
+            <img src="../res/common/ali.PNG" align="left" align="top" width="20%">
             <br>
             <br>
 

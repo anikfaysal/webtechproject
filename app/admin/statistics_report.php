@@ -1,3 +1,17 @@
+<?php include "../../data/session_service.php"; ?>
+<?php
+	session();
+?>
+
+<?php include "../../data/admin_user_service.php"; ?>
+<?php
+        $user="user";
+        $admin="admin";
+        $executive="executive";
+        $Users = getUsersByStatus($use);
+        $admins = getUsersByStatus($admin);
+        $executives = getUsersByStatus($executive);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +25,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Ali" width="200"></a>
+							<a href="loggedin.php"><img src="../res/common/ali.PNG" alt="Ali" width="200"></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +56,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -100,13 +114,14 @@
 </fieldset>
 <br/>
 <table width="100%" cellspacing="0" border="1" cellpadding="5">
+    <?php foreach ($allproduct as $product) { ?>
     <tr>
         <th align="left">ROLE</th>
         <th align="center" width="110">NO OF USERS</th>
     </tr>
     <tr>
         <td>Admin</td>
-        <td align="center">7</td>        
+        <td align="center"><?=count($admins)?></td>        
     </tr>
     <tr>
         <td>Executive</td>
@@ -120,6 +135,7 @@
         <td align="right"><b>Total</b></td>
         <td align="center"><b>347</b></td>        
     </tr>
+    <?php } ?>
 </table>
 			</td>
 		</tr>

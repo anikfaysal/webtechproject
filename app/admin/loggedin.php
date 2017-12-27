@@ -1,3 +1,16 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user'])==false){
+		header("location:../account/login.php");
+	}
+		if(isset($_SESSION['user'])==true)
+	{
+		if($_SESSION['user']['usertype']!="admin")
+		{
+				header("location:../account/login.php");
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +24,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="ali" width="200"></a>
+							<a href="loggedin.php"><img src="../res/common/ali.PNG" alt="ali" width="200"></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +55,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -86,31 +99,31 @@
         </ul>
 			</td>
 		<td valign="top" width="" >
-					<img src="pictures\home.jpg" align="left" align="top" width="100%"/>
+					<img src="../res/products/home.jpg" align="left" align="top" width="100%"/>
 					
 					<table align="left" width="100%" >
 					<tr><td><br></td></tr>
 						<tr>
 						
 						<td>
-							<img src="pictures\images.jpg"  width="150"><br>
+							<img src="../res/products/images.jpg"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp; <a href="../visitor/select persons male.php"> Men's Item </a> </h3>
 						</td>
 						<td>
-							<img src="pictures\female.png"  width="150"><br>
+							<img src="../res/products/female.png"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../visitor/select persons female.php"> Female's Item </a> </h3>
 						</td>
 				        <td>
-							<img src="pictures\cutmypic.png"  width="150"><br>
+							<img src="../res/products/cutmypic.png"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../visitor/select persons kids.php"> kids's Item </a></h3>
 							
 						</td>
 				        <td>
-							<img src="pictures\accessories.png"  width="150"><br>
+							<img src="../res/products/accessories.png"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../visitor/accessories.php"> Accessories </a></h3>
 						</td>
 				        <td>
-							<img src="pictures\electronics.png"  width="150"><br>
+							<img src="../res/products/electronics.png"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../visitor/electronics.php"> Electromics</a></h3>
 						</td>
 							
@@ -119,19 +132,19 @@
 						<tr align="center">
 						
 						<td align="center">
-							<a href="settings.php"><input type="submit" value="Edit"/></a>
+							<a href="allProducts.php"><input type="submit" value="Edit"/></a>
 						</td>
 						<td>
-							<a href="settings.php"><input type="submit" value="Edit"/></a>
+							<a href="allProducts.php"><input type="submit" value="Edit"/></a>
 						</td>
 				        <td>
-							<a href="settings.php"><input type="submit" value="Edit"/></a>
+							<a href="allProducts.php"><input type="submit" value="Edit"/></a>
 						</td>
 				        <td>
-							<a href="settings.php"><input type="submit" value="Edit"/></a>
+							<a href="allProducts.php"><input type="submit" value="Edit"/></a>
 						</td>
 				        <td>
-							<a href="settings.php"><input type="submit" value="Edit"/></a>
+							<a href="allProducts.php"><input type="submit" value="Edit"/></a>
 						</td>
 														
 						</tr>
@@ -154,12 +167,12 @@
 				        </tr>
 						<tr>
 						<td>
-							<img src="pictures\bag.jpg"  width="150"><br>
+							<img src="../res/products/bag.jpg"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Shoulder bag</a></h3>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" >Discount 80%</font></h3>
 						</td>
              			<td>
-							<img src="pictures\shoe.jpg"  width="150"><br>
+							<img src="../res/products/shoe.jpg"  width="150"><br>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Casual shoe</a></h3>
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" >Discount 40%</font></h3>
 						</td>
@@ -189,21 +202,21 @@
 
                        <tr id="topsellingproducthome">
 						<td width="250">
-							<img src="pictures\pic.jpg"  width="150">
+							<img src="../res/products/pic.jpg"  width="150">
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Printed Tops</a></h3>
 							
 
 						</td>
 						<td width="250">
-							<img src="pictures\watch.jpg"  width="150">
+							<img src="../res/products/watch.jpg"  width="150">
 							<h3><a href="">Fashionable watch</a></h3>
 						</td>				
 						<td width="250">
-							<img src="pictures\lipstic.jpg"  width="150">
+							<img src="../res/products/lipstic.jpg"  width="150">
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Lipstic Set</a></h3>
 						</td>
 						<td width="250">
-							<img src="pictures\hijab.jpg"  width="150">
+							<img src="../res/products/hijab.jpg"  width="150">
 							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Hijab</a></h3>
 						</td>
 						</tr>

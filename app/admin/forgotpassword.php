@@ -11,7 +11,7 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="home.php"><img src="ali.png" alt="Ali" width="200"></a>
+							<a href="home.php"><img src="../res/common/ali.png" alt="Ali" width="200"></a>
 						</td>
 						<td width="530"></td>
 						<td>

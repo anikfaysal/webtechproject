@@ -1,3 +1,47 @@
+<?php include "../../data/product_access_admin.php"; ?>
+<?php include "../../data/session_service.php"; ?>
+<?php
+	session();
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $searchKey = $_POST['search'];
+        $searchfilter = $_REQUEST['filter'];
+        if($searchfilter == "any")
+        {
+            $allproduct = getAllProduct();
+        }
+        else if($searchfilter == "catagory")
+        {
+            $allproduct = getAllProductByCatagory($searchKey);
+        }
+         else if($searchfilter == "subcatagory")
+        {
+            $allproduct = getAllProductBySubCatagory($searchKey);
+        }
+         else if($searchfilter == "name")
+        {
+            $allproduct = getAllProductByName($searchKey);
+        }
+        else if($searchfilter == "code")
+         {
+             $allproduct = getAllProductByCode($searchKey);
+            if (count($allproduct) == 0)
+            {
+                 echo "<script>
+                    alert('No Product Found');
+                     document.location='allProducts.php';
+                 </script>";
+            die();
+            } 
+                
+            
+         }
+    } 
+    else 
+    {
+         $allproduct = getAllProduct();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +55,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Alibaba" width="200" ></a>
+							<a href="loggedin.php"><img src="../res/common/ali.PNG" alt="Alibaba" width="200" ></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +86,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -93,146 +137,79 @@
         </table>
 
         <table align="left" width="100%">
+        <form method="POST">
 				<br/>
-				<tr><h3>Filter By : <select>
-                            <option>Any</option>
-                            <option>Name</option>
-                            <option>Code</option>
+				<tr><h3>Filter By : <select name="filter">
+                            <option value="any">Any</option>
+                            <option value="catagory">Category</option>
+                            <option value="subcatagory">Sub-Category</option>
+                            <option value="name">Name</option>
+                            <option value="code">Code</option>
                             </select>
-                            <input type="text" name="search" placeholder="Enter keyword Here...."><input type="submit" value="Search Here"></h3></tr><br/>
+                            <input type="text" name="search" placeholder="Enter keyword Here....">
+                            <input type="submit" value="Search"></h3></tr><br/>
+                            </form>
                <tr>
-                <td width="17%" align="center">
+                <td width="12" align="center">
                     <h3>Image</h3>
                 </td>
-                <td width="17%" align="center">
-                   <h3>Category
-					<select name="bg">
-					    <option></option>
-						<option value="">Men</option>
-						<option value="">Women</option>
-						<option value="">Kids</option>
-						<option value="">Electronic</option>
-					</select>
-                  </h3>
+                <td width="12%" align="center">
+                   <h3>Category</h3>
                 </td>
-                <td width="20%" align="center">
-                   <h3>Sub-Category
-					<select name="bg">
-					    <option></option>
-						<option value="">Shirt</option>
-						<option value="">Pant</option>
-						<option value="">Shoes</option>
-						<option value="">Mobile</option>
-					</select>
-                  </h3>
+                <td width="12%" align="center">
+                   <h3>Sub-Category</h3>
                 </td>
-                <td width="16%" align="center">
-                    <h3>Code
-					<select name="bg">
-					    <option></option>
-						<option value="">MS-177</option>
-						<option value="">WP-111</option>
-						<option value="">KS-8</option>
-						<option value="">PS-44</option>
-					</select>
-                  </h3>
+                 <td width="12" align="center">
+                    <h3>Name</h3>
                 </td>
-                <td width="15%" align="center">
+                <td width="12%" align="center">
+                    <h3>Code</h3>
+                </td>
+                <td width="12%" align="center">
                     <h3>Buying Price</h3>
                 </td>
-                 <td width="15%" align="center">
+                 <td width="12%" align="center">
                     <h3>Selling Price</h3>
                 </td>
+                 <td width="16%" align="center">
+                   
+                </td>
             </tr>
+            <?php foreach ($allproduct as $product) { ?>
             <tr>
                 <td align="center">
-                    <img src="pictures/mshirt4.PNG" align="center" width="45%" height="25%">
+                    <img src="../res/products/<?=$product['pdpic']?>" align="center" width="45%" height="25%">
+                </td>			
+			
+			    <td align="center">
+                    <h3><?=$product['catagory']?></h3>
+                </td>
+			    <td align="center">
+                    <h3><?=$product['subcatagory']?></h3>
                 </td>
                 <td align="center">
-                    <h3>Men</h3>
+                    <h3><?=$product['name']?></h3>
+                </td>
+				
+				<td align="center">
+                    <h3><?=$product['code']?></h3>
+                </td>
+
+	             <td align="center">
+                    <h3><?=$product['bprice']?></h3>
                 </td>
                 <td align="center">
-                    <h3>Shirt</h3>
+                    <h3><?=$product['sprice']?></h3>
                 </td>
                 <td align="center">
-                    <h3>MS-177</h3>
-                </td>
-                <td align="center">
-                    <h3>350tk</h3>
-                </td><br>
-                <td align="center">
-                    <h3>550tk</h3>
-                </td><br>
+                    <a href="productDetails.php?cd=<?=$product['code']?>"><button>Detail</button></a>
+                    <a href="productEdit.php?cd=<?=$product['code']?>"><button>Edit</button></a>
+                    <a href="productDelete.php?cd=<?=$product['code']?>"><button>Delete</button></a>
+                </td>		
             </tr>
-            <tr>
-                <td align="center">
-                    <img src="pictures/wprog5.PNG" align="center" width="45%" height="25%">
-                </td>
-                <td align="center">
-                    <h3>Women</h3>
-                </td>
-                <td align="center">
-                    <h3>Pant</h3>
-                </td>
-                <td align="center">
-                    <h3>WP-111</h3>
-                </td>
-                <td align="center">
-                    <h3>600tk</h3>
-                </td>
-                <td align="center">
-                    <h3>800tk</h3>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <img src="pictures/kids3.PNG" align="center" width="45%" height="25%">
-                </td>
-                <td align="center">
-                    <h3>Kids</h3>
-                </td>
-                <td align="center">
-                    <h3>Shoes</h3>
-                </td>
-                <td align="center">
-                    <h3>KS-8</h3>
-                </td>
-                <td align="center">
-                    <h3>250tk</h3>
-                </td>
-                <td align="center">
-                    <h3>300tk</h3>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <img src="pictures/mobile.PNG" align="center" width="45%" height="25%">
-                </td>
-                <td align="center">
-                    <h3>Electronics</h3>
-                </td>
-                <td align="center">
-                    <h3>Mobile</h3>
-                </td>
-                <td align="center">
-                    <h3>PS-44</h3>
-                </td>
-                <td align="center">
-                    <h3>9000tk</h3>
-                </td>
-                <td align="center">
-                    <h3>10000tk</h3>
-                </td>
-            </tr>
-		
-			<tr>
-			<td></td>
-			<td></td>
-			<td align="center">
-			<br/><br/><br/>
-			<input type="submit" value="Update"  onclick="function1()"/>
-			</td>
-			</tr>
+            <?php } ?>
+
+			
         </table>
         </td>
 		</tr>

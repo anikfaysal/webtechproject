@@ -1,3 +1,10 @@
+<?php include "../../data/admin_user_service.php"; ?>
+<?php include "../../data/session_service.php"; ?>
+<?php
+	session();
+        $username = $_GET['un'];
+        $User = getUsersByUserName($username);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +18,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Ali" width="200"></a>
+							<a href="loggedin.php"><img src="../res/common/ali.PNG" alt="Ali" width="200"></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +49,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -99,51 +106,63 @@
         <tr>
             <td>User Name</td>
             <td>:</td>
-            <td>bob</td>
+            <td><?=$User['username'];?></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Name</td>
             <td>:</td>
-            <td>Bob Marsh</td>
+            <td><?=$User['name'];?></td>
             <td width="30%" rowspan="7" align="center">
-                <img width="128" src="../../../resources/images/user.png"/>
+                <img width="128" src="../res/user/<?=$User['pp'];?>"/>
             </td>
         </tr>	            
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Email</td>
             <td>:</td>
-            <td>bob@aiub.edu</td>
+            <td><?=$User['email'];?></td>
         </tr>		
         <tr><td colspan="3"><hr/></td></tr>			
         <tr>
             <td>Gender</td>
             <td>:</td>
-            <td>Male</td>
+            <td><?=$User['gender'];?></td>
         </tr>
         <tr><td colspan="3"><hr/></td></tr>
         <tr>
             <td>Date of Birth</td>
             <td>:</td>
-            <td>19/09/1998</td>
+            <td><?=$User['dob'];?></td>
+        </tr>
+        <tr><td colspan="3"><hr/></td></tr>
+        <tr>
+            <td>Address</td>
+            <td>:</td>
+            <td><?=$User['address'];?></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Role</td>
             <td>:</td>
-            <td>Admin</td>
+            <td><?=$User['usertype'];?></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Status</td>
             <td>:</td>
-            <td>Active</td>
+            <td><?=$User['status'];?></td>
+        </tr>
+        <tr><td colspan="3"><hr /></td></tr>
+        <tr>
+            <td>User Since</td>
+            <td>:</td>
+            <td><?=$User['regdate'];?></td>
         </tr>
     </table>	
     <hr/>    
-    <a href="edit.php">Edit</a>
-    <a href="delete.php">Delete</a>
+    <a href="edit.php?un=<?=$User['username'];?>">Edit</a>
+    <a href="delete.php?un=<?=$User['username'];?>">Delete</a>
     <a href="search.php">Back to Search</a>
     <br/><br/>
 </fieldset>

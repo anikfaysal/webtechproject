@@ -1,3 +1,17 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user'])==false){
+		header("location:../account/login.php");
+	}
+		if(isset($_SESSION['user'])==true)
+	{
+		if($_SESSION['user']['usertype']!="admin")
+		{
+				header("location:../account/login.php");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +25,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Alibaba" width="200" ></a>
+							<a href="loggedin.php"><img src="../res/common/ali.png" alt="Alibaba" width="200" ></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							<a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +56,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -101,36 +115,36 @@
             <tr>
                 <td>Name</td>
                 <td>:</td>
-                <td>Mohammad Imran</td>
+                <td><?= $_SESSION['user']['name']; ?></td>
                 <td rowspan="7" align="center">
-                    <img width="200" src="pic.png"/>
+                    <img width="200" src="../res/user/<?= $_SESSION['user']['pp'];?>"/>
                     <br/>
-                    <a href="picture.php">Change</a>
+                    <a href="changepp.php">Change</a>
                 </td>
             </tr>		
             <tr><td colspan="3"><hr/></td></tr>
             <tr>
                 <td>Email</td>
                 <td>:</td>
-                <td>imranesn125@gmail.com</td>
+                <td><?= $_SESSION['user']['email']; ?></td>
             </tr>		
             <tr><td colspan="3"><hr/></td></tr>			
             <tr>
                 <td>Gender</td>
                 <td>:</td>
-                <td>Male</td>
+                <td><?= $_SESSION['user']['gender']; ?></td>
             </tr>
             <tr><td colspan="3"><hr/></td></tr>
             <tr>
                 <td>Date of Birth</td>
                 <td>:</td>
-                <td>25/01/1995</td>
+                <td><?= $_SESSION['user']['dob']; ?></td>
             </tr>
             <tr><td colspan="3"><hr/></td></tr>
             <tr>
                 <td>Role</td>
                 <td>:</td>
-                <td>Admin</td>
+                <td><?= $_SESSION['user']['usertype']; ?></td>
             </tr>
             <tr><td colspan="3"><hr/></td></tr>
             <tr>

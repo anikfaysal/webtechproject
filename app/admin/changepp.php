@@ -1,3 +1,17 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user'])==false){
+		header("location:../account/login.php");
+	}
+		if(isset($_SESSION['user'])==true)
+	{
+		if($_SESSION['user']['usertype']!="admin")
+		{
+				header("location:../account/login.php");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +25,12 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="loggedin.php"><img src="ali.png" alt="Ali" width="200"></a>
+							<a href="loggedin.php"><img src="../res/common/ali.png" alt="Ali" width="200"></a>
 						</td>
 						<td width="630"></td>
 						<td>
-							<span>Logged in as <a href="profile.php">Admin_Imo</a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="home.php">Logout</a>
+							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
+							 <a href="../account/login.php">Logout</a>
 
 						</td>
 					</tr>
@@ -42,7 +56,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="home.php">Logout</a></li>
+					<li><a href="../account/login.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -88,6 +102,7 @@
 			<td valign="top" height="400" align="center">
 				<table>
 					<tr>
+					<form method="post" enctype="multipart/form-data">
 						<td width="1000">
 						<br/>
 						<fieldset>Message box</fieldset>
@@ -95,22 +110,23 @@
 								<legend><h3>PROFILE PICTURE</h3></legend>
 								<table >
 									<tr>
-										<td align="center">
-											<img src="pic.png" alt="admin"width="150" height="200">
+									<td align="center">
+											<img src="../res/user/<?= $_SESSION['user']['pp']; ?>" alt="admin"width="150" height="200">
 											<br><br>
-											<input type="file">
+											<input type="file" name="itempic" accept="image/*" required> 
 										</td>
 									</tr>
 									<tr>
 										<td >
 											<hr>
-											<input type="submit" value="Update" onclick="myEditFunction();"/>
+											<input type="submit" value="Update" />
 											<a href="loggedin.php">Home</a>
 										</td>
 									</tr>
 								</table>
 							</fieldset>
 						</td>
+					</form>
 					</tr>
 				</table>
 			</td>
@@ -122,12 +138,44 @@
 		</tr>
 	</table>
 </body>
-<script>
-function myEditFunction() {
-    var a = document.getElementsByTagName("fieldset")[0];
-    a.innerHTML = "Profile Picture Updated Successfully";
-    window.alert ("Profile Picture Updated Successfully");
-    
-}
-</script>
+
 </html>
+<?php
+
+	if($_SERVER["REQUEST_METHOD"]=='POST'){
+			
+		
+			include "../../data/user_access.php";
+			$uname=$_SESSION['user']['username'];
+		
+			
+			$itempic=$_FILES['itempic']['name'];
+			var_dump($itempic);
+			
+			$target = "../res/user/".basename($_FILES['itempic']['name']);
+			
+			if(move_uploaded_file($_FILES['itempic']['tmp_name'],$target)) {
+					echo "Image uploaded successfully";
+			}else{
+					echo "Failed to upload image";
+			}
+			
+			$result=updateUser_pic($uname,$itempic);
+			$_SESSION['user']=$result;
+			
+			//var_dump($_SESSION['user']);
+			 echo "<script>
+                    window.alert('Profile picture uploaded Successfully');
+                    document.location='changepp.php'; 
+                 </script>";
+			
+			
+		}else{
+			echo "Fix All Errors";
+		}
+		
+		
+	
+
+
+?>
