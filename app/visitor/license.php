@@ -1,7 +1,10 @@
-
+<?php include "../../data/product_access.php"; ?>
+<?php
+	session();
+?>
 <html>
 
-<head><title>Learn More</title></head>
+<head><title>Licence</title></head>
 
 	<table align="center" width="1200" >
 	
@@ -16,11 +19,9 @@
 			
 				<a href="../account/login.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
-			
-			</tr>
-		
-		
-		<td  valign="top"  width="10%">
+                </th></tr>
+		<tr>
+		<td  valign="top"  width="13%">
 		
 		
 		<label><b><a href="home.php">Home</a></b></label><br><hr>
@@ -71,41 +72,56 @@
 					
 					<table align="center" width="100%" >
 						<tr  >
-							<th  align="center"><label><h3>Learn More<h3></label></th>
+                            <th  align="center"><label><h3>License</h3></label></th>
 			
 						</tr>
 					 </table>
 					 
 					<table align="left" width="100%" >
 						
+							
+							<u><h3 align="center">We will Help You out 24/7</h3></u>
+							
+							
 							<tr>
-							<u><h3 align="center">Available 24/7</h3></u>
-							
-							<h4 align="center">Enjoy a free consultation with our web experts. They'll help chart the best path forward<br>as they learn more about your online goals.</h4>
+								<td>
+									<h4 align="left">MINHAZ UDDIN</h4>
+									<h6 align="left">Mobile:01670165108</h6>
+								<a>		<img src="pictures\minhaz.jpg" align="left" align="top" width="50%" height="100" ></a>	
+								</td>
+							 
+								<td>
+									<h4 align="left">ANIK FAYSAL</h4>
+									<h6 align="">Mobile:01670165108</h6>
+									<a><img src="pictures\anik.jpg" align="left" align="top" width="50%" height="100" ></a>	
+								</td>
+								<td>
+									<h4 align="left">IMRAN</h4>
+									<h6 align="">Mobile:01670165108</h6>
+									<a><img src="pictures\imo.jpg" align="left" align="top" width="50%" height="100" ></a>	
+								</td>
+
+								<td>
+									<h4 align="left">NISHAT</h4>
+									<h6 align="">Mobile:01670165108</h6>
+									<a><img src="pictures\nishat.jpg" align="left" align="top" width="50%" height="100" ></a>	
+								</td>								
+							 
 							</tr>
-				
 						
-							<td>
-							<h2 align="left">General Sales Questions</h2>
-							<h4 align="left">We're ready to answer any and all <br>questions About our products</h4>
-							<h5 align="left">+00801670165108</h5>
-							</td>
+							<br><br>
+						
+						
+							<tr>
 							
+							</tr>	
 							<br><br>
 							
-							<td>
-							<h2 align="right" >New Businesses</h2>
-							<h4 align="right">For anyone not sure about where to start.<br>How to order a big amount of produts and have a large <br>discount from us contuct with us we will help you out</h5>
-							<h5 align="right">+00801670165108</h5>
-							</td>	
+							<tr>
 						
 							
-								<tr>
-									<h2 align="center">Our Location</h2>
-								
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1789.2496190193856!2d90.41983010707946!3d23.820713435269468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c64ffef5266b%3A0x736809243981f00e!2sAIUB+Entrance!5e1!3m2!1sen!2sbd!4v1511018641115" width="100%" height="450" frameborder="0" allowfullscreen></iframe>
-								</tr>
 							
+							</tr>		
 						
 					</table>
 			
@@ -118,7 +134,7 @@
 					<a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="license.php">License</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</th>
 			</tr>	
 		

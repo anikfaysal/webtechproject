@@ -70,50 +70,43 @@
 								<img src="pictures\<?= $productcode['pdpic'] ?>" align="left" align="top" height="60%" >
 								
 								<br><br><br><br><br>
-								<h4>Shirt Type:<?= $productcode['name'] ?></h4>
+								<h4>Type:<?= $productcode['name'] ?></h4>
 								<h4> Cost :<?= $productcode['sprice'] ?></h4>
 							</td>
 							
 							<td valign="top" width="60%">
 							
-								<h3>Product Details </h3>
+							<h3>Product Details </h3>
 							
 								<h5>Available Quantity: <?= $productcode['quantity'] ?>  </h5>
 								<h5>Cost :<?= $productcode['sprice'] ?>  </h5>
-								<h5>Season: Winter </h5>
 								<h5>Material: <?= $productcode['material'] ?>  </h5>
-								<h5>Model Number:<?= $productcode['code'] ?></h5>
+								<h5>Code:<?= $productcode['code'] ?></h5>
 								<h5>Color: <?= $productcode['color'] ?> </h5>
 								
 							
 								<fieldset>
-									<legend>Select color</legend>
-									<input type="radio" name="color"value="Red"/>Red
-									<input type="radio" name="color"value="Green"/>Green
-									<input type="radio" name="color"value="Blue"/>Blue
-									<input type="radio" name="color"value="White"/>White
-									<input type="radio" name="color"value="Black"/>Black
-								</fieldset>
-									<legend>Select color</legend>
-									<input type="radio" name="color"value="Red"/>Red
-									<input type="radio" name="color"value="Green"/>Green
-									<input type="radio" name="color"value="Blue"/>Blue
-									<input type="radio" name="color"value="White"/>White
-									<input type="radio" name="color"value="Black"/>Black
+									<legend>Available color</legend>
+									
+									<input type="radio" name="color"value="Red"<?php if( $productcode['color']=="Red" ):?> checked<?php endif; ?> <?php if( $productcode['color']!="Red" ):?> disabled<?php endif; ?> >Red
+									<input type="radio" name="color"value="Green"<?php if($productcode['color']=="Green" ):?> checked<?php endif; ?>  <?php if( $productcode['color']!="Green" ):?> disabled<?php endif; ?> >Green
+									<input type="radio" name="color"value="Blue"<?php if($productcode['color']=="Blue") :?> checked<?php endif; ?>  <?php if( $productcode['color']!="Blue" ):?> disabled<?php endif; ?> >Blue
+									<input type="radio" name="color"value="White"<?php if( $productcode['color']=="White") :?> checked<?php endif; ?>  <?php if( $productcode['color']!="White" ):?> disabled<?php endif; ?> >White
+									<input type="radio" name="color"value="Black"<?php if($productcode['color']=="Black") :?> checked<?php endif; ?>  <?php if( $productcode['color']!="Black" ):?> disabled<?php endif; ?> >Black
 								</fieldset>
 							
 								<fieldset>
-									<legend>Select Size</legend>
-									<input type="radio" name="Size"value="42"/>S
-									<input type="radio" name="Size"value="36"/>M
-									<input type="radio" name="Size"value="24"/>L
-									<input type="radio" name="Size"value="24"/>XL
-									<input type="radio" name="Size"value="24"/>XXL
+									<legend>Available Size</legend>
+									<input type="radio" name="Size"value="S" <?php if( $productcode['size']=="S" ):?> checked<?php endif; ?> <?php if( $productcode['size']!="S" ):?> disabled<?php endif; ?>  >S
+									<input type="radio" name="Size"value="M"<?php if( $productcode['size']=="M" ):?> checked<?php endif; ?> <?php if( $productcode['size']!="M" ):?> disabled<?php endif; ?> >M
+									<input type="radio" name="Size"value="L" <?php if( $productcode['size']=="L" ):?> checked<?php endif; ?> <?php if( $productcode['size']!="L" ):?> disabled<?php endif; ?> >L
+									<input type="radio" name="Size"value="XL" <?php if( $productcode['size']=="XL" ):?> checked<?php endif; ?> <?php if( $productcode['size']!="XL" ):?> disabled<?php endif; ?> >XL
+									<input type="radio" name="Size"value="XXL"<?php if( $productcode['size']=="XXL" ):?> checked<?php endif; ?> <?php if( $productcode['size']!="XXL" ):?> disabled<?php endif; ?> >XXL
 									
 								</fieldset>
 								<fieldset>
                                 <legend>Select Quantity</legend>
-                                Available Quantity : 20
+                                Available Quantity : <?= $productcode['quantity'] ?> Select :-
 								    <select name="quantity">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -124,14 +117,14 @@
                                         <option value="7">7</option>
                                         <option value="8">8</option>
                                         <option value="9">9</option>
-					                </select><button onclick="addc();">+</button>
+					                </select>
 								</fieldset>
 								<br>
 								<br>
 							
 								<a href="purches.php"><input type="submit" value="Purches Now" ><a/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="submit" value="Add to Cart" onclick="function1()" />
-								<button onclick="wish();">+</button>
+								<button onclick="wish();">wish</button>
 						
 						
 							</td>

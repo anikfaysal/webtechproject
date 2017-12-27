@@ -70,26 +70,26 @@
 								<img src="pictures\<?= $productcode['pdpic'] ?>" align="left" align="top" height="60%" >
 								
 								<br><br><br><br><br>
-								<h4>Shirt Type:<?= $productcode['name'] ?></h4>
+								<h4>Type:<?= $productcode['name'] ?></h4>
 								<h4> Cost :<?= $productcode['sprice'] ?></h4>
 							</td>
 							
 							<td valign="top" width="60%">
 							
-								<h3>Product Details </h3>
+									<h3>Product Details </h3>
 							
 								<h5>Available Quantity: <?= $productcode['quantity'] ?>  </h5>
 								<h5>Cost :<?= $productcode['sprice'] ?>  </h5>
-								<h5>Season: Winter </h5>
+
 								<h5>Material: <?= $productcode['material'] ?>  </h5>
-								<h5>Model Number:<?= $productcode['code'] ?></h5>
+								<h5>Code:<?= $productcode['code'] ?></h5>
 								<h5>Color: <?= $productcode['color'] ?> </h5>
 								
 							
 								
 								<fieldset>
                                 <legend>Select Quantity</legend>
-                                Available Quantity : 20
+                                Available Quantity :<?= $productcode['quantity'] ?> Select :-
 								    <select name="quantity">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -100,14 +100,14 @@
                                         <option value="7">7</option>
                                         <option value="8">8</option>
                                         <option value="9">9</option>
-					                </select><button onclick="addc();">+</button>
+					                </select>
 								</fieldset>
 								<br>
 								<br>
 							
 								<a href="purches.php"><input type="submit" value="Purches Now" ><a/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="submit" value="Add to Cart" onclick="function1()" />
-								<button onclick="wish();">+</button>
+								<button onclick="wish();">wish</button>
 						
 						
 							</td>
