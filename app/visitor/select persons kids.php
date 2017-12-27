@@ -3,7 +3,7 @@
   
         $catgorymen = catgorykid();
     
-	session();
+	
 ?>
 <html>
 

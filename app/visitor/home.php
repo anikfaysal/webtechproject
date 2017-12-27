@@ -1,3 +1,12 @@
+<?php include "../../data/product_access.php"; ?>
+<?php
+  
+        $catgorymen = discount();
+        $offer = todaysoffers();
+    
+	
+?>
+
 
 <html>
 
@@ -112,83 +121,61 @@
 							</td>
 							</tr>
 
-						<tr>
+						<table align="left" width="100%" >
+					<?php foreach ($catgorymen as $productn) { ?>
+					
 						<td>
-							<img src="pictures\bag.jpg"  width="150"><br>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Shoulder bag</a></h3>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" >Discount 80%</font></h3>
+							<a href="man product.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="50%" height="100" ><br><h4><?=$productn['name']; ?> <br>Discount : <?=$productn['offer'] ;?></h4></a>	<br><br><br><br><br><br>
+							</td>
+							
+						
+					<?php } ?>	
+					</table>
 
-						</td>
 
+					<tr>
 						<td>
-							<img src="pictures\shoe.jpg"  width="150"><br>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Casual shoe</a></h3>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" >Discount 40%</font></h3>
-
-						</td>
-
-						</tr>
-
-						<tr>
-						<td>
-
-							<br><br>
 							
 							</td>
 						</tr>
 
-						<tr>
 
+						<tr>
+						<td></td>
+						<td></td>
 						<br>
 						<br>
-							<td width="300"><h2><font color="red" >Top Selling Products</font></h2></td>
-						</tr>
-						<tr>
-						<td width="300">
-
-							<br>
-							
-							</td>
-
-</tr>
-
-                       <tr>
-						<td width="250">
-							<img src="pictures\pic.jpg"  width="150">
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Printed Tops</a></h3>
-							
-
-						</td>
-
-						<td width="250">
-							<img src="pictures\watch.jpg"  width="150">
-							<h3><a href="">Fashionable watch</a></h3>
-						</td>
-
-						
-
-						<td width="250">
-							<img src="pictures\lipstic.jpg"  width="150">
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Lipstic Set</a></h3>
-						</td>
-
-						
-
-						<td width="250">
-							<img src="pictures\hijab.jpg"  width="150">
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Hijab</a></h3>
-						</td>
-
-
+							<td><h2><font color="red" >Flat Deals</font></h2></td>
+							<tr>
+							<td><br></td>
+							</tr>
 						</tr>
 
 						<tr>
+						<td></td>
+						<td></td>
+<td>
+
+						<table align="left" width="100%" >
+					<?php foreach ($offer as $product) { ?>
+					
+						<td></td>
 						<td>
-
-							<br><br>
-							
+							<a href="flat.php?id=<?=$product['code']?>"><img src="pictures\<?=$product['pdpic'] ;?>" align="left" align="top" width="50%" height="100" ><br><h4><?=$product['name']; ?> <br><?=$product['cost'] ;?></h4></a>	<br><br><br><br><br><br>
 							</td>
-						</tr>
+							
+						
+					<?php } ?>	
+					</table>
+
+					</td>
+
+					</tr>
+
+
+
+
+
 
 						</tr>
 

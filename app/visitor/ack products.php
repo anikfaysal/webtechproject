@@ -3,7 +3,7 @@
 
     $pnamee =$_GET['pname'];
     $productnames = getProductByNameAccesories($pnamee);
-	session();
+
 ?>
 <html>
 

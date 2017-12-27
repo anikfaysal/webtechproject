@@ -3,7 +3,7 @@
 
     $pnamee =$_GET['pname'];
     $productnames = getProductByNameFemale($pnamee);
-	session();
+
 ?>
 
 <html>

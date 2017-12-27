@@ -3,8 +3,7 @@
     $productId =$_GET['id'];
 	
     $productcode = getProductById($productId);
-	session();
-
+	
 ?>
 
 

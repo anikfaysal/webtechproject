@@ -3,7 +3,7 @@
   
         $catgorymen = catgoryelec();
     
-	session();
+	
 ?>
 
 

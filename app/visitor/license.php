@@ -1,6 +1,6 @@
 <?php include "../../data/product_access.php"; ?>
 <?php
-	session();
+	
 ?>
 <html>
 
