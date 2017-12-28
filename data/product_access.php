@@ -216,7 +216,135 @@ function menproducts()
     }
 
 
+
+
+      function allorders()
+		{
+			global $conn;
+			$user=$_SESSION['user']['username'];
+			$sql = "SELECT * FROM orders WHERE username LIKE'$user' ";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+		 function receiveorders()
+		{
+			global $conn;
+			$user=$_SESSION['user']['username'];
+			$sql = "SELECT * FROM orders WHERE username LIKE'$user' AND customersts like 'Received'";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+		 function pendingorders()
+		{
+			global $conn;
+			$user=$_SESSION['user']['username'];
+			$sql = "SELECT * FROM orders WHERE username LIKE'$user' AND customersts like 'Not Received'";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+
+
     //cookies//-
+
+
+
+
+  function discount()
+		{
+			global $conn;
+			$sql = "SELECT * FROM allproducts WHERE offer != 0";        
+			$result = executeSQL($sql);
+        
+			$catgorymen = array();
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+			{
+            $catgorymen[$i] = $row;
+			}
+        
+        return $catgorymen;
+		}
+	
+
+  function todaysoffers()
+		{
+			global $conn;
+			$sql = "SELECT * FROM todaysoffers WHERE offer != 0";        
+			$result = executeSQL($sql);
+        
+			$catgorymen = array();
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+			{
+            $catgorymen[$i] = $row;
+			}
+        
+        return $catgorymen;
+		}
+
+		 function wish()
+		{
+			global $conn;
+			$user=$_SESSION['user']['username'];
+			$sql = "SELECT * FROM wish WHERE username LIKE'$user' ";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+
+
+
+		
+
+
+
+
+
+		 function getProductByIdd($productId){
+        $sql = "SELECT * FROM todaysoffers WHERE code=$productId";        
+        $result = executeSQL($sql);
+        
+        $productcode = mysqli_fetch_assoc($result);
+        
+        return $productcode;
+    }
+
+
+
+     function getProductByIddd($productId){
+        $sql = "SELECT * FROM wish WHERE code=$productId";        
+        $result = executeSQL($sql);
+        
+        $productcode = mysqli_fetch_assoc($result);
+        
+        return $productcode;
+    }
+	
 	
 
 
