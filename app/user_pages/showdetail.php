@@ -213,6 +213,7 @@
 								<h5>Material: <?= $productcode['material'] ?>  </h5>
 								<h5>Code:<?= $productcode['code'] ?></h5>
 								<h5>Color: <?= $productcode['color'] ?> </h5>
+								<h5>Size: <?= $productcode['size'] ?> </h5>
 								
 							
 								

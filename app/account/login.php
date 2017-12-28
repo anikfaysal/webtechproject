@@ -88,10 +88,10 @@
 				session_start();
 				$_SESSION['user']=$result;
 
-				if(($_SESSION['user']['usertype']=="admin")&&($_SESSION['user']['status']=="active")){
+				if($_SESSION['user']['usertype']=="admin"){
 					header("location:../admin/loggedin.php");
 				}
-				else if(($_SESSION['user']['usertype']=="user")&&($_SESSION['user']['usertype']=="active")){
+				else if($_SESSION['user']['usertype']=="user"){
 					header("location:../user_pages/home.php");
 				}
 				

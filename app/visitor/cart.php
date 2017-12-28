@@ -202,7 +202,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><a href="delevaryAddress.php"><input type="button" value="Checkout" /></a></td>
+                <td><a href="../account/login.php"><input type="button" value="Checkout" /></a></td>
                 <td></td>
                 <td></td>
                 <td></td>
