@@ -18,7 +18,7 @@
 	
 			<tr>
          <th colspan="3" align="center" width="60%">
-            <a href="app/visitor/home.php"><img src="app/res/common/ali.png" align="left" align="top" width="20%">
+             <a href="app/visitor/home.php"><img src="app/res/common/ali.png" align="left" align="top" width="20%"></a>
             <br>
             <br>
 
