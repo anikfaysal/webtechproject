@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2017 at 12:56 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: Dec 28, 2017 at 08:33 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -47,35 +47,36 @@ CREATE TABLE `allproducts` (
 --
 
 INSERT INTO `allproducts` (`code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `bprice`, `sprice`, `quantity`, `offer`, `pdpic`) VALUES
-('0001', 'T-Shirt', 'Men', 'Shirt', 'Red', '100%cotton', 'XXL', '100% Cotton.full sleeve t-shirt', 500, 1000, 10, 80, 'mshirt1.png'),
-('00010', 'Casual Belt', 'Men', 'Belt', 'Black', 'Leather', '25', 'Leather belt', 2000, 6000, 25, 0, 'belt2.jpg'),
-('00011', 'Tops', 'Women', 'Dress', 'Blue', '100% Cotton', 'M', 'Women tops 10% cotton limited edition', 500, 1500, 25, 0, 'pic.jpg'),
-('00012', 'Pants', 'Women', 'Pant', 'Black', 'Jeans', 'S', 'New jeans Pant', 1500, 2500, 20, 0, 'wpant.jpg'),
-('00013', 'High hill', 'Women', 'Shoe', '00013', 'synthetic', '30', 'New High hill.very Fashionable', 1000, 3000, 15, 0, 'wshoe.jpg'),
-('00014', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women''s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
-('00015', 'Small Purse ', 'Women', 'Bags', 'Blue', 'Canvas', '13cm', 'Women Small Purse', 50, 150, 25, 100, 'bag.jpg'),
-('00016', 'Shoulder Bag', 'Women', 'Bags', 'Purple', 'Silicon', '25cm', 'Women Shoulder Bag', 250, 500, 50, 0, 'accessories.png'),
-('00017', 'Kids Dress', 'Kids', 'Dress', 'Red', 'Cotton', '28', '100% cotton', 350, 500, 30, 0, 'kids7.PNG'),
-('00018', 'Kids Shoe', 'Kids', 'Shoe', 'White', 'Lather', '28', '100% Lather', 550, 900, 30, 0, 'kids3.PNG'),
-('00019', 'Kids Diapers', 'Kids', 'Diapers', 'White', 'Paper', '25', '100% Soft material', 150, 200, 100, 0, 'kids2.PNG'),
-('0002', 'women dress', 'Women', 'Dress', 'Green', '50%Cotton', 'XXL', 'women dress 50% cotton.limited edition', 500, 1000, 22, 20, 'wprog1.png'),
-('00020', 'Kids Toy', 'Kids', 'Toys', 'Red', 'Plastic', '10', 'Plastic made', 50, 200, 100, 0, 'kids4.PNG'),
-('00021', 'Wallet', 'Accessories', 'Wallet', 'Brown', 'Lather', '10', 'Pure Lather', 100, 200, 100, 0, 'walate.PNG'),
-('00022', 'BackCover', 'Accessories', 'BackCover', 'Brown', 'plastic', '10', 'For iphone X', 500, 1500, 100, 0, 'backcover.PNG'),
-('00023', 'Bags', 'Accessories', 'Bag', 'Brown', 'plastic', '10', 'hard and light', 1500, 2500, 200, 0, 'bags.PNG'),
-('00024', 'HandBand', 'Accessories', 'HandBand', 'Black', 'Steel', '10', 'hard and light', 150, 250, 200, 0, 'handband.PNG'),
-('00026', 'HeadPhone', 'Electronic', 'HeadPhone', 'Black', 'Plastic', '5', 'For Samsung-w83.top rated mobile phone ', 90, 200, 1000, 0, 'headphone.PNG'),
-('00027', 'TableFan', 'Electronic', 'TableFan', 'Black', 'Steel', '', 'Very fast', 2000, 3000, 1000, 0, 'tablefan.PNG'),
-('00029', 'Smart Watch', 'Electronic', 'Smart Watch', 'Black', '', '', 'Smart Watch', 190, 390, 100, 0, 'watch.jpg'),
-('0003', 'Pants', 'Women', 'Pant', 'Black', '100%cotton', 'XL', '100%cotton,Womens Pant.limited editon', 600, 800, 20, 0, 'wprog5.png'),
-('0004', 'Pants', 'Men', 'Pant', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0, 'pros2.png'),
-('0005', 'Trendy T-Shirt ', 'Men', 'Shirt', 'Red', 'Silk', 'M', 'Silk full sleeve t-shirt', 300, 600, 50, 0, 'mshirt2.PNG'),
-('0006', 'Kids shoe', 'Kids', 'Shoe', 'White', '100%leather', '22', '100%leather,Kids Shoe', 250, 300, 50, 0, 'kids3.png'),
-('0007', 'Formal Shoe', 'Men', 'Shoe', 'Red', 'Lofar', '40', 'New Lofar shoe.very Fashionable', 1500, 2500, 15, 200, 'shoe.jpg'),
-('0008', 'Casual Shoe', 'Men', 'Shoe', 'black', 'Leather', '42', 'Pure Leather Shoe', 800, 2500, 20, 0, 'leather.jpg'),
-('0009', 'Formal Belt', 'Men', 'Belt', 'Blue', 'Leather', '20', 'Leather belt', 200, 600, 25, 0, 'belt1.jpg'),
-('0012', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0, 'wprog2.png'),
-('00190', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png');
+('666', 'T-Shirt', 'Men', 'Shirt', 'Red', '100%cotton', 'XXL', '100% Cotton.full sleeve t-shirt', 500, 1000, 10, 80, 'mshirt1.png'),
+('777', 'Kids Shoe', 'Kids', 'Shoe', 'White', 'Lather', '28', '100% Lather', 550, 900, 30, 0, 'kids3.PNG'),
+('888', 'Kids Diapers', 'Kids', 'Diapers', 'White', 'Paper', '25', '100% Soft material', 150, 200, 100, 0, 'kids2.PNG'),
+('999', 'Torn Shirt', 'men', 'shirt', 'Grey', '', '', 'Normal', 50, 100, 1000, 0, 'torn_tshirt.jpg'),
+('aaa', 'Kids Dress', 'Kids', 'Dress', 'Red', 'Cotton', '28', '100% cotton', 350, 500, 30, 0, 'kids7.PNG'),
+('bbb', 'Shoulder Bag', 'Women', 'Bags', 'Purple', 'Silicon', '25cm', 'Women Shoulder Bag', 250, 500, 50, 0, 'accessories.png'),
+('ccc', 'Small Purse ', 'Women', 'Bags', 'Blue', 'Canvas', '13cm', 'Women Small Purse', 50, 150, 25, 100, 'bag.jpg'),
+('ddd', 'Boot', 'Women', 'Shoe', 'Gray', 'rubber', '32', 'New Fashionable Women\'s Boot', 1200, 2800, 25, 0, 'wshoe1.jpg'),
+('eee', 'High hill', 'Women', 'Shoe', 'Red', 'synthetic', '30', 'New High hill.very Fashionable', 1000, 3000, 15, 0, 'wshoe.jpg'),
+('fff', 'Pants', 'Women', 'Pant', 'Black', 'Jeans', 'S', 'New jeans Pant', 1500, 2500, 20, 0, 'wpant.jpg'),
+('ggg', 'Casual Shoe', 'Men', 'Shoe', 'black', 'Leather', '42', 'Pure Leather Shoe', 800, 2500, 20, 0, 'leather.jpg'),
+('hhh', 'Samsung-w83', 'Electronic', 'Mobile', 'Black', '', '', 'Samsung-w83.top rated mobile phone with 8gb memory', 19000, 20000, 1000, 0, 'backcover.png'),
+('iii', 'Pants', 'Men', 'Pant', 'Blue', '100%cotton', 'L', '100%cotton,Pants', 700, 800, 21, 0, 'wprog2.png'),
+('jjj', 'Formal Belt', 'Men', 'Belt', 'Blue', 'Leather', '20', 'Leather belt', 200, 600, 25, 0, 'belt1.jpg'),
+('kkk', 'Tops', 'Women', 'Dress', 'Blue', '100% Cotton', 'M', 'Women tops 10% cotton limited edition', 500, 1500, 25, 0, 'pic.jpg'),
+('lll', 'Formal Shoe', 'Men', 'Shoe', 'Red', 'Lofar', '40', 'New Lofar shoe.very Fashionable', 1500, 2500, 15, 200, 'shoe.jpg'),
+('mmm', 'Kids shoe', 'Kids', 'Shoe', 'White', '100%leather', '22', '100%leather,Kids Shoe', 250, 300, 50, 0, 'kids3.png'),
+('nnn', 'Trendy T-Shirt ', 'Men', 'Shirt', 'Red', 'Silk', 'M', 'Silk full sleeve t-shirt', 300, 600, 50, 0, 'mshirt2.PNG'),
+('ooo', 'Pants', 'Men', 'Pant', 'White', '100%cotton', 'XL', '100%cotton,Pants', 100, 200, 120, 0, 'pros2.png'),
+('ppp', 'Pants', 'Women', 'Pant', 'Black', '100%cotton', 'XL', '100%cotton,Womens Pant.limited editon', 600, 800, 20, 0, 'wprog5.png'),
+('qqq', 'Smart Watch', 'Electronic', 'Smart Watch', 'Black', '', '', 'Smart Watch', 190, 390, 100, 0, 'watch.jpg'),
+('rrr', 'Casual Belt', 'Men', 'Belt', 'Black', 'Leather', '25', 'Leather belt', 2000, 6000, 25, 0, 'belt2.jpg'),
+('sss', 'TableFan', 'Electronic', 'TableFan', 'Black', 'Steel', '', 'Very fast', 2000, 3000, 1000, 0, 'tablefan.PNG'),
+('ttt', 'HeadPhone', 'Electronic', 'HeadPhone', 'Black', 'Plastic', '5', 'For Samsung-w83.top rated mobile phone ', 90, 200, 1000, 0, 'headphone.PNG'),
+('uuu', 'HandBand', 'Accessories', 'HandBand', 'Black', 'Steel', '10', 'hard and light', 150, 250, 200, 0, 'handband.PNG'),
+('vvv', 'Bags', 'Accessories', 'Bag', 'Brown', 'plastic', '10', 'hard and light', 1500, 2500, 200, 0, 'bags.PNG'),
+('www', 'BackCover', 'Accessories', 'BackCover', 'Brown', 'plastic', '10', 'For iphone X', 500, 1500, 100, 0, 'backcover.PNG'),
+('xxx', 'Wallet', 'Accessories', 'Wallet', 'Brown', 'Lather', '10', 'Pure Lather', 100, 200, 100, 0, 'walate.PNG'),
+('yyy', 'Kids Toy', 'Kids', 'Toys', 'Red', 'Plastic', '10', 'Plastic made', 50, 200, 100, 0, 'kids4.PNG'),
+('zzz', 'women dress', 'Women', 'Dress', 'Green', '50%Cotton', 'XXL', 'women dress 50% cotton.limited edition', 500, 1000, 22, 20, 'wprog1.png');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,9 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`username`, `code`, `pname`, `cost`, `size`, `colour`, `quantity`, `customersts`, `adminsts`, `sendshipping`, `shippingsts`, `tracknumber`, `ppic`) VALUES
 ('halim', '0001', 'T-Shirt', 1000, '0', 'Red', 1, 'Not Received', 'Confirm', 'Sent', 'Received', '8058905', 'mshirt1.png'),
-('halim', '1212', 'Small Purse', 500, '10', 'Red', 1, 'Received', 'Confirm', 'Sent', 'Received', '0285258', 'bag.jpg');
+('halim', '1212', 'Small Purse', 500, '10', 'Red', 1, 'Received', 'Confirm', 'Sent', 'Received', '0285258', 'bag.jpg'),
+('halim', '2552', 'T-Shirt', 1000, 'M', 'Red', 1, 'Confirm', 'Cancel', 'Sent', 'Not Received', '825588555', 'mshirt2.PNG'),
+('halim', '3225', 'T-Shirt', 1000, 'M', 'Red', 1, 'Confirm', '', 'Sent', 'Not Received', '825588555', 'mshirt2.PNG');
 
 -- --------------------------------------------------------
 
@@ -196,16 +199,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gender`, `dob`, `pp`, `address`, `status`, `regdate`, `lastlogin`) VALUES
 ('adi', 'user', '12312312', 'Arafat ', 'adi@gmail.com', 'female', '4/4/1991', 'anik.jpg', 'uttara', 'active', '2017', '5/5/17'),
-('anik', 'admin', '12312312', 'faysal anik', 'faysal@gmail.com', 'male', '6/2/1998', 'anik.jpg', '12/C,khigao.road no-2', 'active', '2016', '4/2/16'),
-('halim', 'user', '12312312', 'halim adi', 'halim@gmail.com', 'female', '2/9/1994', '', 'zigatola,41/1 road#2', 'pending', '', ''),
-('hanif', 'user', '12312312', 'Hanif faysal', 'hanif@gmail.com', 'male', '6/8/1994', 'anik.jpg', 'panthopath,kolabagan,Dhaka-1209', 'active', '', ''),
-('imo', 'admin', '12312312', 'imran ', 'imran@gmail.com', 'male', '2/2/1991', 'imo.jpg', '41/A,Zigatola,Dhanmondi', 'active', '2015', '5/9/17'),
+('anik', 'admin', '12312312', 'faysal anik', 'faysal@gmail.com', 'male', '6/2/1998', '', '12/C,khigao.road no-2', 'pending', '2016', '4/2/16'),
+('halim', 'user', '12312312', 'halim adi', 'halim@gmail.com', 'female', '2/9/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'pending', '2017', '1/1/16'),
+('hanif', 'user', '12312312', 'Hanif faysal', 'hanif@gmail.com', 'male', '6/8/1994', 'anik.jpg', 'panthopath,kolabagan,Dhaka-1209', 'active', '2017', '1/2/16'),
+('imo', 'admin', '12312312', 'imran ', 'imran@gmail.com', 'male', '2/2/1991', 'imo.jpg', '41/A,Zigatola,Dhanmondi', 'active', '2015', '28/12/17'),
+('lirab', 'user', '12312312', 'Tasnim Lirab', 'lirab@gmail.com', 'male', '1/1/1999', '', 'pranthopath', 'active', '', ''),
 ('minhaz', 'user', '12312312', 'Minhaz uddin', 'uddinminhaz09@gmail.com', 'male', '6/8/1996', 'minhaz.jpg', '41/A,Zigatola,Dhanmondi', 'active', '2016', '3/2/16'),
 ('neshi', 'admin', '12312312', 'neshi islam', 'neshi@gmail.com', 'female', '1/1/1990', 'nishat.jpg', '22/B,Kakoli,Dhaka 1209.Road-02', 'blocked', '2017', '3/5/17'),
-('panda', 'user', '12312312', 'adi faysal', 'adi111@gmail.com', 'other', '6/8/1994', '', 'zigatola,dhanmondi', 'pending', '', ''),
+('panda', 'user', '12312312', 'adi faysal', 'adi111@gmail.com', 'other', '6/8/1994', '', 'zigatola,dhanmondi', 'pending', '2015', '1/2/17'),
 ('piash', 'user', '12312312', 'Ibrahim piash', 'piash@gmail.com', 'male', '19/7/1992', 'minhaz.jpg', 'A/2,Dhanmondi,Road-4,Dhaka-1204', 'pending', '2016', '15/8/17'),
 ('rafat', 'user', '12312312', 'Yasin Arafat', 'yasin@gmail.com', 'male', '3/3/2001', 'anik.jpg', '3/C,Kolbagan,Road-1,Dhaka-1207', 'blocked', '2017', '2/7/17'),
-('tamim', 'user', '12312312', 'Tamim', 'tamim@gmail.com', 'male', '6/7/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'pending', '', '');
+('shovra', 'admin', '12312312', 'Shovra Das', 'shovra@aiub.edu', 'male', '4/5/1980', '', 'Aiub', 'active', '', ''),
+('tamim', 'user', '12312312', 'Tamim', 'tamim@gmail.com', 'male', '6/7/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'pending', '2016', '2/4/17');
 
 -- --------------------------------------------------------
 
