@@ -105,21 +105,14 @@
         <table align="left" width="100%">
             <tr>
            <td>
-              Address : <input type="text" value="<?= $_SESSION['user']['address']; ?>"/> or
+              Address : <input type="text" name="address" value="<?= $_SESSION['user']['address']; ?>"/>
            </td>
-            </tr>
-          <tr>
-               <td>
-                   Address :  <input type="text"/><input type="radio"/>Use This One As My Shipping Address
-               </td>
             </tr>
 
             <tr>
                 <td>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="payment.php"><input type="submit" value="Done"></a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button onclick="location.href='purches.php';">GO Back</button>
+                <a href="payment.php?ad=<?=$_SESSION['user']['address']; ?>"><input type="submit" value="Forward"></a>
                 </td>
             </tr>
             <tr height="30"></tr>

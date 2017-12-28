@@ -155,7 +155,8 @@
 	function function1()
 {
 
-window.alert ("product purchesed");
+    
+window.alert ("product purchesed Grand Total= <?=$_SESSION["pay"]?>");
 }
 	
 	</script>

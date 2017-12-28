@@ -1,6 +1,25 @@
 <?php include "../../data/product_access.php"; ?>
 <?php
 	session();
+
+    
+if(isset($_COOKIE['item']))
+           {
+               foreach($_COOKIE['item'] as $name1 => $value)
+               {
+                   if(isset($_POST["delete$name1"]))
+                   {
+                       setcookie("item[$name1]","",time()-999999999999999999999999999999999999999999999999999999999999999999999999999999);
+                       ?>
+                       <script>
+                           window.location.href = window.location.href;
+
+                        </script>
+                        <?php
+                   }
+               }
+              
+           }
 ?>
 
 
@@ -81,63 +100,122 @@
         </table>
 
         <table align="left" width="100%">
-            <tr height="30">
-
-            </tr>
-            <tr height="50">
+           <form method="POST">
+            
+            <?php
+            $d=0;
+                if(isset($_COOKIE['item']))
+                {
+                    $d=$d+1;
+                }
+            if($d==0)
+            {
+                echo "<h3>You have No Product In the Cart Right Now :(</h3><br><br><br><br><br><br>";
+                ?>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="home.php">Go Shopping</a>     
+                <?php
+                
+                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+            }
+            else
+            {
+                ?>
+                <thead>
+               <tr>
                 <td width="15%">
-                    <img src="pictures/mshirt4.PNG" height="100" width="100">
+                    Item Image
                 </td>
-                <td width="15%">
-                    Men's Shirt<br> Color : Blue<br> Size : L<br>Quantity : <select name="quantity">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-					</select><br> Price : 550tk
+                 <td width="30%">
+                    Product Name
+                </td>
+                <td width="20%">
+                    Price
+                </td>
+                <td width="20%">
+                    Quantity
+                </td>
+                <td width="20%">
+                    Total Price
                 </td>
                 <td>
-                    <input type="button" value="X">
+                    
                 </td>
             </tr>
-            <tr height="50">
-                <td width="15%">
-                    <img src="pictures/wshirt1.PNG" height="100" width="100">
-                </td>
-                <td width="15%">
-                    Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : <select name="quantity">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-					</select><br> Price : 600tk
+           </thead>
+               <tbody>
+               <?php 
+                foreach($_COOKIE['item'] as $name1 => $value)
+               {
+                   $values11=explode("_",$value);
+                    
+                    ?>
+                    <tr>
+                <td>
+                    <a href=""><img src="../res/products/<?=$values11[0];?>" height="100" width="100"></a>
                 </td>
                 <td>
-                    <input type="button" value="X">
+                    <h3><?=$values11[1];?></h3>
+                </td>
+                <td>
+                    <h3><?=$values11[2];?></h3>
+                </td>
+                <td>
+<!--                    <input type="text" readonly value="<?=$values11[3];?>"/>-->
+                   <h3><?=$values11[3];?></h3>
+                </td>
+                <td>
+                    <h3><?=$values11[4];?></h3>
+                </td>
+                <td>
+                    <input type="submit" name="delete<?=$name1?>" value="X">
                 </td>
             </tr>
-            <tr height="30">
-
-            </tr>
+               
+                    <?php
+                }
+                
+                ?>
+                
+              
+                
+                <?php
+            }
+            
+            $total =0;
+            if(is_array($_COOKIE['item']))
+           {
+            foreach($_COOKIE['item'] as $name1 => $value)
+               {
+                   $values11=explode("_",$value);
+                    $total = $total+$values11[4];
+               }
+                $_SESSION["pay"]=$total;
+            }
+            
+            ?>
+            
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>
-                  <a href="purches.php">  <input type="submit" value="Proceed To Check-Out">
-                </td>
+                <td><h2>Grand Total</h2></td>
+                <td><h2><?=$total?></h2></td>
+                <td></td>
             </tr>
-        </table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><a href="delevaryAddress.php"><input type="button" value="Checkout" /></a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            
+           </tbody>
+           </form>
+        </table>  
 
     </td>
 
