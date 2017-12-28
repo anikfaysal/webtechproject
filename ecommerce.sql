@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2017 at 09:35 PM
+-- Generation Time: Dec 28, 2017 at 12:56 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -104,7 +104,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`username`, `code`, `pname`, `cost`, `size`, `colour`, `quantity`, `customersts`, `adminsts`, `sendshipping`, `shippingsts`, `tracknumber`, `ppic`) VALUES
-('adi', '0001', 'T-Shirt', 1000, '0', 'Red', 1, 'Not Received', 'Confirm', 'Sent', 'Received', '8058905', 'mshirt1.png');
+('halim', '0001', 'T-Shirt', 1000, '0', 'Red', 1, 'Not Received', 'Confirm', 'Sent', 'Received', '8058905', 'mshirt1.png'),
+('halim', '1212', 'Small Purse', 500, '10', 'Red', 1, 'Received', 'Confirm', 'Sent', 'Received', '0285258', 'bag.jpg');
 
 -- --------------------------------------------------------
 
@@ -206,6 +207,37 @@ INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gende
 ('rafat', 'user', '12312312', 'Yasin Arafat', 'yasin@gmail.com', 'male', '3/3/2001', 'anik.jpg', '3/C,Kolbagan,Road-1,Dhaka-1207', 'blocked', '2017', '2/7/17'),
 ('tamim', 'user', '12312312', 'Tamim', 'tamim@gmail.com', 'male', '6/7/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'pending', '', '');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wish`
+--
+
+CREATE TABLE `wish` (
+  `username` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `catagory` varchar(255) NOT NULL,
+  `subcatagory` varchar(255) NOT NULL,
+  `color` varchar(255) NOT NULL,
+  `material` varchar(255) NOT NULL,
+  `size` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `bpprice` double NOT NULL,
+  `sprice` double NOT NULL,
+  `quantity` double NOT NULL,
+  `offer` double NOT NULL,
+  `pdpic` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wish`
+--
+
+INSERT INTO `wish` (`username`, `code`, `name`, `catagory`, `subcatagory`, `color`, `material`, `size`, `description`, `bpprice`, `sprice`, `quantity`, `offer`, `pdpic`) VALUES
+('halim', '111', 'T-Shirt', 'Men', 'Shirt', 'Red', '100% cotton', 'XXL', '100% Cotton.full sleeve t-shirt', 500, 1000, 10, 10, 'mshirt1.PNG'),
+('halim', '112', 'Casual Belt', 'Men', 'Belt', 'Black', 'Leather', '25', 'Leather belt', 2000, 2500, 25, 0, 'belt2.jpg');
+
 --
 -- Indexes for dumped tables
 --
@@ -217,10 +249,22 @@ ALTER TABLE `allproducts`
   ADD PRIMARY KEY (`code`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`code`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `wish`
+--
+ALTER TABLE `wish`
+  ADD PRIMARY KEY (`code`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
