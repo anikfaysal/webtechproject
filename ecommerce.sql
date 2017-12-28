@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2017 at 08:33 AM
+-- Generation Time: Dec 28, 2017 at 09:27 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -200,7 +200,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`username`, `usertype`, `password`, `name`, `email`, `gender`, `dob`, `pp`, `address`, `status`, `regdate`, `lastlogin`) VALUES
 ('adi', 'user', '12312312', 'Arafat ', 'adi@gmail.com', 'female', '4/4/1991', 'anik.jpg', 'uttara', 'active', '2017', '5/5/17'),
 ('anik', 'admin', '12312312', 'faysal anik', 'faysal@gmail.com', 'male', '6/2/1998', '', '12/C,khigao.road no-2', 'pending', '2016', '4/2/16'),
-('halim', 'user', '12312312', 'halim adi', 'halim@gmail.com', 'female', '2/9/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'pending', '2017', '1/1/16'),
+('halim', 'user', '12312312', 'halim adi', 'halim@gmail.com', 'female', '2/9/1994', 'nishat.jpg', 'zigatola,41/1 road#2', 'active', '2017', '1/1/16'),
 ('hanif', 'user', '12312312', 'Hanif faysal', 'hanif@gmail.com', 'male', '6/8/1994', 'anik.jpg', 'panthopath,kolabagan,Dhaka-1209', 'active', '2017', '1/2/16'),
 ('imo', 'admin', '12312312', 'imran ', 'imran@gmail.com', 'male', '2/2/1991', 'imo.jpg', '41/A,Zigatola,Dhanmondi', 'active', '2015', '28/12/17'),
 ('lirab', 'user', '12312312', 'Tasnim Lirab', 'lirab@gmail.com', 'male', '1/1/1999', '', 'pranthopath', 'active', '', ''),
