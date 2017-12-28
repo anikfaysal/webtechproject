@@ -3,6 +3,14 @@
 	session();
 ?>
 
+<?php
+  
+        
+        $order= receiveorders();
+    
+    
+?>
+
 <html>
 
 <head>
@@ -18,7 +26,7 @@
         
                 <input type="text" name="search" placeholder="Enter keyword Here....">
                 <input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="logouthandler.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
                 <a href="order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -34,7 +42,7 @@
             <li><a href="order.php">My Orders </a></li>
             <li><a href="../account/editprofile.php">Settings</a></li>
             <li><a href="">Help </a></li>
-            <li><a href="../account/login.php">Logout </a></li>
+            <li><a href="logouthandler.php">Logout </a></li>
             
                 </ul>
         
@@ -93,6 +101,7 @@
             <td>
             <a href="order.php"><input type="submit" value="All Orders" ><br>
             </td>
+            <td width="250"></td>
             <td>
             <a href="receivedorders.php"><input type="submit" value="Received Oreders" ><br>
             </td>
@@ -101,32 +110,21 @@
             <a href="pending.php"><input type="submit" value="Orders waiting Confirmation" ><br>
             </td>
             </tr>
-            <tr >
+           <tr >
             <td ></td>
-                <td width="35%">
-                   <br><br> <img src="pictures/mshirt4.PNG" height="100" width="100">
-                </td>
-                <td width="15%">
-                    Men's Shirt<br> Color : Blue<br> Size : L<br>Quantity : 1 <br> Price : 550tk
-                </td>
-                <td>
-                    <input type="button" value="X">
-                </td>
+                
+                <table align="left" width="100%" >
+                    <?php foreach ($order as $productn) { ?>
+                    <tr>
+                        <td>
+                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="10%" height="100" ><br><h4>Product Name :<?=$productn['pname']; ?> <br>Price :<?=$productn['cost'] ;?><br>Quantity :<?=$productn['quantity'] ;?><br>Track:Number :<?=$productn['tracknumber'] ;?></h4></a> 
+                            </td>
+                            
+                        </tr>
+                    <?php } ?>  
+                    </table>
+                
             </tr>
-            <tr height="50">
-            <td ></td>
-                <td width="15%">
-                    <img src="pictures/wshirt1.PNG" height="100" width="100">
-                </td>
-                <td width="15%">
-                    Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk
-                </td>
-                <td>
-                    <input type="button" value="X">
-                </td>
-
-            </tr>
-           
         </table>
 
     </td>

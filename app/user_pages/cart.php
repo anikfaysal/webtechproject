@@ -37,7 +37,7 @@ if(isset($_COOKIE['item']))
         
                 <input type="text" name="search" placeholder="Enter keyword Here....">
                 <input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="logouthandler.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
                 <a href="order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -54,7 +54,7 @@ if(isset($_COOKIE['item']))
             <li><a href="../account/editprofile.php">Settings</a></li>
             <li><a href="../account/changepass.php">Change Password</a></li>
 			<li><a href="../account/changepp.php">Change Profile Picture</a></li>
-            <li><a href="../account/login.php">Logout </a></li>
+            <li><a href="logouthandler.php">Logout </a></li>
             
                 </ul>
         

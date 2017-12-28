@@ -11,6 +11,16 @@
 		}
 	}
 ?>
+<?php include "../../data/product_access.php"; ?>
+<?php
+  
+        $catgorymen = discount();
+        $offer = todaysoffers();
+        $wish= wish();
+    
+	
+?>
+
 
 <html>
 <form method="post">
@@ -25,7 +35,7 @@
 		
 				<input type="text" name="search" placeholder="Enter keyword Here....">
 				<input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="../account/login.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Login as <a href="../account/profile.php"><?= $_SESSION['user']['name']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <a href="logouthandler.php">Logout</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 				<a href="order.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="cart.php">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
@@ -42,7 +52,7 @@
 			<li><a href="../account/editprofile.php">Settings</a></li>
 			<li><a href="../account/changepass.php">Change Password</a></li>
 			<li><a href="../account/changepp.php">Change Profile Picture</a></li>
-			<li><a href="../account/login.php">Logout </a></li>
+			<li><a href="logouthandler.php">Logout </a></li>
 			
 			</ul>
 		
@@ -133,83 +143,86 @@
 							</td>
 							</tr>
 
-						<tr>
+						<table align="left" width="100%" >
+					<?php foreach ($catgorymen as $productn) { ?>
+					
 						<td>
-							<img src="pictures\bag.jpg"  width="150"><br>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Shoulder bag</a></h3>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" >Discount 80%</font></h3>
-
-						</td>
-
-						<td>
-							<img src="pictures\shoe.jpg"  width="150"><br>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Casual shoe</a></h3>
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" >Discount 40%</font></h3>
-
-						</td>
-
-						</tr>
-
-						<tr>
-						<td>
-
-							<br><br>
-							
+							<a href="man product.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="50%" height="100" ><br><h4><?=$productn['name']; ?> <br>Discount : <?=$productn['offer'] ;?></h4></a>	
 							</td>
-						</tr>
-
-						<tr>
-
-						<br>
-						<br>
-							<td width="300"><h2><font color="red" >Top Selling Products</font></h2></td>
-						</tr>
-						<tr>
-						<td width="300">
-
-							<br>
 							
-							</td>
-
-</tr>
-
-                       <tr>
-						<td width="250">
-							<img src="pictures\pic.jpg"  width="150">
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Printed Tops</a></h3>
-							
-
-						</td>
-
-						<td width="250">
-							<img src="pictures\watch.jpg"  width="150">
-							<h3><a href="">Fashionable watch</a></h3>
-						</td>
-
 						
+					<?php } ?>	
+					</table>
 
-						<td width="250">
-							<img src="pictures\lipstic.jpg"  width="150">
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Lipstic Set</a></h3>
-						</td>
 
+					
+
+
+						<tr>
+						<td></td>
+						<td></td>
 						
-
-						<td width="250">
-							<img src="pictures\hijab.jpg"  width="150">
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Hijab</a></h3>
-						</td>
-
-
+							<td><h2><font color="red" >Flash Deals</font></h2></td>
+							
 						</tr>
 
 						<tr>
-						<td>
+						<td></td>
+						<td></td>
+<td>
 
-							<br><br>
-							
+						<table align="left" width="100%" >
+					<?php foreach ($offer as $product) { ?>
+					
+						<td></td>
+						<td>
+							<a href="flat.php?id=<?=$product['code']?>"><img src="pictures\<?=$product['pdpic'] ;?>" align="left" align="top" width="50%" height="100" ><br><h4><?=$product['name']; ?> <br><?=$product['cost'] ;?></h4></a>	<br><br><br><br><br><br>
 							</td>
+							
+						
+					<?php } ?>	
+					</table>
+
+					</td>
+
+					</tr>
+
+
+
+
+						<tr>
+						<td></td>
+						<td></td>
+						
+							<td><h2><font color="red" >My Favourite Products</font></h2></td>
+							
 						</tr>
+
+						<tr>
+						<td></td>
+						<td></td>
+<td>
+
+						<table align="left" width="100%" >
+					<?php foreach ($wish as $pro) { ?>
+					
+						<td></td>
+						<td>
+							<a href="wish.php?id=<?=$pro['code']?>"><img src="pictures\<?=$pro['pdpic'] ;?>" align="left" align="top" width="20%" height="100" ><br><h4><?=$pro['name']; ?> <br><?=$pro['sprice'] ;?></h4></a>	<br><br><br><br><br><br>
+							</td>
+							
+						
+					<?php } ?>	
+					</table>
+
+					</td>
+
+					</tr>
+
+
+
+
+
 
 						</tr>
 
@@ -234,6 +247,6 @@
 	
 	
 	</table>
-<form >
+</form >
 
 </html>
