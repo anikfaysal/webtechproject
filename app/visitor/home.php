@@ -16,13 +16,13 @@
 	
 			<tr>
          <th colspan="3" align="center" width="60%">
-            <a href="home.php"><img src="pictures\ali.png" align="left" align="top" width="20%">
+             <a href="home.php"><img src="pictures\ali.png" align="left" align="top" width="20%"></a>
             <br>
             <br>
 
            
                 <input type="text" name="search" placeholder="Enter keyword Here....">
-                <input type="submit" value="Search Here">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Search Here"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../account/login.php">Login</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
                 <a href="../account/login.php">Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

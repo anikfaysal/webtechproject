@@ -1,16 +1,29 @@
+<?php include "../../data/admin_user_service.php"; ?>
+<?php
+        $user11="user";
+        $admin1="admin";
+        $executive1="executive";
+        $Users = getUsersByType($user11);
+		$admins = getUsersByType($admin1);
+        $executives = getUsersByType($executive1);
+		$a=0;
+		$b=0;
+		$c=0;
+		$t=0;
+			foreach ($Users as $User) { 
+				$a=$a+1;
+			}	
+			foreach ($admins as $admin) { 
+				$b=$b+1;
+			}	
+			foreach ($executives as $executive) { 
+				$c=$c+1;
+			}	
+			$t=$a+$b+$c;	
+?>
 <?php include "../../data/session_service.php"; ?>
 <?php
 	session();
-?>
-
-<?php include "../../data/admin_user_service.php"; ?>
-<?php
-        $user="user";
-        $admin="admin";
-        $executive="executive";
-        $Users = getUsersByStatus($use);
-        $admins = getUsersByStatus($admin);
-        $executives = getUsersByStatus($executive);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +43,7 @@
 						<td width="630"></td>
 						<td>
 							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="../account/login.php">Logout</a>
+							<a href="logouthandler.php">Logout</a>
 
 						</td>
 					</tr>
@@ -114,28 +127,35 @@
 </fieldset>
 <br/>
 <table width="100%" cellspacing="0" border="1" cellpadding="5">
-    <?php foreach ($allproduct as $product) { ?>
+
     <tr>
         <th align="left">ROLE</th>
         <th align="center" width="110">NO OF USERS</th>
     </tr>
-    <tr>
-        <td>Admin</td>
-        <td align="center"><?=count($admins)?></td>        
-    </tr>
-    <tr>
-        <td>Executive</td>
-        <td align="center">43</td>        
-    </tr>
-    <tr>
+	  
+		<tr>
         <td>User</td>
-        <td align="center">296</td>        
-    </tr>
+        <td align="center"><?=$a?></td>          
+		</tr>
+		
+		<tr>
+        <td>Admin</td>
+        <td align="center"><?=$b?></td>          
+		</tr>
+		
+		<tr>
+        <td>Executive</td>
+        <td align="center"><?=$c?></td>          
+		</tr>
     <tr>
         <td align="right"><b>Total</b></td>
-        <td align="center"><b>347</b></td>        
+        <td align="center"><b><?=$t?></b></td>        
     </tr>
-    <?php } ?>
+	
+	
+	
+	
+   
 </table>
 			</td>
 		</tr>

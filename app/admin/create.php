@@ -21,7 +21,7 @@
 						<td width="630"></td>
 						<td>
 							<span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-							<a href="../account/login.php">Logout</a>
+							<a href="logouthandler.php">Logout</a>
 
 						</td>
 					</tr>
@@ -47,7 +47,7 @@
 					<li><a href="editprofile.php">Edit Profile</a></li>
 					<li><a href="changepp.php">Change Profile Picture</a></li>
 					<li><a href="changepass.php">Change Password</a></li>
-					<li><a href="../account/login.php">Logout</a></li>
+					<li><a href="logouthandler.php">Logout</a></li>
 				</ul>
 				<hr>
 				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -97,7 +97,7 @@
 <fieldset>
     <legend><b>USER | CREATE</b></legend>
     <br/>
-    <form>   
+    <form method="post">   
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td width="100"></td>
@@ -108,7 +108,7 @@
             <tr>
                 <td>User Name</td>
                 <td>:</td>
-                <td><input name="username" type="text" value=""></td>
+                <td><input name="uname" type="text" value=""></td>
                 <td></td>
             </tr>
             <tr><td colspan="4"><hr /></td></tr>
@@ -116,6 +116,27 @@
                 <td>Name</td>
                 <td>:</td>
                 <td><input name="name" type="text" value=""></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4"><hr /></td></tr>
+             <tr>
+                <td>Password</td>
+                <td>:</td>
+                <td><input name="pass" type="password" value=""></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4"><hr /></td></tr>
+             <tr>
+                <td>Confirm Password</td>
+                <td>:</td>
+                <td><input name="cpass" type="password" value=""></td>
+                <td></td>
+            </tr>
+            <tr><td colspan="4"><hr /></td></tr>
+            <tr>
+                <td>Address</td>
+                <td>:</td>
+                <td><input name="address" type="text" value=""></td>
                 <td></td>
             </tr>
             <tr><td colspan="4"><hr /></td></tr>
@@ -133,9 +154,9 @@
                 <td>Gender</td>
                 <td>:</td>
                 <td>
-                    <input name="gender" type="radio">Male
-                    <input name="gender" type="radio">Female
-                    <input name="gender" type="radio">Other
+                    <input name="gender" type="radio" value="male">Male
+                    <input name="gender" type="radio" value="female">Female
+                    <input name="gender" type="radio" value="other">Other
                 </td>
                 <td></td>
             </tr>
@@ -149,23 +170,17 @@
                 </td>
                 <td></td>
             </tr>
-            <tr><td colspan="4"><hr /></td></tr>
-            <tr>
-                <td>Picture</td>
-                <td>:</td>
-                <td><input type="file"></td>
-                <td></td>
-            </tr>
+
             <tr><td colspan="4"><hr /></td></tr>
             <tr>
                 <td>Role</td>
                 <td>:</td>
                 <td>
-                    <select>
+                    <select name="usertype">
                         <option></option>
-                        <option>Admin</option>
-                        <option>Executive</option>
-                        <option>User</option>
+                        <option value="admin">Admin</option>
+                        <option value="executive">Executive</option>
+                        <option value="user">User</option>
                     </select>
                 </td>
                 <td></td>
@@ -175,18 +190,18 @@
                 <td>Status</td>
                 <td>:</td>
                 <td>
-                    <select>
+                    <select name="status">
                         <option></option>
-                        <option >Active</option>
-                        <option>Pending</option>
-                        <option>Blocked</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="blocked">Blocked</option>
                     </select>
                 </td>
                 <td></td>
             </tr>
         </table>
         <hr />
-        <input type="submit" value="Create" onclick="myEditFunction();"/>
+        <input type="submit" value="Create"/>
         <a href="search.php">Back to Search</a>
     </form>
 </fieldset>
@@ -201,12 +216,45 @@
 		</tr>
 	</table>
 </body>
-<script>
-function myEditFunction() {
-    var a = document.getElementsByTagName("fieldset")[0];
-    a.innerHTML = "<h3>New User Created Successfully</h3>";
-    window.alert ("New User Created Successfully");
-    
-}
-</script>
 </html>
+<?php
+
+
+
+	if($_SERVER["REQUEST_METHOD"]=='POST'){
+		
+		include_once("../../Data/user_access.php");
+		
+		$flag=0;
+
+		if($flag!=1){
+			$username=$_REQUEST['uname'];
+			$name=$_REQUEST['name'];
+			$password=$_REQUEST['pass'];
+			$email=$_REQUEST['email'];
+			$gender=$_REQUEST['gender'];
+			$address=$_REQUEST['address'];
+			$dob=$_REQUEST['dob'];
+			
+			$usertype=$_REQUEST['usertype'];
+			$status=$_REQUEST['status'];
+			
+			
+			
+			if(adduseradmin($username,$name,$password,$email,$gender,$address,$dob,$usertype,$status)==true){
+            echo "<script>
+                    alert('Registration Completed , Please wait for admin confirmation for login. Thank you ');
+                   
+                 </script>";
+				 die();
+					
+					
+			}else{
+				echo "Server issue's try again later";
+			}
+		}else{
+			  echo " <ul> <li>Fix all the Problems And Try Again !! </li></ul>  "; 
+		}	 
+	}
+ 
+?>

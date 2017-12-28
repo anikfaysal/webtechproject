@@ -1,8 +1,13 @@
-<?php include "../../data/session_service.php"; ?>
-<?php
-	session();
-?>
+<?php include "../../data/product_access.php"; ?>
 
+<?php
+  
+        
+        $order= adminpending();
+        session();
+    
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +26,7 @@
                         <td width="630"></td>
                         <td>
                             <span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-                            <a href="../account/login.php">Logout</a>
+                            <a href="logouthandler.php">Logout</a>
 
                         </td>
                     </tr>
@@ -47,7 +52,7 @@
                     <li><a href="editprofile.php">Edit Profile</a></li>
                     <li><a href="changepp.php">Change Profile Picture</a></li>
                     <li><a href="changepass.php">Change Password</a></li>
-                    <li><a href="../account/login.php">Logout</a></li>
+                    <li><a href="logouthandler.php">Logout</a></li>
                 </ul>
                 <hr>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -112,66 +117,54 @@
                 <td>
                     <a href="cancelorders.php"><input type="submit" value="Cancelled Orders" >
                 </td>
-            </tr>
-            <tr></tr>
-            
-        </table>
+             <tr >
+            <td ></td>
 
+            
         <table align="center" width="100%">
             <tr align="center"><br>
-               <td>
+                <td>
                     <label><h3>All Orders</h3></label>
                     
                 </td>
                  <td>
                     <label><h3>Customer</h3></label>
-
-                    <tr align="center">
-                        
-                        <td>
-                Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Anik<br>Khilgaon.Dhaka
-            </td>
-
-
-                    </tr>
-
-
+                    
+                </td>
+                 <td>
+                    <label><h3>Shipping Company</h3></label>
+                </td>
+                 <td>
+                    <label><h3>Track</h3></label>
+                </td>
+                 <td>
+                    <label><h3>Customer Confirmation</h3></label>
+                </td>
             </tr>
-
-                <tr align="center">
-
-                    <td>
-                    <a href="track.php"><input type="button" value="Track"><br>
-                    </td>
-
-                </tr>
-
-
-                <tr align="center">
-                        
+                
+                <table align="left" width="100%" >
+                    <?php foreach ($order as $productn) { ?>
+                    <tr>
                         <td>
-                <br><br>Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Anik<br>Khilgaon.Dhaka
-            </td>
-
-
-                    </tr>
-
-
-            </tr>
-
-                <tr align="center">
+                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="30%" height="100" ></td><td><h4><?=$productn['username']; ?></td> <br><td><?=$productn['shippingsts'] ;?></td><td><?=$productn['tracknumber'] ;?></td><td><?=$productn['customersts'] ;?></h4></td></a> 
+                            </td>
+                            <tr align="center">
 
                     <td>
                     <a href="track.php"><input type="button" value="Track">
                     </td>
 
                 </tr>
+                            
+                        </tr>
+                    <?php } ?>  
+                    </table>
+                
+            </tr>
+
+
+            </tr>
+
 
 
         </table>

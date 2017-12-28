@@ -21,7 +21,7 @@
                         <td width="630"></td>
                         <td>
                             <span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-                            <a href="../account/login.php">Logout</a>
+                            <a href="logouthandler.php">Logout</a>
 
                         </td>
                     </tr>
@@ -47,7 +47,7 @@
                     <li><a href="editprofile.php">Edit Profile</a></li>
                     <li><a href="changepp.php">Change Profile Picture</a></li>
                     <li><a href="changepass.php">Change Password</a></li>
-                    <li><a href="../account/login.php">Logout</a></li>
+                    <li><a href="logouthandler.php">Logout</a></li>
                 </ul>
                 <hr>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>

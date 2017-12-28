@@ -12,7 +12,7 @@
 				<table border="0">
 					<tr align="center">
 						<td width="230" height="100">
-							<a href="../user_pages/home.php"><img src="ali.png" alt="Ali" width="200"></a>
+							<a href="../visitor/home.php"><img src="ali.png" alt="Ali" width="200"></a>
 						</td>
 						<td width="630"></td>
 						<td>
@@ -88,10 +88,10 @@
 				session_start();
 				$_SESSION['user']=$result;
 
-				if($_SESSION['user']['usertype']=="admin"){
+				if(($_SESSION['user']['usertype']=="admin")&&($_SESSION['user']['status']=="active")){
 					header("location:../admin/loggedin.php");
 				}
-				else if($_SESSION['user']['usertype']=="user"){
+				else if(($_SESSION['user']['usertype']=="user")&&($_SESSION['user']['usertype']=="active")){
 					header("location:../user_pages/home.php");
 				}
 				

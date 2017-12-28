@@ -1,6 +1,13 @@
-<?php include "../../data/session_service.php"; ?>
+
+<?php include "../../data/product_access.php"; ?>
+
 <?php
-	session();
+  
+        
+        $order= adminorders();
+        session();
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +27,7 @@
                         <td width="630"></td>
                         <td>
                             <span>Logged in as <a href="profile.php"><?= $_SESSION['user']['name']; ?></a></span> &nbsp;&nbsp; | &nbsp;&nbsp;
-                            <a href="../account/login.php">Logout</a>
+                            <a href="logouthandler.php">Logout</a>
 
                         </td>
                     </tr>
@@ -46,7 +53,7 @@
                     <li><a href="editprofile.php">Edit Profile</a></li>
                     <li><a href="changepp.php">Change Profile Picture</a></li>
                     <li><a href="changepass.php">Change Password</a></li>
-                    <li><a href="../account/login.php">Logout</a></li>
+                    <li><a href="logouthandler.php">Logout</a></li>
                 </ul>
                 <hr>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User</span><br>
@@ -138,88 +145,21 @@
             </tr>
             <tr></tr>
 
-            <br><tr align="center">
-
-            <td>
-                Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Anik<br>Khilgaon.Dhaka
-            </td>
-            <td>
-                Received
-            </td>
-            <td>
-               <a href="track.php">866825
-            </td>
-            <td>
-                Received
-            </td>
- 
+             <tr >
+            <td ></td>
+                
+                <table align="left" width="100%" >
+                    <?php foreach ($order as $productn) { ?>
+                    <tr>
+                        <td>
+                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="30%" height="100" ></td><td><h4><?=$productn['username']; ?></td> <br><td><?=$productn['shippingsts'] ;?></td><td><?=$productn['tracknumber'] ;?></td><td><?=$productn['customersts'] ;?></h4></td></a> 
+                            
+                            
+                        </tr>
+                    <?php } ?>  
+                    </table>
+                
             </tr>
-
-            <tr align="center">
-
-            <td>
-                Men's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Imo<br>Farmgate.Dhaka
-            </td>
-            <td>
-                Received
-            </td>
-            <td>
-               <a href="track.php">5555825
-            </td>
-            <td>
-                Not Received
-            </td>
- 
-            </tr>
-
-
-            <tr align="center">
-            <td>
-                Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Minhaz<br>Dhanmondi.Dhaka
-            </td>
-            <td>
-               Not Received
-            </td>
-            <td>
-               <a href="track.php">866825
-            </td>
-            <td>
-                Received
-            </td>
- 
-            </tr>
-
-            <tr align="center">
-
-            <td>
-                Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Nishee<br>Gollamri,Khulna
-            </td>
-            <td>
-               Not Received
-            </td>
-            <td>
-               <a href="track.php">866825
-            </td>
-            <td>
-               Not Received
-            </td>
- 
-            </tr>
-            
-
-
 
         </table>
 

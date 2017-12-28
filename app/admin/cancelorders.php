@@ -1,8 +1,13 @@
-<?php include "../../data/session_service.php"; ?>
-<?php
-	session();
-?>
+<?php include "../../data/product_access.php"; ?>
 
+<?php
+  
+        
+        $order= admincancel();
+        session();
+    
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,34 +133,21 @@
 </tr>
 
 
-                 <tr align="center">
-                        
+                <table align="left" width="100%" >
+                    <?php foreach ($order as $productn) { ?>
+                    <tr>
                         <td>
-                <br>Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Anik<br>Khilgaon.Dhaka
-            </td>
-
-
-                    </tr>
-
-
-        <tr align="center">
+                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="30%" height="100" ></td><td><h4><?=$productn['username']; ?></td> <br><td><?=$productn['shippingsts'] ;?></td><td><?=$productn['tracknumber'] ;?></td><td><?=$productn['customersts'] ;?></h4></td></a> 
+                            </td>
                         
-                        <td>
-                <br>Women's Shirt<br> Color : Blue<br> Size : M<br>Quantity : 2 <br>Price : 600tk<br>Code :58655<br><br>
-            </td>
-            <td>
-                Anik<br>Khilgaon.Dhaka
-            </td>
 
+                    
 
-                    </tr>
-
-               
-
-
+                
+                            
+                        </tr>
+                    <?php } ?>  
+                    </table>
         </table>
 
 
