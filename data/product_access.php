@@ -1,48 +1,6 @@
 <?php
 	if(require_once("db.php")){
-	
-		// function searchUser($uname){
-			// global $conn;
-			// $query="SELECT * FROM users WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);
-			
-			// return mysqli_fetch_assoc($result);
-		// }
-		
-		// function addUser($username,$usertype,$password,$name,$email,$gender,$dob,$pp,$address){
-			
-			// global $conn;
 
-			// $query="INSERT INTO users(username, usertype,password , name, email, gender, dob,pp,address) VALUES ('$username','$usertype','$password','$name','$email','$gender',$dob,'$pp','$address')";
-		 	// $result=mysqli_query($conn,$query);
-			
-			
-			// return $result;
-		// }
-		// function updateUser($uname,$name,$email,$gender,$dob){
-			// global $conn;
-			// $query="UPDATE users SET name='$name', email='$email', gender='$gender', dob='$dob' WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);
-			
-			// return searchUser($uname);
-		
-		// }
-		
-		// function deleteUser($uname){
-			// global $conn;
-			// $query="delete FROM users WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);
-			
-			// return $result;
-		// }
-		
-		// function updatepassword($uname,$pass){
-			// global $conn;
-			// $query="UPDATE users SET pass='$pass' WHERE uname='$uname'";
-			// $result=mysqli_query($conn,$query);	
-			// return 1;
-		
-		// }
 function menproducts()
 		{
 			global $conn;
@@ -253,6 +211,68 @@ function menproducts()
 			global $conn;
 			$user=$_SESSION['user']['username'];
 			$sql = "SELECT * FROM orders WHERE username LIKE'$user' AND customersts like 'Not Received'";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+            
+        
+        function adminorders()
+		{
+			global $conn;
+			
+			$sql = "SELECT * FROM orders WHERE adminsts LIKE 'Confirm' ";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+		function adminpending()
+		{
+			global $conn;
+			
+			$sql = "SELECT * FROM orders WHERE customersts LIKE 'Not Received' ";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+		function admincancel()
+		{
+			global $conn;
+			
+			$sql = "SELECT * FROM orders WHERE adminsts LIKE 'Cancel' ";        
+			$result = executeSQL($sql);
+        
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
+            $wish[$i] = $row;
+
+        }
+        return $wish;
+        
+		}
+
+
+		function adminnew()
+		{
+			global $conn;
+			
+			$sql = "SELECT * FROM orders WHERE adminsts LIKE '' ";        
 			$result = executeSQL($sql);
         
 			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){

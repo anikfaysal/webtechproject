@@ -83,7 +83,7 @@
         
         
     function AddProduct($product){
-        $a =0;
+			$a =0;
             $sql = "INSERT INTO allproducts(code,name,catagory,subcatagory,color,material,size,description,bprice,sprice,quantity,offer,pdpic) VALUES('$product[code]','$product[name]','$product[catagory]','$product[subcatagory]','$product[color]','$product[material]','$product[size]','$product[description]','$product[bprice]','$product[sprice]','$product[quantity]','$a','$product[pdpic]')";
             $result = executeSQL($sql);
             return $result;

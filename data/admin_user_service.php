@@ -39,19 +39,42 @@
 
             return $Useremail;				
 	        }
+			
         
-    function getUsersByStatus($searchvalue){
-            $sql = "SELECT * FROM users WHERE status LIKE '%$searchvalue%'";        
-            $result = executeSQL($sql);
-            
+    function getUsersByType($searchvalue){
+            $sql = "SELECT * FROM users WHERE usertype LIKE '%$searchvalue%'  ";   
+            $result = executeSQL($sql); 
             $Userstatus = array();
             for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
 			{
             $Userstatus[$i] = $row;
 			}
-
             return $Userstatus;				
 	        }
+        //imo ai khane
+        
+    function getUsersByStatus($searchvalue){
+            $sql = "SELECT * FROM users WHERE status LIKE '%$searchvalue%'  ";   
+            $result = executeSQL($sql); 
+            $Userstatus = array();
+            for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+			{
+            $Userstatus[$i] = $row;
+			}
+            return $Userstatus;				
+	        }
+			
+		 function getUsersBy_Usertype_And_Active($active){
+            $sql = "SELECT * FROM users WHERE usertype LIKE 'user' And status LIKE '%$active%'";   
+            $result = executeSQL($sql); 
+            $actives = array();
+            for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+			{
+            $actives[$i] = $row;
+			}
+            return $actives;				
+	        }	
+			////imo ai khane sesh 2 ta page ar function
         
     function getUsersByUserName($searchvalue){
             $sql = "SELECT * FROM users WHERE username LIKE '%$searchvalue%'";        

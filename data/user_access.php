@@ -22,7 +22,14 @@
 			$sql="INSERT INTO users(username, usertype, password, name,email,gender,dob, address, status) VALUES ('$username','$usertype','$password','$name','$email','$gender','$dob','$address','$status')";
 			$result = executeSQL($sql);
 			return $result;
-		}	 
+		      }
+        
+        function adduseradmin($username,$name,$password,$email,$gender,$address,$dob,$usertype,$status){
+		
+			$sql="INSERT INTO users(username, usertype, password, name,email,gender,dob, address, status) VALUES ('$username','$usertype','$password','$name','$email','$gender','$dob','$address','$status')";
+			$result = executeSQL($sql);
+			return $result;
+		      }
 		
 
 		 function updateUser($username,$name,$email,$gender,$dob,$add){
