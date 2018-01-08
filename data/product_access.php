@@ -120,6 +120,8 @@ function menproducts()
         
         return $productcode;
     }
+        
+        
 	
 	function getProductByNameMale($pnamee){
         $sql = "SELECT * FROM allproducts WHERE catagory='Men' AND  subcatagory LIKE '%$pnamee%'";        
@@ -178,7 +180,6 @@ function menproducts()
 
       function allorders()
 		{
-			global $conn;
 			$user=$_SESSION['user']['username'];
 			$sql = "SELECT * FROM orders WHERE username LIKE'$user' ";        
 			$result = executeSQL($sql);
@@ -193,7 +194,6 @@ function menproducts()
 
 		 function receiveorders()
 		{
-			global $conn;
 			$user=$_SESSION['user']['username'];
 			$sql = "SELECT * FROM orders WHERE username LIKE'$user' AND customersts like 'Received'";        
 			$result = executeSQL($sql);
@@ -226,7 +226,7 @@ function menproducts()
 		{
 			global $conn;
 			
-			$sql = "SELECT * FROM orders WHERE adminsts LIKE 'Confirm' ";        
+			$sql = "SELECT * FROM orders WHERE adminsts LIKE 'Confirm' AND customersts LIKE 'Received'";        
 			$result = executeSQL($sql);
         
 			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
@@ -269,10 +269,8 @@ function menproducts()
 
 
 		function adminnew()
-		{
-			global $conn;
-			
-			$sql = "SELECT * FROM orders WHERE adminsts LIKE '' ";        
+		{	
+			$sql = "SELECT * FROM orders WHERE adminsts LIKE 'Not Seen' ";        
 			$result = executeSQL($sql);
         
 			for($i=0; $row=mysqli_fetch_assoc($result); ++$i){
@@ -283,7 +281,17 @@ function menproducts()
         
 		}
 
-
+        //order confirm cancel shipping site admin
+        
+        function orderconfirm($trackid)
+        {
+            $status="Confirm";
+            $sql="UPDATE orders SET adminsts='$status' WHERE tracknumber=$trackid";
+            var_dump($sql);
+            $result = executeSQL($sql);
+            var_dump($result);
+            return $result;
+        }
 
     //cookies//-
 
@@ -364,8 +372,67 @@ function menproducts()
         
         return $productcode;
     }
+        
+        
+     function getAllProductmywish($username11){
+        $sql = "SELECT * FROM wish WHERE username LIKE '%$username11%'";        
+        $result = executeSQL($sql);
+        
+        $wishlist = array();
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+			{
+            $wishlist[$i] = $row;
+			}
+        
+        return $wishlist;
+    }
 	
-	
+	 function insertcommnet($product)
+        {
+           $sql = "INSERT INTO badproducts(name,email,comment,prate,pdname,catagory,subcatagory,pdpic,code,bprice,sprice) VALUES('$product[cname]','$product[cemail]','$product[cmnt]','$product[prate]','$product[pdname]','$product[catagory]','$product[subcatagory]','$product[pdpic]','$product[code]','$product[bprice]','$product[sprice]')";
+            
+            $result = executeSQL($sql);
+            return $result;
+        }
+        
+        function getProductforcmnt($productId)
+        {
+            $sql = "SELECT * FROM badproducts WHERE code=$productId";        
+        $result = executeSQL($sql);
+        
+         $Productforcmnt = array();
+			for($i=0; $row=mysqli_fetch_assoc($result); ++$i)
+			{
+            $Productforcmnt[$i] = $row;
+			}
+        
+        return $Productforcmnt;
+        }
+        
+        function addProductToWish($product)
+        {
+        $sql = "INSERT INTO wish(username,code,name,catagory,subcatagory,color,material,size,description,bpprice,sprice,quantity,offer,pdpic) VALUES('$product[username]','$product[code]','$product[name]','$product[catagory]','$product[subcatagory]','$product[color]','$product[material]','$product[size]','$product[description]','$product[bpprice]','$product[sprice]','$product[quantity]','$product[offer]','$product[pdpic]')";
+                    $result = executeSQL($sql);
+            return $result;
+        }
+        
+        function getTrackid($product)
+        {
+            $sql="SELECT LAST_INSERT_ID($product) From orders";
+            $result = executeSQL($sql);
+            return $result;
+        }
+        
+        function insertToOrders($productcode)
+        {
+           $sql= "INSERT INTO orders(username,code,pname,cost,size,colour,quantity,customersts,adminsts,sendshipping,shippingsts,tracknumber, ppic) VALUES ('$productcode[username]','$productcode[code]','$productcode[pname]','$productcode[cost]','$productcode[size]','$productcode[colour]','$productcode[quantity]','$productcode[customersts]','$productcode[adminsts]','$productcode[sendshipping]','$productcode[shippingsts]', NULL,'$productcode[ppic]')";
+        
+            $result = executeSQL($sql);
+            return  $result;
+        }
+        
+        
+
 
 
 
@@ -386,6 +453,9 @@ function menproducts()
 		}
 
 	}
+       
+        
+       
 		
 					
 	}

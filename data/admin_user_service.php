@@ -98,6 +98,29 @@
             return $result;
             }
         
+         function dailyvisitor()
+        {
+            $sql = "SELECT * FROM dailyvisitor";
+            $result = executeSQL($sql);
+            while($row=mysqli_fetch_assoc($result))
+			{
+                $visitorCounter = $row['count'];
+                $visitorCounterNew =$visitorCounter+1;
+                $sql1 = "UPDATE dailyvisitor SET count=$visitorCounterNew";
+                $result1 = executeSQL($sql1);
+			}			
+	   }
+        function getVisitorCount()
+        {
+            $sql = "SELECT * FROM dailyvisitor";
+            $result = executeSQL($sql);
+            while($row=mysqli_fetch_assoc($result))
+			{
+                $visitorCounter = $row['count'];
+			}
+            return $visitorCounter;
+        }
+        
     }
 	
 	else
