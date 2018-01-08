@@ -1,9 +1,10 @@
 <?php include "data/product_access.php"; ?>
+<?php include "data/admin_user_service.php"; ?>
 <?php
   
         $catgorymen = discount();
         $offer = todaysoffers();
-    
+        $counter = dailyvisitor();
 	
 ?>
 
