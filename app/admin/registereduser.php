@@ -69,8 +69,10 @@
 			<li><a href="orders.php">Orders</a></li>
             <li><a href="allProducts.php">All Products</a></li>
             <li><a href="settings.php">Product Settings</a></li>
+<!--
             <li><a href="Discount.php">Discount's</a></li>
 			<li><a href="editdiscount.php">Edit Discount</a></li>
+-->
             <li><a href="todays_offer.php">Today's Offer</a></li><br>
             </ul>
             <hr>

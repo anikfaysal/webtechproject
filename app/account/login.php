@@ -97,7 +97,11 @@
 				
 			}
 			else{
-				echo "Invalid User Name or Password";
+				 ?>
+                       <script>
+                          alert("Invali Username Or Password");
+                        </script>
+                        <?php
 			}
 		
 	}

@@ -9,7 +9,7 @@ if(isset($_COOKIE['item']))
                {
                    if(isset($_POST["delete$name1"]))
                    {
-                       setcookie("item[$name1]","",time()-999999999999999999999999999999999999999999999999999999999999999999999999999999);
+                       setcookie("item[$name1]","",time()- 3600);
                        ?>
                        <script>
                            window.location.href = window.location.href;
@@ -87,6 +87,14 @@ if(isset($_COOKIE['item']))
 			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
 			</ul>
+       <label><b>Report</b></label><hr>
+			<ul>
+			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
+			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
+			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
+			<li><a href="mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
+			<li><a href="myfavouriteList.php">My Favourite List </a></li>
+			</ul>
         </td>
 
     <td valign="top" width="40%">
@@ -116,7 +124,7 @@ if(isset($_COOKIE['item']))
                 <a href="home.php">Go Shopping</a>     
                 <?php
                 
-                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
             }
             else
             {
@@ -183,7 +191,7 @@ if(isset($_COOKIE['item']))
             }
             
             $total =0;
-            if(is_array($_COOKIE['item']))
+            if(isset($_COOKIE['item']))
            {
             foreach($_COOKIE['item'] as $name1 => $value)
                {
@@ -194,7 +202,10 @@ if(isset($_COOKIE['item']))
             }
             
             ?>
-            
+            <?php
+            //$d=0;
+                if(isset($_COOKIE['item']))
+                { ?>
             <tr>
                 <td></td>
                 <td></td>
@@ -211,6 +222,7 @@ if(isset($_COOKIE['item']))
                 <td></td>
                 <td></td>
             </tr>
+            <?php } ?>
             
             
            </tbody>

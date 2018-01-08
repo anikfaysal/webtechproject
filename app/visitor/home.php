@@ -1,9 +1,10 @@
 <?php include "../../data/product_access.php"; ?>
+<?php include "../../data/admin_user_service.php"; ?>
 <?php
   
         $catgorymen = discount();
         $offer = todaysoffers();
-    
+        $counter = dailyvisitor();
 	
 ?>
 
@@ -61,7 +62,6 @@
 			<li><a href="eck products.php?pname=TableFan">Table Fans</a></li>
 			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
-			</ul>
 			</ul>
 		</td>
 		<td></td>
@@ -154,7 +154,7 @@
 						<tr>
 						<td></td>
 						<td></td>
-<td>
+                        <td>
 
 						<table align="left" width="100%" >
 					<?php foreach ($offer as $product) { ?>

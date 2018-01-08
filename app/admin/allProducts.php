@@ -3,7 +3,8 @@
 <?php
 	session();
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $searchKey = $_POST['search'];
+           
+        $searchKey = $_POST['search']; 
         $searchfilter = $_REQUEST['filter'];
         if($searchfilter == "any")
         {
@@ -20,6 +21,11 @@
          else if($searchfilter == "name")
         {
             $allproduct = getAllProductByName($searchKey);
+        }
+        else if($searchfilter == "offer")
+        {
+            $allproduct = getAllProductByOfferWithParameter($searchKey);
+                
         }
         else if($searchfilter == "code")
          {
@@ -105,8 +111,10 @@
 			<li><a href="orders.php">Orders</a></li>
             <li><a href="allProducts.php">All Products</a></li>
             <li><a href="settings.php">Product Settings</a></li>
+<!--
             <li><a href="Discount.php">Discount's</a></li>
 			<li><a href="editdiscount.php">Edit Discount</a></li>
+-->
             <li><a href="todays_offer.php">Today's Offer</a></li><br>
             </ul>
             <hr>
@@ -145,6 +153,7 @@
                             <option value="subcatagory">Sub-Category</option>
                             <option value="name">Name</option>
                             <option value="code">Code</option>
+                             <option value="offer">Offer</option>
                             </select>
                             <input type="text" name="search" placeholder="Enter keyword Here....">
                             <input type="submit" value="Search"></h3></tr><br/>
@@ -153,23 +162,26 @@
                 <td width="12" align="center">
                     <h3>Image</h3>
                 </td>
-                <td width="12%" align="center">
+                <td width="10%" align="center">
                    <h3>Category</h3>
                 </td>
-                <td width="12%" align="center">
+                <td width="11%" align="center">
                    <h3>Sub-Category</h3>
                 </td>
-                 <td width="12" align="center">
+                 <td width="11" align="center">
                     <h3>Name</h3>
                 </td>
-                <td width="12%" align="center">
+                <td width="10%" align="center">
                     <h3>Code</h3>
                 </td>
-                <td width="12%" align="center">
+                <td width="10%" align="center">
                     <h3>Buying Price</h3>
                 </td>
-                 <td width="12%" align="center">
+                 <td width="10%" align="center">
                     <h3>Selling Price</h3>
+                </td>
+                <td width="10%" align="center">
+                    <h3>Offer Price</h3>
                 </td>
                  <td width="16%" align="center">
                    
@@ -202,9 +214,13 @@
                     <h3><?=$product['sprice']?></h3>
                 </td>
                 <td align="center">
+                    <h3><?=$product['offer']?></h3>
+                </td>
+                <td align="center">
                     <a href="productDetails.php?cd=<?=$product['code']?>"><button>Detail</button></a>
                     <a href="productEdit.php?cd=<?=$product['code']?>"><button>Edit</button></a>
                     <a href="productDelete.php?cd=<?=$product['code']?>"><button>Delete</button></a>
+                    <a href="productTodayofferAdd.php?cd=<?=$product['code']?>"><button>Add To Todays Offer</button></a>
                 </td>		
             </tr>
             <?php } ?>

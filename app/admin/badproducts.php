@@ -1,6 +1,11 @@
 <?php include "../../data/session_service.php"; ?>
+<?php include "../../data/product_access_admin.php"; ?>
 <?php
 	session();
+        
+ $rate1="bad"; 
+ $rate2="worse"; 
+$allproduct = getAllProductByRate($rate1,$rate2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,8 +70,10 @@
 			<li><a href="orders.php">Orders</a></li>
             <li><a href="allProducts.php">All Products</a></li>
             <li><a href="settings.php">Product Settings</a></li>
+<!--
             <li><a href="Discount.php">Discount's</a></li>
 			<li><a href="editdiscount.php">Edit Discount</a></li>
+-->
             <li><a href="todays_offer.php">Today's Offer</a></li><br>
             </ul>
             <hr>
@@ -101,116 +108,56 @@
                 <td width="14%" align="center">
                     <h3>Image</h3>
                 </td>
-                <td width="14%" align="center">
+                <td width="12%" align="center">
                    <h3>Category</h3>
                 </td>
-                <td width="14%" align="center">
+                <td width="12%" align="center">
                    <h3>Sub-Category</h3>
                 </td>
-                <td width="14%" align="center">
+                <td width="12%" align="center">
                     <h3>Code</h3>
                 </td>
-                <td width="14%" align="center">
-                    <h3>Price</h3>
+                <td width="12%" align="center">
+                    <h3>BPrice</h3>
                 </td>
-                <td width="16%" align="center">
+                <td width="12%" align="center">
+                    <h3>SPrice</h3>
+                </td>
+                <td width="12%" align="center">
                     <h3>Rated As</h3>
                 </td>
                 <td width="14%" align="center">
                 </td>
             </tr>
+             <?php foreach ($allproduct as $product) { ?>
             <tr>
                 <td align="center">
-                    <img src="../res/products/mshirt4.PNG" align="center" width="45%" height="25%">
+                    <img src="../res/products/<?=$product['pdpic'];?>" align="center" width="45%" height="25%">
                 </td>
                 <td align="center">
-                    <h3>Men</h3>
+                    <h3><?=$product['catagory'];?></h3>
                 </td>
                 <td align="center">
-                    <h3>Shirt</h3>
+                    <h3><?=$product['subcatagory'];?></h3>
                 </td>
                 <td align="center">
-                    <h3>MS-177</h3>
+                    <h3><?=$product['code'];?></h3>
                 </td>
                 <td align="center">
-                    <h3>550tk</h3>
+                    <h3><?=$product['bprice'];?></h3>
+                </td>
+                <td align="center">
+                    <h3><?=$product['sprice'];?></h3>
                 </td>
                  <td align="center">
-                    <h3>Bad</h3>
+                    <h3><?=$product['prate'];?></h3>
                 </td>
                 <td align="center">
-                    <a href="settings.php"><input type="submit" value="Edit"/></a>
+                    <a href="productEdit.php?cd=<?=$product['code']?>"><input type="button" value="Edit"/></a>
                 </td>
                 
             </tr>
-            <tr>
-                <td align="center">
-                    <img src="../res/products/female.png" align="center" width="45%" height="25%">
-                </td>
-                <td align="center">
-                    <h3>Women</h3>
-                </td>
-                <td align="center">
-                    <h3>Pant</h3>
-                </td>
-                <td align="center">
-                    <h3>WP-111</h3>
-                </td>
-                <td align="center">
-                    <h3>800tk</h3>
-                </td>
-                <td align="center">
-                    <h3>Worse</h3>
-                </td>
-                <td align="center">
-                    <a href="settings.php"><input type="submit" value="Edit"/></a>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <img src="../res/products/kids3.PNG" align="center" width="45%" height="25%">
-                </td>
-                <td align="center">
-                    <h3>Kids</h3>
-                </td>
-                <td align="center">
-                    <h3>Shoes</h3>
-                </td>
-                <td align="center">
-                    <h3>KS-8</h3>
-                </td>
-                <td align="center">
-                    <h3>300tk</h3>
-                </td>
-                <td align="center">
-                    <h3>Bad</h3>
-                </td><td align="center">
-                    <a href="settings.php"><input type="submit" value="Edit"/></a>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <img src="../res/products/mobile.PNG" align="center" width="45%" height="25%">
-                </td>
-                <td align="center">
-                    <h3>Electronics</h3>
-                </td>
-                <td align="center">
-                    <h3>Mobile</h3>
-                </td>
-                <td align="center">
-                    <h3>PS-44</h3>
-                </td>
-                <td align="center">
-                    <h3>10000tk</h3>
-                </td>
-                <td align="center">
-                    <h3>Bad</h3>
-                </td>
-                <td align="center">
-                    <a href="settings.php"><input type="submit" value="Edit"/></a>
-                </td>
-            </tr>
+             <?php } ?>
         </table>
 
 			</td>

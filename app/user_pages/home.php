@@ -12,13 +12,13 @@
 	}
 ?>
 <?php include "../../data/product_access.php"; ?>
+<?php include "../../data/admin_user_service.php"; ?>
 <?php
   
         $catgorymen = discount();
         $offer = todaysoffers();
         $wish= wish();
-    
-	
+
 ?>
 
 
@@ -85,6 +85,14 @@
 			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
 			</ul>
+			<label><b>Report</b></label><hr>
+			<ul>
+			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
+			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
+			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
+			<li><a href="mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
+			<li><a href="myfavouriteList.php">My Favourite List </a></li>
+			</ul>
 		</td>
 		<td></td>
 			
@@ -144,32 +152,41 @@
 							</tr>
 
 						<table align="left" width="100%" >
+						<tr>
 					<?php foreach ($catgorymen as $productn) { ?>
 					
 						<td>
-							<a href="man product.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="50%" height="100" ><br><h4><?=$productn['name']; ?> <br>Discount : <?=$productn['offer'] ;?></h4></a>	
+							<a href="man product.php?id=<?=$productn['code']?>"><img src="pictures\<?=$productn['pdpic'] ;?>" align="left" align="top" width="50%" height="100" ><br><h4><?=$productn['name']; ?> <br>Discount : <?=$productn['offer'] ;?></h4></a>	<br><br><br><br><br><br>
 							</td>
 							
 						
-					<?php } ?>	
+					<?php } ?>
+					</tr>	
 					</table>
 
-
+                        <tr>
+						<td>
+							
+							</td>
+						</tr>
 					
 
 
 						<tr>
 						<td></td>
 						<td></td>
-						
+						<br>
+						<br>
 							<td><h2><font color="red" >Flash Deals</font></h2></td>
-							
-						</tr>
-
+							</tr>
+							<tr>
+							<td><br></td>
+							</tr>
+						
 						<tr>
 						<td></td>
 						<td></td>
-<td>
+                        <td>
 
 						<table align="left" width="100%" >
 					<?php foreach ($offer as $product) { ?>
@@ -201,9 +218,10 @@
 						<tr>
 						<td></td>
 						<td></td>
-<td>
+                        <td>
 
 						<table align="left" width="100%" >
+						<?php if(isset($wish)){ ?>
 					<?php foreach ($wish as $pro) { ?>
 					
 						<td></td>
@@ -212,14 +230,13 @@
 							</td>
 							
 						
-					<?php } ?>	
+					<?php }  ?>
+				    <?php }  ?>
 					</table>
 
 					</td>
 
 					</tr>
-
-
 
 
 

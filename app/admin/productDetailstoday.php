@@ -5,7 +5,7 @@
 ?>
 <?php
         $productid = $_GET['cd'];
-        $allproduct = getAllProductByCode($productid);
+        $allproduct = getAllProductByCodeToday($productid);
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +115,7 @@
                 </table>
                 <br>
                  <fieldset  align="left">
-                    <legend><b>Product | DETAIL</b></legend>
+                    <legend><b>Product Today's Offer| DETAIL</b></legend>
          <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td width="100"></td>
@@ -169,7 +169,13 @@
         <tr>
             <td>Selling Price</td>
             <td>:</td>
-            <td><?=$product['sprice'];?></td>
+            <td><?=$product['cost'];?></td>
+        </tr>
+        <tr><td colspan="3"><hr /></td></tr>
+        <tr>
+            <td>Offer Price</td>
+            <td>:</td>
+            <td><?=$product['offer'];?></td>
         </tr>
          <tr><td colspan="3"><hr /></td></tr>
          <tr>
@@ -192,8 +198,8 @@
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
-            <td><a href="productEdit.php?cd=<?=$product['code'];?>"><button>Edit</button></a></td> 
-            <td><a href="productDelete.php?cd=<?=$product['code'];?>"><button>Delete</button></a></td>
+            <td><a href="productEdittoday.php?cd=<?=$product['code'];?>"><button>Edit</button></a></td> 
+            <td><a href="productDeletetoday.php?cd=<?=$product['code'];?>"><button>Delete</button></a></td>
             <td></td>
             <td><a href="loggedin.php">Home</a>  <a href="Dashboard.php">Dashboard</a></td>
             

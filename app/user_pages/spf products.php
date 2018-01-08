@@ -64,6 +64,14 @@
 			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
 			</ul>
+			<label><b>Report</b></label><hr>
+			<ul>
+			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
+			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
+			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
+			<li><a href="mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
+			<li><a href="myfavouriteList.php">My Favourite List </a></li>
+			</ul>
 		</td>
 			
 			<td valign="top" width="40%" >
@@ -102,7 +110,7 @@
 					<a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="license.php">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</th>
 			</tr>	
 		

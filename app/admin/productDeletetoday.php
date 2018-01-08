@@ -5,7 +5,16 @@
 ?>
 <?php
         $productid = $_GET['cd'];
-        $allproduct = getAllProductByCode($productid);
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+        if(deleteProductByCodeToday($productid)==true){
+            echo "<script>
+                    alert('Record Deleted');
+                    document.location='todays_offer.php';
+                 </script>";
+            die();
+        }
+    }
+        $allproduct = getAllProductByCodeToday($productid);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +22,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Product Settings</title>
+    <title>Today Product Settings</title>
 </head>
 
 <body width="1200">
@@ -104,7 +113,7 @@
                    <form method="POST">
                     <tr>
                         <th align="center"><label>
-                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Delete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                             </h3>
                             </label>
@@ -115,7 +124,7 @@
                 </table>
                 <br>
                  <fieldset  align="left">
-                    <legend><b>Product | DETAIL</b></legend>
+                    <legend><b>Product Today| DELETE | Are Sure ?</b></legend>
          <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td width="100"></td>
@@ -169,7 +178,13 @@
         <tr>
             <td>Selling Price</td>
             <td>:</td>
-            <td><?=$product['sprice'];?></td>
+            <td><?=$product['cost'];?></td>
+        </tr>
+        <tr><td colspan="3"><hr /></td></tr>
+        <tr>
+            <td>Offer Today</td>
+            <td>:</td>
+            <td><?=$product['offer'];?></td>
         </tr>
          <tr><td colspan="3"><hr /></td></tr>
          <tr>
@@ -191,14 +206,13 @@
             <td><img src="../res/products/<?=$product['pdpic'];?>" />"</td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
+        <form method="POST">
         <tr>
-            <td><a href="productEdit.php?cd=<?=$product['code'];?>"><button>Edit</button></a></td> 
-            <td><a href="productDelete.php?cd=<?=$product['code'];?>"><button>Delete</button></a></td>
-            <td></td>
-            <td><a href="loggedin.php">Home</a>  <a href="Dashboard.php">Dashboard</a></td>
-            
+            <td colspan="2"><a href="loggedin.php">Home</a></td> 
+            <td><input type="submit" value="Delete" /></td>
+            <td><a href="Dashboard.php">Dashboard</a></td>
         </tr>
-        
+        </form>
     </table>
                 </fieldset>
             </td>

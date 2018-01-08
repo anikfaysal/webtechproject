@@ -129,7 +129,7 @@
             <a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="license.php">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </th>
     </tr>
 

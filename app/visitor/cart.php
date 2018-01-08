@@ -112,7 +112,7 @@
                 <a href="home.php">Go Shopping</a>     
                 <?php
                 
-                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+                echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
             }
             else
             {
@@ -179,7 +179,7 @@
             }
             
             $total =0;
-            if(is_array($_COOKIE['item']))
+            if(isset($_COOKIE['item']))
            {
             foreach($_COOKIE['item'] as $name1 => $value)
                {
@@ -190,7 +190,10 @@
             }
             
             ?>
-            
+            <?php
+            //$d=0;
+                if(isset($_COOKIE['item']))
+                { ?>
             <tr>
                 <td></td>
                 <td></td>
@@ -207,7 +210,7 @@
                 <td></td>
                 <td></td>
             </tr>
-            
+             <?php } ?>
             
            </tbody>
            </form>
@@ -222,7 +225,7 @@
             <a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="license.php">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </th>
     </tr>
 

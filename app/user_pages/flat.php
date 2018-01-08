@@ -18,9 +18,12 @@
     
 	
     $productcode = getProductByIdd($productId);
+    $productcode1 = getProductById($productId);
+    $productcmnts = getProductforcmnt($productId);
 
     if(isset($_POST["submit"]))
     {
+        
         $d=0;
         $productqt =$_POST['quantity'];
         if(isset($_COOKIE['item']))
@@ -44,6 +47,7 @@
                $price=$row3["offer"];
                $qty=$productqt;
                $total=$price*$qty;
+               $cd=$row3["code"];
            }
            
            
@@ -79,7 +83,7 @@
                        else
                        {   
                            $total=$values11[2]*$qty;
-                           setcookie("item[$name1]",$img1."_".$nm."_".$price."_".$qty."_".$total,time()+999999999999999999999999999999999999999999999999999999999999999999999999999999);
+                           setcookie("item[$name1]",$img1."_".$nm."_".$price."_".$qty."_".$total."_".$cd,time()+(86400 * 1800));
                         }
                    }
                }
@@ -104,7 +108,7 @@
                        }
                        else
                        {   
-                           setcookie("item[$d]",$img1."_".$nm."_".$price."_".$qty."_".$total,time()+999999999999999999999999999999999999999999999999999999999999999999999999999999);
+                           setcookie("item[$d]",$img1."_".$nm."_".$price."_".$qty."_".$total."_".$cd,time()+(86400 * 1800));
                        }
                }
            }
@@ -129,10 +133,187 @@
                        }
                        else
                        {   
-                           setcookie("item[$d]",$img1."_".$nm."_".$price."_".$qty."_".$total,time()+999999999999999999999999999999999999999999999999999999999999999999999999999999);
+                           setcookie("item[$d]",$img1."_".$nm."_".$price."_".$qty."_".$total."_".$cd,time()+(86400 * 1800));
                        }
         }
+        ?>
+                       <script>
+                           
+                            window.alert("Successfully Added To your Cart");
+                        </script>
+                        <?php
     }
+
+
+         if(isset($_POST["cmnt"]))
+         {
+             $productcode['cname']=$_POST['cname'];
+             $productcode['cemail']=$_POST['cemail'];
+             $productcode['cmnt']=$_POST['textarea1'];
+             $productcode['prate']=$_POST['prate'];
+             $productcode['pdname']=$productcode['name'];
+             $productcode['sprice']=$productcode['offer'];
+             if(insertcommnet($productcode)==true)
+                {
+                    ?>
+                       <script>
+                           window.location.href = window.location.href;
+                             window.alert("Thanks For Your Comment");
+                        </script>
+                        <?php
+                }
+         else
+         {
+                        ?>
+                       <script>
+                          
+                             window.alert("Error! 404 for posting commnet");
+                        </script>
+                        <?php
+         }
+
+         }
+
+
+       if(isset($_POST["wishbtn"]))
+        {
+            
+            $productcode['bpprice']=$productcode1['bprice'];
+            $productcode['username']=$_SESSION['user']['username'];
+           $productcode['sprice']=$productcode['cost'];
+            if(addProductToWish($productcode)==true)
+            {
+                        ?>
+                       <script>
+                           
+                            window.alert("Successfully Added To Your Wish List");
+                        </script>
+                        <?php
+            }
+             
+
+        }
+
+         if(isset($_POST["purchasenow"]))
+         {
+             $d=0;
+        $productqt =$_POST['quantity'];
+        if(isset($_COOKIE['item']))
+           {
+               foreach($_COOKIE['item'] as $name => $value)
+               {
+                   $d=$d+1;
+               }
+               $d=$d+1;
+           }
+           else
+           {
+               $d=$d+1;
+           }
+           $sql = "SELECT * FROM todaysoffers WHERE code=$productId";        
+           $res3 = executeSQL($sql);
+           while($row3=mysqli_fetch_array($res3))
+           {
+               $img1=$row3["pdpic"];
+               $nm=$row3["name"];
+               $price=$row3["offer"];
+               $qty=$productqt;
+               $total=$price*$qty;
+               $cd=$row3["code"];
+           }
+           
+           
+           
+           if(isset($_COOKIE['item']))
+           {
+               foreach($_COOKIE['item'] as $name1 => $value)
+               {
+                   $values11=explode("_",$value);
+                   $found=0;
+                   if($img1==$values11[0])
+                   {
+                       $found=$found+1;
+                       $qty=$productqt;
+                       
+                       $tb_qty;
+                       $sql = "SELECT * FROM todaysoffers WHERE code=$productId"; 
+                       $res = executeSQL($sql);
+                       while($row=mysqli_fetch_array($res))
+                        {
+                           $tb_qty=$row["quantity"];
+                        }
+                       if($tb_qty<$qty)
+                       {
+                           ?>
+                           <script>
+                               alert("Quantity Not Available Right Now");
+                            
+                           </script>
+                           
+                           <?php
+                       }
+                       else
+                       {   
+                           $total=$values11[2]*$qty;
+                           setcookie("item1[$name1]",$img1."_".$nm."_".$price."_".$qty."_".$total."_".$cd,time()+(86400 * 1800));
+                        }
+                   }
+               }
+               if($found==0)
+               {
+                    $tb_qty;
+                       $sql = "SELECT * FROM todaysoffers WHERE code=$productId"; 
+                       $res = executeSQL($sql);
+                       while($row=mysqli_fetch_array($res))
+                        {
+                           $tb_qty=$row["quantity"];
+                        }
+                       if($tb_qty<$qty)
+                       {
+                           ?>
+                           <script>
+                               alert("Quantity Not Available Right Now");
+                            
+                           </script>
+                           
+                           <?php
+                       }
+                       else
+                       {   
+                           setcookie("item1[$d]",$img1."_".$nm."_".$price."_".$qty."_".$total."_".$cd,time()+(86400 * 1800));
+                       }
+               }
+           }
+        else
+        {
+             $tb_qty;
+                       $sql = "SELECT * FROM todaysoffers WHERE code=$productId"; 
+                       $res = executeSQL($sql);
+                       while($row=mysqli_fetch_array($res))
+                        {
+                           $tb_qty=$row["quantity"];
+                        }
+                       if($tb_qty<$qty)
+                       {
+                           ?>
+                           <script>
+                               alert("Quantity Not Available Right Now");
+                            
+                           </script>
+                           
+                           <?php
+                       }
+                       else
+                       {   
+                           setcookie("item1[$d]",$img1."_".$nm."_".$price."_".$qty."_".$total."_".$cd,time()+(86400 * 1800));
+                       }
+        }
+              ?>
+                       <script>
+                           window.location.href = "purches.php?cd=<?=$productcode['code']?>&&qn=<?= $_POST['quantity'] ?>";
+                        </script>
+                        <?php
+         }
 
 
 ?>
@@ -200,6 +381,14 @@
 			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
 			</ul>
+			<label><b>Report</b></label><hr>
+			<ul>
+			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
+			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
+			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
+			<li><a href="mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
+			<li><a href="myfavouriteList.php">My Favourite List </a></li>
+			</ul>
 		</td>
 			
 			<td valign="top" width="40%" >
@@ -250,7 +439,7 @@
 								</fieldset>
 								<fieldset>
                                 <legend>Select Quantity</legend>
-                                Available Quantity : 20
+                                Available Quantity : <?=$productcode['quantity']?> 
 								    <select name="quantity">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -266,9 +455,9 @@
 								<br>
 								<br>
 							
-								<a href="purches.php"><input type="submit" value="Purches Now" ><a/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="submit" value="Purches Now" name="purchasenow">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="submit" value="Add to Cart" name="submit" />
-								<button onclick="wish();">+</button>
+								<input type="submit" name="wishbtn" value="wish" />
 						
 						
 							</td>
@@ -279,7 +468,9 @@
 						        
 						    </td>
 						    <td>
-				<table>
+                    <fieldset><legend>Comments</legend>
+				        <table>
+                       <form method="POST" id="form2">
                         <tr height="10">
                       </tr>
                        <tr>
@@ -290,14 +481,14 @@
                        </tr>
                         <tr>
                             <td>
-                                <input type="radio"/>Very Good
+                                <input type="radio"  name="prate" value="verygood" />Very Good
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="radio"/>Good
+                                <input type="radio" name="prate" value="good" />Good
                             </td>
                             <td>
-                                <input type="radio"/>Bad
+                                <input type="radio" name="prate" value="bad"/>Bad
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="radio"/>Worse
+                                <input type="radio" name="prate" value="worse"/>Worse
                             </td>
                         </tr>
                         <tr height="5">
@@ -305,7 +496,7 @@
                         </tr>
 			            <tr>
 			                <td>
-			                    (0) Comments
+			                    Comment Section
 			                </td>
 			                <td>
 			                    Leave A comment Here
@@ -321,7 +512,7 @@
 			                    Enter Your Name  :
 			                </td>
 			                <td>
-			                    <input type="text"/>
+			                    <input type="text" name="cname"/>
 			                    <abbr title="Must required field"><b>i</b></abbr>
 			                </td>
 			            </tr>
@@ -330,22 +521,38 @@
 			                    Enter Your Email  :
 			                </td>
 			                <td>
-			                    <input type="text"/>
+			                    <input type="text" name="cemail"/>
 			                    <abbr title="Must required field hint: sample@example.com"><b>i</b></abbr>
 			                </td>
 			            </tr>
 			             <tr>
 			                <td>
-			                    <button onclick="addpost();">Post Comment</button>
+			                    <input type="submit" name="cmnt" value="Post Comment" >
 			                </td>
 			            </tr>
 			            <tr>
 			                <td>
-			                    <div id="postcomment"></div>
+			                    <h2>Comments :</h2>
 			                </td>
 			            </tr>
+			            <?php foreach ($productcmnts as $productcmnt) { ?>
+			             <tr>
+			                <td>
+			                    <h3><?=$productcmnt['comment']?></h3>
+			                </td>
+			               
+			            </tr>
+			            <tr>
+			                <td>
+			                    <h3>Commented By:<?=$productcmnt['name']?></h3>
+                            </td>
+			               
+			            </tr>
 			            
+			             <?php } ?>
+			           </form>
 			        </table>
+			        </fieldset> 
 						    </td>
 						</tr>
 						</form>
@@ -359,7 +566,7 @@
 					<a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="license.php">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</th>
 			</tr>	
 		

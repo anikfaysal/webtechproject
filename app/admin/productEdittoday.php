@@ -5,7 +5,50 @@
 ?>
 <?php
         $productid = $_GET['cd'];
-        $allproduct = getAllProductByCode($productid);
+
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+            if(isset($_POST['pdpicchange']))
+            {
+                $product['code']=$productid;
+                $product['pdpic']=$_POST['pdpic'];
+                if(editProductpicToday($product)==true)
+                {
+                echo "<script>
+                    alert('Pic Updated');
+                   document.location='productEdittoday.php?cd=$productid'; 
+                 </script>";
+                die();
+                }
+            }
+        if(isset($_POST['update']))
+        {
+        $product['code']=$productid;
+        $product['name']=$_POST['name'];
+        $product['color']=$_POST['color'];
+        $product['material']=$_POST['material'];
+        $product['size']=$_POST['size'];
+        $product['description']=$_POST['description'];
+        $product['bprice']=$_POST['bprice'];
+        $product['cost']=$_POST['cost'];
+        $product['offer']=$_POST['offer'];
+        $product['quantity']=$_POST['quantity'];
+        
+        
+       if(editProductToday($product)==true)
+       {
+                echo "<script>
+                    alert('Record Updated');
+                    document.location='todays_offer.php';
+                 </script>";
+                die();
+        }
+        }
+        
+       
+    }
+        $allproduct = getAllProductByCodeToday($productid);
+        
+
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +147,7 @@
                    <form method="POST">
                     <tr>
                         <th align="center"><label>
-                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                             </h3>
                             </label>
@@ -113,10 +156,12 @@
                     </tr>
                     </form>
                 </table>
-                <br>
-                 <fieldset  align="left">
-                    <legend><b>Product | DETAIL</b></legend>
+                 <br>
+                  <fieldset align="left">Message box</fieldset><br>
+                 <fieldset>
+                    <legend><b>Product Todays| EDIT</b></legend>
          <table cellpadding="0" cellspacing="0" width="100%">
+         <form method="POST">
         <tr>
             <td width="100"></td>
             <td width="10"></td>
@@ -137,67 +182,75 @@
         </tr>	            
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
-            <td>Product Name</td>
-            <td>:</td>
-            <td><?=$product['name'];?></td>
-        </tr>		
-        <tr><td colspan="3"><hr/></td></tr>			
-        <tr>
             <td>Product Code</td>
             <td>:</td>
             <td><?=$product['code'];?></td>
+        </tr>		
+        <tr><td colspan="3"><hr/></td></tr>			
+         <tr>
+            <td>Product Name</td>
+            <td>:</td>
+            <td><input type="text" name="name" value="<?=$product['name'];?>" /></td>
         </tr>
         <tr><td colspan="3"><hr/></td></tr>
         <tr>
             <td>Quantity</td>
             <td>:</td>
-            <td><?=$product['quantity'];?></td>
+            <td><input type="text" name="quantity" value="<?=$product['quantity'];?>" /></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Product Color</td>
             <td>:</td>
-            <td><?=$product['color'];?></td>
+            <td><input type="text" name="color" value="<?=$product['color'];?>" /></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Buying Price</td>
             <td>:</td>
-            <td><?=$product['bprice'];?></td>
+            <td><input type="text" name="bprice" value="<?=$product['bprice'];?>" /></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Selling Price</td>
             <td>:</td>
-            <td><?=$product['sprice'];?></td>
+            <td><input type="text" name="cost" value="<?=$product['cost'];?>" /></td>
+        </tr>
+        <tr><td colspan="3"><hr /></td></tr>
+        <tr>
+            <td>Offer Price(*)</td>
+            <td>:</td>
+            <td><input type="text" name="offer" value="<?=$product['offer'];?>" /></td>
         </tr>
          <tr><td colspan="3"><hr /></td></tr>
          <tr>
             <td>Product Material</td>
             <td>:</td>
-            <td><?=$product['material'];?></td>
+            <td><input type="text" name="material" value="<?=$product['material'];?>" /></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Product Size</td>
             <td>:</td>
-            <td><?=$product['size'];?></td>
+            <td><input type="text" name="size" value="<?=$product['size'];?>" /></td>
         </tr>
         <tr><td colspan="3"><hr /></td></tr>
         <tr>
             <td>Description</td>
             <td>:</td>
-            <td><?=$product['description'];?></td>
-            <td><img src="../res/products/<?=$product['pdpic'];?>" />"</td>
+            <td><textarea name="description" ><?=$product['description'];?></textarea></td>
+            <td><img src="../res/products/<?=$product['pdpic'];?>" width="200" height="200" />"<br><input type="file" name="pdpic" value="../res/products/<?=$product['pdpic'];?>"><br><br><input type="submit" value="Save" name="pdpicchange" /></td>
         </tr>
-        <tr><td colspan="3"><hr /></td></tr>
-        <tr>
-            <td><a href="productEdit.php?cd=<?=$product['code'];?>"><button>Edit</button></a></td> 
-            <td><a href="productDelete.php?cd=<?=$product['code'];?>"><button>Delete</button></a></td>
+         <tr><td colspan="5"><hr /></td></tr>
+         <tr>
+            <td colspan="2"><a href="loggedin.php">Home</a></td>
+             <td></td>
+            <td><input type="submit" value="Update" name="update"/></td>
+            <td><a href="Dashboard.php">Dashboard</a></td>
             <td></td>
-            <td><a href="loggedin.php">Home</a>  <a href="Dashboard.php">Dashboard</a></td>
             
         </tr>
+        </form>
         
     </table>
                 </fieldset>

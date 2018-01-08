@@ -1,7 +1,11 @@
 <?php include "../../data/product_access.php"; ?>
 <?php
 	session();
+        $username=$_SESSION['user']['username'];
+
+        $wishlist = getAllProductmywish($username);
 ?>
+
 
 <html>
 
@@ -26,7 +30,6 @@
 		<td  valign="top"  width="10%">
 		<label><b> Account</b></label><br><hr>
 			<ul>
-		
 			<li><a href="home.php">Home</a>	</li>
 			<li><a href="../account/profile.php">View profile</a>	</li>	
 			<li><a href="order.php">My Orders </a></li>
@@ -34,38 +37,37 @@
 			<li><a href="../account/changepass.php">Change Password</a></li>
 			<li><a href="../account/changepp.php">Change Profile Picture</a></li>
 			<li><a href="logouthandler.php">Logout </a></li>
-			
-				</ul>
-		
-		
+			</ul>
 		<label><b>Catagories</b></label><br><hr>
 			<ul>
 			<a href="select persons male.php">Men's Product</a><hr>
-			<li><a href="spm products.php">Men's Shirts</a></li>
-			<li><a href="">Men's Pants</a></li>
-			<li><a href="">Men's Shoes</a></li>
-			<li><a href="">Belt</a></li><br>
+			<li><a href="spm products.php?pname=Shirt">Men's Shirts</a></li>
+			<li><a href="spm products.php?pname=Pant">Men's Pants</a></li>
+			<li><a href="spm products.php?pname=Shoe">Men's Shoes</a></li>
+			<li><a href="spm products.php?pname=Belt">Belt</a></li><br>
 			<a href="select persons female.php">Women's Product</a><hr>
-			<li><a href="spf products.php">Dresses</a></li>
-			<li><a href="">Pants</a></li>
-			<li><a href="">Shoes</a></li>
-			<li><a href="">Bags</a></li><br>
+			<li><a href="spf products.php?pname=Dress">Dresses</a></li>
+			<li><a href="spf products.php?pname=Pant">Pants</a></li>
+			<li><a href="spf products.php?pname=Shoe">Shoes</a></li>
+			<li><a href="spf products.php?pname=Bags">Bags</a></li><br>
 			<a href="select persons kids.php">Kid's Product</a><hr>
-			<li><a href="spk products.php">Dress</a></li>
-			<li><a href="">Diapars</a></li>
-			<li><a href="">Shoes</a></li>
-			<li><a href="">Toys</a></li><br>
+			<li><a href="spk products.php?pname=Dress">Dress</a></li>
+			<li><a href="spk products.php?pname=Diapers">Diapars</a></li>
+			<li><a href="spk products.php?pname=Shoe">Shoes</a></li>
+			<li><a href="spk products.php?pname=Toys">Toys</a></li><br>
 			<a href="accessories.php">Accessories</a><hr>
-			<li><a href="">Wallet</a></li>
-			<li><a href="">Bags</a></li>
-			<li><a href="">Backcovers</a></li>
-			<li><a href="">Handsbands</a></li><br>
+			<li><a href="ack products.php?pname=Wallet">Wallet</a></li>
+			<li><a href="ack products.php?pname=Bag">Bags</a></li>
+			<li><a href="ack products.php?pname=BackCover">Backcovers</a></li>
+			<li><a href="ack products.php?pname=HandBand">Handsbands</a></li><br>
 			<a href="electronics.php">Electronics</a><hr>
-			<li><a href="">Mobile</a></li>
-			<li><a href="">Table Fans</a></li>
-			<li><a href="">Headphones</a></li>
-			<li><a href="">Smart Watches</a></li><br>
+			<li><a href="eck products.php?pname=Mobile">Mobile</a></li>
+			<li><a href="eck products.php?pname=TableFan">Table Fans</a></li>
+			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
+			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
+			</ul>
 			<label><b>Report</b></label><hr>
+			<ul>
 			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
 			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
 			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
@@ -83,106 +85,76 @@
         </table>
 
         <table align="left" width="100%">
+           <form method="POST">
             <tr>
-                <td width="18%" align="center">
+                <td width="15%" align="center">
                     <h3>Image</h3>
                 </td>
-                <td width="18%" align="center">
+                <td width="15%" align="center">
                    <h3>Category</h3>
                 </td>
-                <td width="18%" align="center">
+                <td width="15%" align="center">
                    <h3>Sub-Category</h3>
                 </td>
-                <td width="18%" align="center">
+                <td width="15%" align="center">
                     <h3>Code</h3>
                 </td>
-                <td width="18%" align="center">
+                <td width="15%" align="center">
                     <h3>Price</h3>
+                </td>
+                <td width="15%" align="center">
+                    <h3>Ava. Qun.</h3>
                 </td>
                 <td width="10%" align="center">
                     <h3></h3>
                 </td>
+                 
             </tr>
+           
+           <?php   foreach ($wishlist as $wishproduct) {?>
+           
             <tr>
                 <td align="center">
-                    <img src="pictures/wprog2.PNG" align="center" width="50%" height="50%">
+                    <img src="pictures/<?=$wishproduct['pdpic']?>" align="center" width="50%" height="50%">
                 </td>
                 <td align="center">
-                    <h3>Women</h3>
+                    <h3><?=$wishproduct['catagory']?></h3>
                 </td>
                 <td align="center">
-                    <h3>Frog</h3>
+                    <h3><?=$wishproduct['subcatagory']?></h3>
                 </td>
                 <td align="center">
-                    <h3>WP-107</h3>
+                    <h3><?=$wishproduct['code']?></h3>
                 </td>
                 <td align="center">
-                    <h3>1550tk</h3>
+                    <h3><?=$wishproduct['sprice']?></h3>
                 </td>
+                <td align="center">
+                    <h3><?=$wishproduct['quantity']?></h3>
+                </td>
+<!--
                 <td>
-                     <input type="submit" value="Add to Cart" onclick="function1()" />
+                     <select name="quantity">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+					                </select>
                 </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <img src="pictures/wprog7.PNG" align="center" width="50%" height="50%">
-                </td>
-                <td align="center">
-                    <h3>Women</h3>
-                </td>
-                <td align="center">
-                    <h3>Pant</h3>
-                </td>
-                <td align="center">
-                    <h3>WP-111</h3>
-                </td>
-                <td align="center">
-                    <h3>800tk</h3>
-                </td>
+-->
                 <td>
-                     <input type="submit" value="Add to Cart" onclick="function1()" />
+        <input type="button" value="Add to Cart" name="submit" onclick="location.href='favrtlisthandle.php?cd=<?=$wishproduct['code']?>&&qn=1'"/>
+               
                 </td>
+                
             </tr>
-            <tr>
-                <td align="center">
-                    <img src="pictures/wshirt1.PNG" align="center" width="50%" height="50%">
-                </td>
-                <td align="center">
-                    <h3>Women</h3>
-                </td>
-                <td align="center">
-                    <h3>Shirt</h3>
-                </td>
-                <td align="center">
-                    <h3>WS-8</h3>
-                </td>
-                <td align="center">
-                    <h3>500tk</h3>
-                </td>
-                <td>
-                     <input type="submit" value="Add to Cart" onclick="function1()" />
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <img src="pictures/mobile.PNG" align="center" width="50%" height="50%">
-                </td>
-                <td align="center">
-                    <h3>Electronics</h3>
-                </td>
-                <td align="center">
-                    <h3>Mobile</h3>
-                </td>
-                <td align="center">
-                    <h3>PS-44</h3>
-                </td>
-                <td align="center">
-                    <h3>10000tk</h3>
-                </td>
-                <td>
-                     <input type="submit" value="Add to Cart" onclick="function1()" />
-                </td>
-            </tr>
+            <?php } ?>	
+            </form>
         </table>
              
 			</td>
@@ -199,11 +171,5 @@
 			</tr>	
 </table>
 
-<script>
-	function function1()
-{
-    window.alert ("Added to cart");
-}
-</script>
 
 </html>

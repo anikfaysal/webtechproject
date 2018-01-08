@@ -4,6 +4,13 @@
   
         
         $order= adminnew();
+        if($_SERVER['REQUEST_METHOD']=="POST")
+        {
+            if(isset($_POST['confirm']))
+            {
+               // ConfirmAdmin();
+            }
+        }
         session();
     
     
@@ -72,8 +79,10 @@
             <li><a href="allProducts.php">All Products</a></li>
             
             <li><a href="settings.php">Product Settings</a></li>
+<!--
             <li><a href="Discount.php">Discount's</a></li>
             <li><a href="editdiscount.php">Edit Discount</a></li>
+-->
             <li><a href="todays_offer.php">Today's Offer</a></li><br>
             </ul>
             <hr>
@@ -98,10 +107,10 @@
         </td>
             <td valign="top" height="400" align="center">
                  <table border="1" align="center" width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-                <th align="center"><label><h3>New Orders</h3></label></th>
-            </tr>
-        </table>
+                    <tr>
+                        <th align="center"><label><h3>New Orders</h3></label></th>
+                    </tr>
+                </table>
 
         <table align="center" width="100%">
             <tr align="center"><br>
@@ -117,80 +126,78 @@
                 <td>
                     <a href="cancelorders.php"><input type="submit" value="Cancelled Orders" ></a>
                 </td>
-            </tr>
-            <tr></tr>
-            
+            </tr>   
         </table>
-
-       <table align="center" width="100%">
-            <tr align="center"><br>
-               <td>
-                    <label><h3>All Orders</h3></label>
+               
+                <table align="center" width="100%">
+                <form method="post">
+            <tr ><br><br>
+               <td width="17" align="center">
+                   <label><h3>Order Image</h3></label>
+               </td>
+                <td width="17" align="center">
+                    <label><h3>Order Info</h3></label>
                     
                 </td>
-                 <td>
+                 <td width="16" align="center">
                     <label><h3>Customer</h3></label>
-</tr>
+                    
+                </td>
+                 <td width="17" align="center">
+                    <label><h3>Shipping Company</h3></label>
+                </td>
+                 <td width="17" align="center">
+                    <label><h3>Track Id</h3></label>
+                </td>
+                 <td width="16" align="center">
+                    <label><h3>Customer Confirmation</h3></label>
+                </td>
+            </tr>
 
-
-                <table align="left" width="100%" >
                     <?php foreach ($order as $productn) { ?>
                     <tr>
-                        <td>
-                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="30%" height="100" ></td><td><h4><?=$productn['username']; ?></td> <br><td><?=$productn['shippingsts'] ;?></td><td><?=$productn['tracknumber'] ;?></td><td><?=$productn['customersts'] ;?></h4></td></a> 
+                        <td align="center">
+                            <img src="pictures\<?=$productn['ppic'] ;?>" align="center" align="top" width="100" height="100" >
+                        </td>
+                        <td align="center">
+                            Name :<?=$productn['pname']; ?><br>
+                            Quantity :<?=$productn['quantity']; ?><br>
+                            Cost :<?=$productn['cost']; ?><br>
+                            Code :<?=$productn['code']; ?><br>
+                            Size :<?=$productn['size']; ?><br>
+                            Color :<?=$productn['colour']; ?><br><br>
+                        </td>
+                        <td align="center">
+                            <?=$productn['username']; ?>
+                        </td> 
+                        <td align="center">
+                            <?=$productn['shippingsts'] ;?>
+                        </td>
+                        <td align="center">
+                            <?=$productn['tracknumber'] ;?>
+                        </td>
+                        <td align="center">
+                            <?=$productn['customersts'] ;?>
+                        </td>    
+                    </tr>
+                    <tr>
+                         <td></td>
+                          <td colspan="">
+                                <a href="orderhandler.php?tr=<?=$productn['tracknumber'] ;?>&st=confirm"><input type="button" value="Confirm" name="confirm"></a>
                             </td>
-                        
 
-                    
+                            <td colspan="2">
+                                <a href="orderhandler.php?tr=<?=$productn['tracknumber'] ;?>&st=cancel"><input type="button" value="Cancel" name="cancel"></a>
+                            </td>
 
-                
-                            
-                        </tr>
-                    <?php } ?> 
-                    
-                <tr align="center">
-
-                    <td>
-                    <input type="button" value="confirm" onclick="function1()">
-                    </td>
-
-                    <td>
-                    <input type="button" value="Cancel" onclick="function2()">
-                    </td>
-
-                    <td>
-                    <input type="button" value="Sent to Shipping Comany" onclick="function3()">
-                    </td>
-
-
-                </tr> 
-
-                    </table>
-        </table>
-
-                <tr align="center">
-
-                    <td>
-                    <input type="button" value="confirm" onclick="function1()">
-                    </td>
-
-                    <td>
-                    <input type="button" value="Cancel" onclick="function2()">
-                    </td>
-
-                    <td>
-                    <input type="button" value="Sent to Shipping Comany" onclick="function3()">
-                    </td>
-
-
-                </tr>
-
-
-
-
-        </table>
-
-
+                            <td colspan="2">
+                                <a href="orderhandler.php?tr=<?=$productn['tracknumber'] ;?>&st=shipping"><input type="button" value="Sent to Shipping Comany" name="shipping"></a>
+                            </td>  
+                    </tr>
+                    <?php } ?>  
+                    </form>
+                </table>
+           
             </td>
         </tr>
         <tr align="center">

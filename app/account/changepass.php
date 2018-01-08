@@ -27,19 +27,16 @@
 			</tr>
 		<tr>
 		<td width="13%" valign="top">
-				
 			<label><b> Account</b></label><br><hr>
 			<ul>
 			<li><a href="../user_pages/home.php">Home</a>	</li>
-			<li><a href="../account/profile.php">View profile</a>	</li>	
+			<li><a href="profile.php">View profile</a>	</li>	
 			<li><a href="../user_pages/order.php">My Orders </a></li>
-			<li><a href="../account/editprofile.php">Settings</a></li>
-			<li><a href="../account/changepass.php">Change Password</a></li>
-			<li><a href="../account/changepp.php">Change Profile Picture</a></li>
-			<li><a href="../account/login.php">Logout </a></li>
+			<li><a href="editprofile.php">Settings</a></li>
+			<li><a href="changepass.php">Change Password</a></li>
+			<li><a href="changepp.php">Change Profile Picture</a></li>
+			<li><a href="../user_pages/logouthandler.php">Logout </a></li>
 			</ul>
-		
-		
 		<label><b>Catagories</b></label><br><hr>
 			<ul>
 			<a href="../user_pages/select persons male.php">Men's Product</a><hr>
@@ -67,6 +64,14 @@
 			<li><a href="../user_pages/eck products.php?pname=TableFan">Table Fans</a></li>
 			<li><a href="../user_pages/eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="../user_pages/eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
+			</ul>
+			<label><b>Report</b></label><hr>
+			<ul>
+			<li><a href="../user_pages/myPurchase.php">My Purchase Stastics</a></li>
+			<li><a href="../user_pages/mylastPurchaseList.php">My Last Purchase List </a></li>
+			<li><a href="../user_pages/mymostVisitedProduct.php">My Most Visited Product List </a></li>
+			<li><a href="../user_pages/mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
+			<li><a href="../user_pages/myfavouriteList.php">My Favourite List </a></li>
 			</ul>
 			</td>
 			<td valign="top" height="400">

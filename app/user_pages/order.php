@@ -40,6 +40,8 @@
             <li><a href="../account/profile.php">View profile</a>  </li>   
             <li><a href="order.php">My Orders </a></li>
             <li><a href="../account/editprofile.php">Settings</a></li>
+            <li><a href="../account/changepass.php">Change Password</a></li>
+			<li><a href="../account/changepp.php">Change Profile Picture</a></li>
             <li><a href="logouthandler.php">Logout </a></li>
              </ul>
         
@@ -72,6 +74,14 @@
 			<li><a href="eck products.php?pname=HeadPhone">Headphones</a></li>
 			<li><a href="eck products.php?pname=Smart Watch">Smart Watches</a></li><br>
             </ul>
+            <label><b>Report</b></label><hr>
+			<ul>
+			<li><a href="myPurchase.php">My Purchase Stastics</a></li>
+			<li><a href="mylastPurchaseList.php">My Last Purchase List </a></li>
+			<li><a href="mymostVisitedProduct.php">My Most Visited Product List </a></li>
+			<li><a href="mymostPurchasedProduct.php">My Most Purchased Product List </a></li>
+			<li><a href="myfavouriteList.php">My Favourite List </a></li>
+			</ul>
         </td>
 
 
@@ -105,14 +115,16 @@
             <td ></td>
                 
                 <table align="left" width="100%" >
+                   <?php if(isset($order)){ ?>
                     <?php foreach ($order as $productn) { ?>
                     <tr>
                         <td>
-                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="10%" height="100" ><br><h4>Product Name :<?=$productn['pname']; ?> <br>Price :<?=$productn['cost'] ;?><br>Quantity :<?=$productn['quantity'] ;?><br>Track:Number :<?=$productn['tracknumber'] ;?></h4></a> 
+                            <img src="pictures\<?=$productn['ppic'] ;?>" align="left" align="top" width="10%" height="100" ><br><h4>Product Name :<?=$productn['pname']; ?> <br>Price :<?=$productn['cost'] ;?><br>Quantity :<?=$productn['quantity'] ;?><br>Track:Number :<?=$productn['tracknumber'] ;?></h4>
                             </td>
                             
                         </tr>
-                    <?php } ?>  
+                    <?php } ?> 
+                    <?php } ?> 
                     </table>
                 
             </tr>
@@ -121,21 +133,17 @@
     </td>
 
 
-
-    <tr height="100">
-        <th colspan="2">
-            <a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="">Liscence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </th>
     </tr>
-
-
-
-
-
-
+    <tr height="100">
+				<th colspan="4">
+					<a href="aboutus.php">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="learnmore.php">Learn more</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="help.php">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="license.php">License</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</th>
+			</tr>	
+   
+  
 </table>
 
 

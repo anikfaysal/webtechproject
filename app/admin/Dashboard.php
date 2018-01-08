@@ -6,10 +6,11 @@
 <?php
 	$user1="active";
 	
-	$Users= getUsersBy_Usertype_And_Active($user1);
-	$a=0;
-	foreach ($Users as $User) { 
-				$a=$a+1;
+        $totalvisitor = getVisitorCount();
+        $Users= getUsersBy_Usertype_And_Active($user1);
+            $a=0;
+            foreach ($Users as $User) { 
+                        $a=$a+1;
 			}		
 ?>
 
@@ -76,8 +77,10 @@
 			<li><a href="orders.php">Orders</a></li>
             <li><a href="allProducts.php">All Products</a></li>
             <li><a href="settings.php">Product Settings</a></li>
+<!--
             <li><a href="Discount.php">Discount's</a></li>
 			<li><a href="editdiscount.php">Edit Discount</a></li>
+-->
             <li><a href="todays_offer.php">Today's Offer</a></li><br>
            </ul>
             <hr>
@@ -114,7 +117,7 @@
 					            <img src="../res/design/user.png" width="50" height="50" align="left"/>
 					        </td>
 					        <td>
-					            <a href="dailyvisitor.php">200</a>
+					            <a href="dailyvisitor.php"><?=$totalvisitor?></a>
 					        </td>
 					         <td>
 					            <img src="../res/design/visitor.png" width="50" height="50" align="left"/>
@@ -138,7 +141,7 @@
 					        </td>
 					        <td></td>
 					        <td>
-					            <a href="dailyvisitor.php">Daily Visitor</a>
+					            <a href="dailyvisitor.php">Daily Visit</a>
 					        </td>
 					        <td></td>
 					        <td>
